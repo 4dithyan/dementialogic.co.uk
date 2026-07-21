@@ -27,8 +27,8 @@ import {
   Instagram,
   Youtube,
 } from "lucide-react";
-import heroImg from "@/assets/hero-embrace.jpg";
-import caregiverImg from "@/assets/caregiver-illustration.jpg";
+import heroImg from "@/assets/hero.png";
+import caregiverImg from "@/assets/illustration.png";
 import chairImg from "@/assets/cozy-chair.jpg";
 import handshakeImg from "@/assets/handshake.jpg";
 
@@ -153,9 +153,9 @@ function Index() {
 
       {/* Hero */}
       <section className="relative" style={{ background: "var(--hero-bg)" }}>
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-8 px-8 pb-32 pt-12 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-8 px-8 pb-16 pt-8 lg:grid-cols-2">
           <div className="flex flex-col justify-center">
-            <h1 className="text-5xl font-bold leading-[1.1] tracking-tight text-foreground lg:text-6xl">
+            <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-foreground lg:text-5xl">
               When memory fades,
               <br />
               <span className="text-primary">care</span> shouldn't.
@@ -186,7 +186,7 @@ function Index() {
               alt="A caregiver tenderly embracing an elderly woman"
               width={1024}
               height={1024}
-              className="h-full max-h-[520px] w-full object-cover animate-fade-in"
+              className="h-full max-h-[400px] w-full object-cover animate-fade-in"
               style={{
                 WebkitMaskImage:
                   "linear-gradient(to right, transparent 0%, black 35%, black 100%)",
