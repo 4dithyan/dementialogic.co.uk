@@ -56,11 +56,11 @@ export const Route = createFileRoute("/")({
 });
 
 const navItems = [
-  { label: "I need help for someone", hasDropdown: true },
-  { label: "Understand dementia", hasDropdown: true },
-  { label: "For caregivers", hasDropdown: true },
-  { label: "Resources", hasDropdown: true },
-  { label: "About us", hasDropdown: false },
+  { label: "Home", hasDropdown: false },
+  { label: "About Us", hasDropdown: true },
+  { label: "Education Hub", hasDropdown: false },
+  { label: "Caregiver Reality Check", hasDropdown: false },
+  { label: "Dementia Trigger Decoder", hasDropdown: false },
 ];
 
 const features = [
@@ -105,11 +105,10 @@ const learnCards = [
 ];
 
 const footerCols = [
-  { title: "I need help for someone", links: ["Signs to look for", "What to do next", "How we can help"] },
-  { title: "Understand dementia", links: ["What is dementia?", "Types of dementia", "Living well with dementia"] },
-  { title: "For caregivers", links: ["Caregiver support", "Tips & guidance", "Self-care"] },
-  { title: "Resources", links: ["Articles & guides", "Videos", "Downloads"] },
-  { title: "About us", links: ["Our approach", "FAQs", "Contact us"] },
+  { title: "Home", links: ["Waitlist"] },
+  { title: "About Us", links: ["Founder profiles", "Clinical credentials", "Our Story"] },
+  { title: "Education Hub", links: ["Clinically authored articles"] },
+  { title: "Interactive Tools", links: ["Caregiver Reality Check", "Dementia Trigger Decoder"] },
 ];
 
 function Logo() {
