@@ -186,9 +186,16 @@ function Index() {
               alt="A caregiver tenderly embracing an elderly woman"
               width={1024}
               height={1024}
-              className="h-full max-h-[520px] w-full rounded-2xl object-cover"
+              className="h-full max-h-[520px] w-full object-cover animate-fade-in"
+              style={{
+                WebkitMaskImage:
+                  "linear-gradient(to right, transparent 0%, black 35%, black 100%)",
+                maskImage:
+                  "linear-gradient(to right, transparent 0%, black 35%, black 100%)",
+              }}
             />
           </div>
+
         </div>
       </section>
 
