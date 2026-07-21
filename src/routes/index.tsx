@@ -64,9 +64,9 @@ const navItems = [
 ];
 
 const features = [
-  { icon: Heart, title: "Person-centred care", desc: "Every person is unique. So is our care." },
-  { icon: Users, title: "Support for families", desc: "Because caregivers deserve support too." },
-  { icon: Shield, title: "Safe & supportive space", desc: "Guidance you can trust, whenever you need it." },
+  { icon: HandHeart, title: "Person-centred care", desc: "Every person is unique. So is our care." },
+  { icon: UsersRound, title: "Support for families", desc: "Because caregivers deserve support too." },
+  { icon: ShieldCheck, title: "Safe & supportive space", desc: "Guidance you can trust, whenever you need it." },
   { icon: Leaf, title: "Hope and dignity", desc: "Focusing on well-being, not just symptoms." },
 ];
 
@@ -152,9 +152,9 @@ function Index() {
       </header>
 
       {/* Hero */}
-      <section className="relative" style={{ background: "var(--hero-bg)" }}>
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-8 px-8 pb-16 pt-8 lg:grid-cols-2">
-          <div className="flex flex-col justify-center">
+      <section className="relative overflow-hidden" style={{ background: "var(--hero-bg)" }}>
+        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-8 px-8 lg:grid-cols-2">
+          <div className="flex flex-col justify-center py-12 lg:py-20">
             <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-foreground lg:text-5xl">
               When memory fades,
               <br />
@@ -180,18 +180,18 @@ function Index() {
               A safe space for guidance, understanding and support.
             </div>
           </div>
-          <div className="relative">
+          <div className="relative lg:absolute lg:inset-y-0 lg:right-0 lg:w-[50vw]">
             <img
               src={heroImg}
               alt="A caregiver tenderly embracing an elderly woman"
               width={1024}
               height={1024}
-              className="h-full max-h-[400px] w-full object-cover animate-fade-in"
+              className="h-full w-full max-h-[400px] object-cover animate-fade-in lg:max-h-none"
               style={{
                 WebkitMaskImage:
-                  "linear-gradient(to right, transparent 0%, black 35%, black 100%)",
+                  "linear-gradient(to right, transparent 0%, black 15%, black 100%)",
                 maskImage:
-                  "linear-gradient(to right, transparent 0%, black 35%, black 100%)",
+                  "linear-gradient(to right, transparent 0%, black 15%, black 100%)",
               }}
             />
           </div>
@@ -201,9 +201,9 @@ function Index() {
 
       {/* Feature strip overlapping */}
       <div className="mx-auto max-w-[1400px] px-8">
-        <div className="relative z-10 -mt-16 grid grid-cols-1 gap-6 rounded-2xl border border-border bg-card p-8 shadow-xl md:grid-cols-2 lg:grid-cols-4">
-          {features.map((f) => (
-            <div key={f.title} className="flex items-start gap-4">
+        <div className="relative z-10 -mt-16 grid grid-cols-1 divide-y divide-border rounded-2xl border border-border bg-card shadow-xl md:grid-cols-2 md:divide-x md:divide-y-0 lg:grid-cols-4">
+          {features.map((f, i) => (
+            <div key={f.title} className={`flex items-start gap-4 p-8 ${i >= 2 ? "md:border-t lg:border-t-0" : ""}`}>
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-sky-50">
                 <f.icon className="h-6 w-6 text-primary" />
               </div>
