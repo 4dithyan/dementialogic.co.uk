@@ -79,9 +79,9 @@ const signs = [
 ];
 
 const steps = [
-  { n: 1, icon: MessageCircle, title: "Talk to us", desc: "Share your concerns in a safe and caring conversation." },
-  { n: 2, icon: ClipboardList, title: "Understand the situation", desc: "We listen, understand and guide you through what's happening." },
-  { n: 3, icon: HandHeart, title: "Build a care plan together", desc: "Personalised support to help your loved one live with comfort and dignity." },
+  { n: 1, icon: MessageCircle, title: "Talk to us", desc: "Share your concerns in a safe and caring conversation.", color: "sky" },
+  { n: 2, icon: ClipboardList, title: "Understand the situation", desc: "We listen, understand and guide you through what's happening.", color: "emerald" },
+  { n: 3, icon: Heart, title: "Build a care plan together", desc: "Personalised support to help your loved one live with comfort and dignity.", color: "amber" },
 ];
 
 const caregiverPoints = [
@@ -274,48 +274,60 @@ function Index() {
 
       {/* How we help */}
       <section className="bg-background pb-20">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-12 px-8 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-16 px-8 lg:grid-cols-[1.2fr_1fr] lg:gap-24">
           <div>
             <h2 className="text-3xl font-bold text-foreground">How we help</h2>
             <p className="mt-3 text-muted-foreground">
               We walk beside you with a gentle, step-by-step approach.
             </p>
-            <ol className="mt-8 space-y-6">
+            <ol className="mt-10 space-y-8">
               {steps.map((s) => (
                 <li key={s.n} className="flex items-start gap-4">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                  <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${
+                    s.color === 'sky' ? 'bg-[#e2edff] text-[#2563eb]' :
+                    s.color === 'emerald' ? 'bg-[#dcfce7] text-[#16a34a]' :
+                    'bg-[#fef3c7] text-[#d97706]'
+                  }`}>
                     {s.n}
                   </div>
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-sky-100">
-                    <s.icon className="h-6 w-6 text-primary" />
+                  <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 bg-background ${
+                    s.color === 'sky' ? 'border-[#e2edff] text-[#3b82f6]' :
+                    s.color === 'emerald' ? 'border-[#dcfce7] text-[#22c55e]' :
+                    'border-[#fef3c7] text-[#f59e0b]'
+                  }`}>
+                    <s.icon className="h-6 w-6" />
                   </div>
                   <div>
                     <div className="font-semibold text-foreground">{s.title}</div>
-                    <div className="text-sm text-muted-foreground">{s.desc}</div>
+                    <div className="mt-1 text-sm text-muted-foreground">{s.desc}</div>
                   </div>
                 </li>
               ))}
             </ol>
-            <button className="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">
-              Get started
+            <button className="mt-10 inline-flex items-center gap-2 rounded-lg bg-[#2563eb] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#1d4ed8]">
+              Get started <ArrowRight className="h-4 w-4" />
             </button>
           </div>
-          <div className="rounded-2xl bg-sky-50 p-8">
-            <blockquote className="text-center text-primary">"</blockquote>
-            <p className="text-xl font-semibold text-foreground">
-              It's not just about memory. It's about moments that still matter.
-            </p>
-            <p className="mt-4 text-sm text-foreground/80">
-              We focus on what brings joy, connection and meaning to each day.
-            </p>
-            <img
-              src={chairImg}
-              alt="A cozy blue armchair with a plant"
-              width={1024}
-              height={1024}
-              loading="lazy"
-              className="mt-6 h-auto w-full rounded-xl"
-            />
+          <div className="relative flex aspect-square flex-col justify-between overflow-hidden rounded-[2.5rem] bg-[#f8fbff] p-10 shadow-sm lg:p-12">
+            <div>
+              <div className="font-serif text-5xl font-bold leading-none text-[#3b82f6]">“</div>
+              <h3 className="mt-2 text-2xl font-bold leading-snug text-[#0f172a] lg:text-[28px]">
+                It's not just about memory.<br />It's about moments that<br />still matter.
+              </h3>
+              <p className="mt-6 max-w-[280px] text-sm leading-relaxed text-[#475569]">
+                We focus on what brings joy, connection and meaning to each day.
+              </p>
+            </div>
+            <div className="absolute bottom-0 right-0 w-[80%] max-w-[360px]">
+              <img
+                src={chairImg}
+                alt="A cozy blue armchair with a plant"
+                width={1024}
+                height={1024}
+                loading="lazy"
+                className="h-auto w-full object-contain mix-blend-multiply"
+              />
+            </div>
           </div>
         </div>
       </section>
