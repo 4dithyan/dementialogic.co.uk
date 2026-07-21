@@ -36,13 +36,13 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Demitia Care — Compassion. Clarity. Care." },
+      { title: "DementiaLogic — Compassion. Clarity. Care." },
       {
         name: "description",
         content:
           "Support for individuals living with dementia and the people who care for them. Guidance, understanding and a safe space when you need it.",
       },
-      { property: "og:title", content: "Demitia Care — Compassion. Clarity. Care." },
+      { property: "og:title", content: "DementiaLogic — Compassion. Clarity. Care." },
       {
         property: "og:description",
         content:
@@ -119,7 +119,7 @@ function Logo() {
         <Heart className="h-6 w-6 text-primary" fill="currentColor" />
       </div>
       <div className="leading-tight">
-        <div className="text-xl font-bold text-foreground">Demitia Care</div>
+        <div className="text-xl font-bold text-foreground">DementiaLogic</div>
         <div className="text-xs text-muted-foreground">Compassion. Clarity. Care.</div>
       </div>
     </div>
@@ -276,14 +276,14 @@ function Index() {
       <section className="bg-background pb-20">
         <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-16 px-8 lg:grid-cols-[1.2fr_1fr] lg:gap-24">
           <div>
-            <h2 className="text-3xl font-bold text-foreground">How we help</h2>
-            <p className="mt-3 text-muted-foreground">
+            <h2 className="text-4xl font-bold text-foreground">How we help</h2>
+            <p className="mt-4 text-lg text-muted-foreground">
               We walk beside you with a gentle, step-by-step approach.
             </p>
             <ol className="mt-10 space-y-8">
               {steps.map((s) => (
-                <li key={s.n} className="flex items-start gap-4">
-                  <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${
+                <li key={s.n} className="flex items-start gap-5">
+                  <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-base font-bold ${
                     s.color === 'sky' ? 'bg-[#e2edff] text-[#2563eb]' :
                     s.color === 'emerald' ? 'bg-[#dcfce7] text-[#16a34a]' :
                     'bg-[#fef3c7] text-[#d97706]'
@@ -297,15 +297,15 @@ function Index() {
                   }`}>
                     <s.icon className="h-6 w-6" />
                   </div>
-                  <div>
-                    <div className="font-semibold text-foreground">{s.title}</div>
-                    <div className="mt-1 text-sm text-muted-foreground">{s.desc}</div>
+                  <div className="pt-1">
+                    <div className="text-lg font-semibold text-foreground">{s.title}</div>
+                    <div className="mt-1.5 text-base text-muted-foreground">{s.desc}</div>
                   </div>
                 </li>
               ))}
             </ol>
-            <button className="mt-10 inline-flex items-center gap-2 rounded-lg bg-[#2563eb] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#1d4ed8]">
-              Get started <ArrowRight className="h-4 w-4" />
+            <button className="mt-12 inline-flex items-center gap-2 rounded-lg bg-[#2563eb] px-7 py-3.5 text-base font-semibold text-white shadow-sm hover:bg-[#1d4ed8]">
+              Get started <ArrowRight className="h-5 w-5" />
             </button>
           </div>
           <div className="relative flex aspect-square flex-col justify-between overflow-hidden rounded-[2.5rem] bg-[#f8fbff] p-10 shadow-sm lg:p-12">
@@ -461,7 +461,7 @@ function Index() {
         </div>
         <div className="border-t border-border">
           <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-4 px-8 py-5 text-xs text-muted-foreground">
-            <div>© 2026 Demitia Care. All rights reserved.</div>
+            <div>© 2026 DementiaLogic. All rights reserved.</div>
             <div className="flex gap-6">
               <span className="hover:text-primary">Privacy Policy</span>
               <span className="hover:text-primary">Terms of Use</span>
