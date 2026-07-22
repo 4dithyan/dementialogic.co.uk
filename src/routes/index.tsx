@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
 import {
   Heart,
   ChevronDown,
@@ -56,8 +56,8 @@ export const Route = createFileRoute("/")({
 });
 
 const navItems = [
-  { label: "Home", hasDropdown: false },
-  { label: "About Us", hasDropdown: true },
+  { label: "Home", to: "/", hasDropdown: false },
+  { label: "About Us", to: "/about", hasDropdown: false },
   { label: "Education Hub", hasDropdown: false },
   { label: "Caregiver Reality Check", hasDropdown: false },
   { label: "Dementia Trigger Decoder", hasDropdown: false },
@@ -134,13 +134,23 @@ function Index() {
           <Logo />
           <nav className="hidden items-center gap-8 lg:flex">
             {navItems.map((item) => (
-              <button
-                key={item.label}
-                className="flex items-center gap-1 text-[15px] font-medium text-foreground/90 hover:text-primary"
-              >
-                {item.label}
-                {item.hasDropdown && <ChevronDown className="h-4 w-4" />}
-              </button>
+              item.to ? (
+                <Link
+                  key={item.label}
+                  to={item.to}
+                  className="flex items-center gap-1 text-[15px] font-medium text-foreground/90 hover:text-primary [&.active]:text-primary"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <button
+                  key={item.label}
+                  className="flex items-center gap-1 text-[15px] font-medium text-foreground/90 hover:text-primary"
+                >
+                  {item.label}
+                  {item.hasDropdown && <ChevronDown className="h-4 w-4" />}
+                </button>
+              )
             ))}
           </nav>
           <button className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-sm hover:opacity-95">
