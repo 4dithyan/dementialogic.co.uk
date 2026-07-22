@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as CaregiverRealityCheckRouteImport } from './routes/caregiver-reality-check'
 import { Route as EducationHubRouteImport } from './routes/education-hub'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +24,11 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CaregiverRealityCheckRoute = CaregiverRealityCheckRouteImport.update({
+  id: '/caregiver-reality-check',
+  path: '/caregiver-reality-check',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EducationHubRoute = EducationHubRouteImport.update({
   id: '/education-hub',
   path: '/education-hub',
@@ -32,30 +38,35 @@ const EducationHubRoute = EducationHubRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/caregiver-reality-check': typeof CaregiverRealityCheckRoute
   '/education-hub': typeof EducationHubRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/caregiver-reality-check': typeof CaregiverRealityCheckRoute
   '/education-hub': typeof EducationHubRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/caregiver-reality-check': typeof CaregiverRealityCheckRoute
   '/education-hub': typeof EducationHubRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/education-hub'
+  fullPaths: '/' | '/about' | '/caregiver-reality-check' | '/education-hub'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/education-hub'
-  id: '__root__' | '/' | '/about' | '/education-hub'
+  to: '/' | '/about' | '/caregiver-reality-check' | '/education-hub'
+  id:
+    '__root__' | '/' | '/about' | '/caregiver-reality-check' | '/education-hub'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CaregiverRealityCheckRoute: typeof CaregiverRealityCheckRoute
   EducationHubRoute: typeof EducationHubRoute
 }
 
@@ -75,6 +86,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/caregiver-reality-check': {
+      id: '/caregiver-reality-check'
+      path: '/caregiver-reality-check'
+      fullPath: '/caregiver-reality-check'
+      preLoaderRoute: typeof CaregiverRealityCheckRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/education-hub': {
       id: '/education-hub'
       path: '/education-hub'
@@ -88,6 +106,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CaregiverRealityCheckRoute: CaregiverRealityCheckRoute,
   EducationHubRoute: EducationHubRoute,
 }
 export const routeTree = rootRouteImport
