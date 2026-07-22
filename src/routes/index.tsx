@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   Heart,
@@ -33,28 +33,6 @@ import caregiverImg from "@/assets/illustration.png";
 import chairImg from "@/assets/cozy-chair.jpg";
 import handshakeImg from "@/assets/handshake.jpg";
 
-export const Route = createFileRoute("/")({
-  component: Index,
-  head: () => ({
-    meta: [
-      { title: "DementiaLogic — Compassion. Clarity. Care." },
-      {
-        name: "description",
-        content:
-          "Support for individuals living with dementia and the people who care for them. Guidance, understanding and a safe space when you need it.",
-      },
-      { property: "og:title", content: "DementiaLogic — Compassion. Clarity. Care." },
-      {
-        property: "og:description",
-        content:
-          "Support for individuals living with dementia and the people who care for them.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-  }),
-});
 
 const navItems = [
   { label: "Home", to: "/", hasDropdown: false },
@@ -142,7 +120,7 @@ function Logo() {
   );
 }
 
-function Index() {
+export default function Index() {
   return (
     <div className="min-h-screen bg-background font-sans text-foreground">
       {/* Nav */}

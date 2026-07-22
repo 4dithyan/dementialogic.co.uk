@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import {
   Heart,
   ChevronDown,
@@ -39,18 +39,6 @@ import {
   Users
 } from "lucide-react";
 
-export const Route = createFileRoute("/education-hub")({
-  component: EducationHub,
-  head: () => ({
-    meta: [
-      { title: "Education Hub | DementiaLogic" },
-      {
-        name: "description",
-        content: "Clear answers for a complex journey. Learn the clinical truth about dementia, its types, and how to fight back.",
-      },
-    ],
-  }),
-});
 
 // ─── Constants for Navigation & Contacts ──────────────────────────────
 const navItems = [
@@ -263,7 +251,7 @@ function DementiaTypeCard({ type }: { type: typeof DEMENTIA_TYPES[0] }) {
 }
 
 // ─── Main Component ───────────────────────────────────────────────────
-function EducationHub() {
+export default function EducationHub() {
   const [activeSection, setActiveSection] = useState("understanding");
 
   useEffect(() => {
