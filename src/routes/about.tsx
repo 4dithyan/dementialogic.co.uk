@@ -25,7 +25,7 @@ export const Route = createFileRoute("/about")({
 const navItems = [
   { label: "Home", to: "/", hasDropdown: false },
   { label: "About Us", to: "/about", hasDropdown: false },
-  { label: "Education Hub", hasDropdown: false },
+  { label: "Education Hub", to: "/education-hub", hasDropdown: false },
   { label: "Caregiver Reality Check", hasDropdown: false },
   { label: "Dementia Trigger Decoder", hasDropdown: false },
 ];
@@ -95,7 +95,7 @@ function About() {
         <div className="mx-auto max-w-[1200px] px-8">
           
           <div className="mb-20 text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-foreground lg:text-5xl">About Us</h1>
+            <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-foreground lg:text-5xl">About Us</h1>
             <div className="mt-4 mx-auto h-1 w-16 rounded bg-primary" />
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
               Meet the dedicated team working to bring clinical expertise directly to the caregivers who need it most.
