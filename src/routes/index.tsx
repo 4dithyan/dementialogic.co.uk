@@ -56,11 +56,11 @@ export const Route = createFileRoute("/")({
 });
 
 const navItems = [
-  { label: "I need help for someone", hasDropdown: true },
-  { label: "Understand dementia", hasDropdown: true },
-  { label: "For caregivers", hasDropdown: true },
-  { label: "Resources", hasDropdown: true },
-  { label: "About us", hasDropdown: false },
+  { label: "Home", hasDropdown: false },
+  { label: "About Us", hasDropdown: true },
+  { label: "Education Hub", hasDropdown: false },
+  { label: "Caregiver Reality Check", hasDropdown: false },
+  { label: "Dementia Trigger Decoder", hasDropdown: false },
 ];
 
 const features = [
@@ -105,11 +105,10 @@ const learnCards = [
 ];
 
 const footerCols = [
-  { title: "I need help for someone", links: ["Signs to look for", "What to do next", "How we can help"] },
-  { title: "Understand dementia", links: ["What is dementia?", "Types of dementia", "Living well with dementia"] },
-  { title: "For caregivers", links: ["Caregiver support", "Tips & guidance", "Self-care"] },
-  { title: "Resources", links: ["Articles & guides", "Videos", "Downloads"] },
-  { title: "About us", links: ["Our approach", "FAQs", "Contact us"] },
+  { title: "Home", links: ["Waitlist"] },
+  { title: "About Us", links: ["Founder profiles", "Clinical credentials", "Our Story"] },
+  { title: "Education Hub", links: ["Clinically authored articles"] },
+  { title: "Interactive Tools", links: ["Caregiver Reality Check", "Dementia Trigger Decoder"] },
 ];
 
 function Logo() {
@@ -218,7 +217,7 @@ function Index() {
 
       {/* Signs */}
       <section className="bg-background py-20">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-8 lg:grid-cols-[1.4fr_1fr]">
+        <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-8 lg:grid-cols-[1.4fr_1fr]">
           <div>
             <h2 className="text-3xl font-bold text-foreground">What you might be noticing</h2>
             <div className="mt-2 h-1 w-16 rounded bg-emerald-400" />
@@ -274,7 +273,7 @@ function Index() {
 
       {/* How we help */}
       <section className="bg-background pb-20">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-16 px-8 lg:grid-cols-[1.2fr_1fr] lg:gap-24">
+        <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-16 px-8 lg:grid-cols-[1.2fr_1fr] lg:gap-24">
           <div>
             <h2 className="text-4xl font-bold text-foreground">How we help</h2>
             <p className="mt-4 text-lg text-muted-foreground">
@@ -334,7 +333,7 @@ function Index() {
 
       {/* Support for caregivers */}
       <section className="bg-sky-50 py-20">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-8 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-8 lg:grid-cols-2">
           <div>
             <h2 className="text-3xl font-bold text-foreground">Support for caregivers</h2>
             <p className="mt-3 max-w-md text-muted-foreground">
@@ -384,7 +383,7 @@ function Index() {
 
       {/* Learn at your pace */}
       <section className="bg-background py-20">
-        <div className="mx-auto max-w-[1400px] px-8 text-center">
+        <div className="mx-auto max-w-[1200px] px-8 text-center">
           <h2 className="text-3xl font-bold text-foreground">Learn at your pace</h2>
           <p className="mt-3 text-muted-foreground">
             Simple guides and resources to help you understand and feel more in control.
@@ -408,7 +407,7 @@ function Index() {
 
       {/* Talk banner */}
       <section className="bg-background pb-20">
-        <div className="mx-auto max-w-[1400px] px-8">
+        <div className="mx-auto max-w-[1200px] px-8">
           <div className="relative overflow-hidden rounded-2xl bg-sky-50 p-8">
             <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[auto_1fr_auto]">
               <img
