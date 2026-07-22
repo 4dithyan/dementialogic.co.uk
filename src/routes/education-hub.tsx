@@ -311,23 +311,28 @@ function EducationHub() {
       <main className="mx-auto max-w-[1400px] px-8 py-10 space-y-8">
         
         {/* Hero Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 pt-4 pb-6">
-          <div className="inline-flex items-center justify-center rounded-full bg-sky-100 px-4 py-1.5 text-sm font-bold text-primary mb-2">
-            Edu Hub 1.1
+        <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-sky-50 via-white to-primary/5 px-8 py-8 md:px-14 md:py-10 text-left shadow-sm border border-border">
+          {/* Subtle Decorative Blobs */}
+          <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-sky-200/40 blur-3xl"></div>
+          <div className="absolute right-0 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-emerald-200/20 blur-3xl"></div>
+          
+          <div className="relative z-10 max-w-4xl space-y-6">
+            <div className="space-y-2">
+              <h2 className="text-4xl font-bold leading-[1.1] tracking-tight text-foreground lg:text-5xl">
+                The Dementia Education Hub
+              </h2>
+              <p className="text-xl md:text-3xl text-primary font-semibold tracking-tight">
+                Clear Answers for a Complex Journey
+              </p>
+            </div>
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-3xl text-balance">
+              The raw, unvarnished reality of dementia care is something we see every day working in the community and care homes across Newcastle upon Tyne. When a behavioral crisis happens at 2 AM, sympathy won't help you. You don't need platitudes; you need a strategy. This hub is designed to strip away the jargon and give you the clinical truth about what this disease is, how it works, and how to fight back.
+            </p>
           </div>
-          <h2 className="text-4xl font-bold leading-[1.1] tracking-tight text-foreground lg:text-5xl">
-            The Dementia Education Hub
-          </h2>
-          <p className="text-lg md:text-xl text-primary font-semibold max-w-2xl mx-auto">
-            Clear Answers for a Complex Journey
-          </p>
-          <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            The raw, unvarnished reality of dementia care is something we see every day working in the community and care homes across Newcastle upon Tyne. When a behavioral crisis happens at 2 AM, sympathy won't help you. You don't need platitudes; you need a strategy. This hub is designed to strip away the jargon and give you the clinical truth about what this disease is, how it works, and how to fight back.
-          </p>
         </div>
 
         {/* Section Navigation */}
-        <nav className="sticky top-[80px] z-30 bg-background/80 backdrop-blur-md rounded-2xl border border-border shadow-sm p-3 mb-8">
+        <nav className="sticky top-[80px] z-30 bg-background/80 backdrop-blur-md rounded-2xl border border-border shadow-sm p-3">
           <div className="flex gap-1 overflow-x-auto scrollbar-hide">
             {SECTIONS.map((s) => (
               <button
