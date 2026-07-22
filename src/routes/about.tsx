@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import {
   Heart,
   ChevronDown,
@@ -9,18 +9,6 @@ import {
   Youtube,
 } from "lucide-react";
 
-export const Route = createFileRoute("/about")({
-  component: About,
-  head: () => ({
-    meta: [
-      { title: "About Us | DementiaLogic" },
-      {
-        name: "description",
-        content: "Learn more about DementiaLogic and our founders.",
-      },
-    ],
-  }),
-});
 
 const navItems = [
   { label: "Home", to: "/", hasDropdown: false },
@@ -67,7 +55,7 @@ function Logo() {
   );
 }
 
-function About() {
+export default function About() {
   return (
     <div className="min-h-screen bg-background font-sans text-foreground">
       {/* Nav */}

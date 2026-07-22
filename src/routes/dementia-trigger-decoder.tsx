@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import {
   Heart,
   ChevronDown,
@@ -18,18 +18,6 @@ import {
   Search
 } from "lucide-react";
 
-export const Route = createFileRoute("/dementia-trigger-decoder")({
-  component: DementiaTriggerDecoder,
-  head: () => ({
-    meta: [
-      { title: "Dementia Trigger Decoder | DementiaLogic" },
-      {
-        name: "description",
-        content: "Take this 2-minute reality check to find out what is actually driving the distress in your home—and how to stop it.",
-      },
-    ],
-  }),
-});
 
 // ─── Constants for Navigation ──────────────────────────────
 const navItems = [
@@ -133,7 +121,7 @@ function Logo() {
 }
 
 // ─── Main Component ───────────────────────────────────────────────────
-function DementiaTriggerDecoder() {
+export default function DementiaTriggerDecoder() {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [email, setEmail] = useState("");

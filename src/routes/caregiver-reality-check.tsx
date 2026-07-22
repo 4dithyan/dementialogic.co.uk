@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import {
   Heart,
   ChevronDown,
@@ -17,18 +17,6 @@ import {
   Lock
 } from "lucide-react";
 
-export const Route = createFileRoute("/caregiver-reality-check")({
-  component: CaregiverRealityCheck,
-  head: () => ({
-    meta: [
-      { title: "Caregiver Reality Check | DementiaLogic" },
-      {
-        name: "description",
-        content: "Take this brutal, 2-minute reality check to measure your actual burnout level.",
-      },
-    ],
-  }),
-});
 
 // ─── Constants for Navigation ──────────────────────────────
 const navItems = [
@@ -132,7 +120,7 @@ function Logo() {
 }
 
 // ─── Main Component ───────────────────────────────────────────────────
-function CaregiverRealityCheck() {
+export default function CaregiverRealityCheck() {
   const [currentStep, setCurrentStep] = useState(0); // 0 = start, 1-5 = questions, 6 = email wall, 7 = results
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [email, setEmail] = useState("");
