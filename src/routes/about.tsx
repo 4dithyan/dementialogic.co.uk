@@ -26,8 +26,8 @@ const navItems = [
   { label: "Home", to: "/", hasDropdown: false },
   { label: "About Us", to: "/about", hasDropdown: false },
   { label: "Education Hub", to: "/education-hub", hasDropdown: false },
-  { label: "Caregiver Reality Check", hasDropdown: false },
-  { label: "Dementia Trigger Decoder", hasDropdown: false },
+  { label: "Caregiver Reality Check", to: "/caregiver-reality-check", hasDropdown: false },
+  { label: "Dementia Trigger Decoder", to: "/dementia-trigger-decoder", hasDropdown: false },
 ];
 
 const footerCols = [
