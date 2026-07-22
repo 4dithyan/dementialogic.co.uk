@@ -40,10 +40,26 @@ const navItems = [
 ];
 
 const footerCols = [
-  { title: "Home", links: ["Waitlist"] },
-  { title: "About Us", links: ["Founder profiles", "Clinical credentials", "Our Story"] },
-  { title: "Education Hub", links: ["Clinically authored articles"] },
-  { title: "Interactive Tools", links: ["Caregiver Reality Check", "Dementia Trigger Decoder"] },
+  { 
+    title: "Company", 
+    links: [
+      { label: "Home", to: "/" }, 
+      { label: "About Us", to: "/about" },
+    ] 
+  },
+  { 
+    title: "Resources", 
+    links: [
+      { label: "Education Hub", to: "/education-hub" },
+    ] 
+  },
+  { 
+    title: "Interactive Tools", 
+    links: [
+      { label: "Caregiver Reality Check", to: "/caregiver-reality-check" }, 
+      { label: "Dementia Trigger Decoder", to: "/dementia-trigger-decoder" }
+    ] 
+  },
 ];
 
 // ─── Quiz Data ─────────────────────────────────────────────
@@ -425,7 +441,7 @@ function CaregiverRealityCheck() {
 
       {/* Footer */}
       <footer className="border-t border-border bg-background flex-shrink-0">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-8 py-14 lg:grid-cols-[1.2fr_repeat(5,1fr)]">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-8 py-14 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
             <Logo />
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
@@ -440,10 +456,12 @@ function CaregiverRealityCheck() {
           {footerCols.map((c) => (
             <div key={c.title}>
               <div className="text-sm font-semibold text-foreground">{c.title}</div>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
                 {c.links.map((l) => (
-                  <li key={l} className="hover:text-primary cursor-pointer">
-                    {l}
+                  <li key={l.label}>
+                    <Link to={l.to} className="hover:text-primary transition-colors cursor-pointer">
+                      {l.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
