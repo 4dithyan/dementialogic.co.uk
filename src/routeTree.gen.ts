@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CaregiverRealityCheckRouteImport } from './routes/caregiver-reality-check'
+import { Route as DementiaTriggerDecoderRouteImport } from './routes/dementia-trigger-decoder'
 import { Route as EducationHubRouteImport } from './routes/education-hub'
 
 const IndexRoute = IndexRouteImport.update({
@@ -29,6 +30,11 @@ const CaregiverRealityCheckRoute = CaregiverRealityCheckRouteImport.update({
   path: '/caregiver-reality-check',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DementiaTriggerDecoderRoute = DementiaTriggerDecoderRouteImport.update({
+  id: '/dementia-trigger-decoder',
+  path: '/dementia-trigger-decoder',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EducationHubRoute = EducationHubRouteImport.update({
   id: '/education-hub',
   path: '/education-hub',
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/caregiver-reality-check': typeof CaregiverRealityCheckRoute
+  '/dementia-trigger-decoder': typeof DementiaTriggerDecoderRoute
   '/education-hub': typeof EducationHubRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/caregiver-reality-check': typeof CaregiverRealityCheckRoute
+  '/dementia-trigger-decoder': typeof DementiaTriggerDecoderRoute
   '/education-hub': typeof EducationHubRoute
 }
 export interface FileRoutesById {
@@ -52,21 +60,38 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/caregiver-reality-check': typeof CaregiverRealityCheckRoute
+  '/dementia-trigger-decoder': typeof DementiaTriggerDecoderRoute
   '/education-hub': typeof EducationHubRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/caregiver-reality-check' | '/education-hub'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/caregiver-reality-check'
+    | '/dementia-trigger-decoder'
+    | '/education-hub'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/caregiver-reality-check' | '/education-hub'
+  to:
+    | '/'
+    | '/about'
+    | '/caregiver-reality-check'
+    | '/dementia-trigger-decoder'
+    | '/education-hub'
   id:
-    '__root__' | '/' | '/about' | '/caregiver-reality-check' | '/education-hub'
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/caregiver-reality-check'
+    | '/dementia-trigger-decoder'
+    | '/education-hub'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   CaregiverRealityCheckRoute: typeof CaregiverRealityCheckRoute
+  DementiaTriggerDecoderRoute: typeof DementiaTriggerDecoderRoute
   EducationHubRoute: typeof EducationHubRoute
 }
 
@@ -93,6 +118,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CaregiverRealityCheckRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dementia-trigger-decoder': {
+      id: '/dementia-trigger-decoder'
+      path: '/dementia-trigger-decoder'
+      fullPath: '/dementia-trigger-decoder'
+      preLoaderRoute: typeof DementiaTriggerDecoderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/education-hub': {
       id: '/education-hub'
       path: '/education-hub'
@@ -107,6 +139,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   CaregiverRealityCheckRoute: CaregiverRealityCheckRoute,
+  DementiaTriggerDecoderRoute: DementiaTriggerDecoderRoute,
   EducationHubRoute: EducationHubRoute,
 }
 export const routeTree = rootRouteImport

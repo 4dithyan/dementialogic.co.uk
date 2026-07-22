@@ -14,17 +14,18 @@ import {
   ShieldAlert,
   Activity,
   CheckCircle2,
-  Lock
+  Lock,
+  Search
 } from "lucide-react";
 
-export const Route = createFileRoute("/caregiver-reality-check")({
-  component: CaregiverRealityCheck,
+export const Route = createFileRoute("/dementia-trigger-decoder")({
+  component: DementiaTriggerDecoder,
   head: () => ({
     meta: [
-      { title: "Caregiver Reality Check | DementiaLogic" },
+      { title: "Dementia Trigger Decoder | DementiaLogic" },
       {
         name: "description",
-        content: "Take this brutal, 2-minute reality check to measure your actual burnout level.",
+        content: "Take this 2-minute reality check to find out what is actually driving the distress in your home—and how to stop it.",
       },
     ],
   }),
@@ -50,52 +51,52 @@ const footerCols = [
 const QUIZ_QUESTIONS = [
   {
     id: 1,
-    title: "The Sleep Deficit",
-    question: "When the house is finally quiet at night, what happens to you?",
+    title: "The Timing",
+    question: "When do the most difficult behavioral episodes usually happen?",
     options: [
-      { id: "A", text: "I sleep with one eye open, constantly listening for footsteps or a fall. I haven't had deep sleep in months." },
-      { id: "B", text: "I crash from pure exhaustion, but wake up feeling just as tired as when I went to bed." },
-      { id: "C", text: "I generally sleep okay, unless there is a specific bad night." },
+      { id: "A", text: "Late afternoon or early evening, as the light starts to change." },
+      { id: "B", text: "It is completely random and happens suddenly out of nowhere." },
+      { id: "C", text: "Usually when I am trying to help them with a task, like washing or dressing." },
     ]
   },
   {
     id: 2,
-    title: "The Resentment Trap",
-    question: "Let's be completely honest: When they ask the same question for the 20th time in an hour, what is your internal reaction?",
+    title: "The Reality Gap",
+    question: "If they are insisting they need to 'go to work' or 'go home' (even if they are already home), how do you usually respond?",
     options: [
-      { id: "A", text: "I feel a flash of genuine anger or resentment toward them, followed immediately by crushing guilt." },
-      { id: "B", text: "I feel incredibly frustrated, and I have to bite my tongue or walk away to avoid snapping." },
-      { id: "C", text: "I can usually remind myself it's the disease talking, and answer calmly." },
+      { id: "A", text: "I try to gently remind them that they are retired or already at home." },
+      { id: "B", text: "I try to distract them with a cup of tea or the television." },
+      { id: "C", text: "I ask them what they did at work or ask them to tell me about their home." },
     ]
   },
   {
     id: 3,
-    title: "The Isolation Factor",
-    question: "If you had a medical emergency right now and had to go to the hospital, who would step in to take over the care?",
+    title: "The Physical Baseline",
+    question: "Think about the last major episode of severe confusion or agitation. Did it happen alongside any of the following?",
     options: [
-      { id: "A", text: "Absolutely no one. If I fall apart, the whole system collapses." },
-      { id: "B", text: "I could probably beg a sibling or friend to help, but it would be a massive crisis." },
-      { id: "C", text: "I have a plan in place with family or a professional respite agency." },
+      { id: "A", text: "A slight fever, a change in how their urine smells, or a cough." },
+      { id: "B", text: "A change in their medication or missing a dose." },
+      { id: "C", text: "Neither. They seemed physically fine, just highly distressed." },
     ]
   },
   {
     id: 4,
-    title: "The 'Fix It' Illusion",
-    question: "How often do you catch yourself trying to use logic, arguments, or bargaining to make them behave 'normally'?",
+    title: "The Escalation Pattern",
+    question: "When they become angry or agitated, what happens to your own stress levels?",
     options: [
-      { id: "A", text: "Every day. I keep thinking if I just explain it clearly enough, they will snap out of it and understand." },
-      { id: "B", text: "Sometimes. I know it doesn't work, but in the heat of the moment, I forget and argue back." },
-      { id: "C", text: "Rarely. I've learned to step into their reality instead of forcing them into mine." },
+      { id: "A", text: "I get panicked or frustrated, and my voice usually gets louder." },
+      { id: "B", text: "I feel overwhelmed, but I try to hide it and rush through what we are doing." },
+      { id: "C", text: "I physically step back, take a breath, and lower my voice to a whisper." },
     ]
   },
   {
     id: 5,
-    title: "The Physical Toll",
-    question: "When was the last time you went to a doctor for your own health, or took a full day completely off from caregiving?",
+    title: "The Shadowing",
+    question: "Does your loved one follow you from room to room, becoming anxious if you are out of sight for even a minute?",
     options: [
-      { id: "A", text: "I can't remember. My health issues are entirely secondary to theirs right now." },
-      { id: "B", text: "It's been a long time. I know I need a break, but the logistics of arranging it are too exhausting to deal with." },
-      { id: "C", text: "Within the last few months. I actively protect my own medical appointments and time off." },
+      { id: "A", text: "Yes, constantly. I feel like I have no personal space left." },
+      { id: "B", text: "Sometimes, usually when the house is noisy or busy." },
+      { id: "C", text: "Rarely. They are usually content to sit in their own space." },
     ]
   }
 ];
@@ -116,8 +117,8 @@ function Logo() {
 }
 
 // ─── Main Component ───────────────────────────────────────────────────
-function CaregiverRealityCheck() {
-  const [currentStep, setCurrentStep] = useState(0); // 0 = start, 1-5 = questions, 6 = email wall, 7 = results
+function DementiaTriggerDecoder() {
+  const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [email, setEmail] = useState("");
 
@@ -125,7 +126,7 @@ function CaregiverRealityCheck() {
     setAnswers({ ...answers, [questionId]: answerId });
     setTimeout(() => {
       setCurrentStep(currentStep + 1);
-    }, 400); // Small delay for smooth transition
+    }, 400);
   };
 
   const handleEmailSubmit = (e: React.FormEvent) => {
@@ -136,50 +137,56 @@ function CaregiverRealityCheck() {
   };
 
   const calculateResult = () => {
-    let counts = { A: 0, B: 0, C: 0 };
-    Object.values(answers).forEach((ans) => {
-      if (ans === 'A') counts.A++;
-      if (ans === 'B') counts.B++;
-      if (ans === 'C') counts.C++;
-    });
+    let physical = 0;
+    let communication = 0;
+    let environmental = 0;
 
-    if (counts.A >= 3) return "boiling";
-    if (counts.B >= 3 || (counts.A === 2 && counts.B === 2)) return "fumes";
-    return "sustainable";
+    if (answers[1] === 'B') physical++;
+    if (answers[3] === 'A' || answers[3] === 'B') physical++;
+
+    if (answers[2] === 'A') communication++;
+    if (answers[4] === 'A' || answers[4] === 'B') communication++;
+
+    if (answers[1] === 'A') environmental++;
+    if (answers[5] === 'A' || answers[5] === 'B') environmental++;
+
+    if (physical >= communication && physical >= environmental && physical > 0) return "physical";
+    if (communication >= physical && communication >= environmental) return "communication";
+    return "environmental";
   };
 
   const renderQuizContent = () => {
     if (currentStep === 0) {
       return (
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-sky-50 via-white to-primary/5 px-8 py-10 md:p-12 text-left shadow-sm border border-border w-full">
-          <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-sky-200/40 blur-3xl"></div>
+        <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-indigo-50 via-white to-primary/5 px-8 py-10 md:p-12 text-left shadow-sm border border-border w-full">
+          <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-indigo-200/40 blur-3xl"></div>
           <div className="absolute right-0 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-primary/10 blur-3xl"></div>
           
           <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <div className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2 text-sm font-bold text-primary shadow-sm border border-sky-100">
-                <Activity className="w-4 h-4 mr-2" /> Interactive Tool
+              <div className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2 text-sm font-bold text-primary shadow-sm border border-indigo-100">
+                <Search className="w-4 h-4 mr-2" /> Interactive Tool
               </div>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-[1.1]">
-                Are You Caring, or Are You <span className="text-primary italic">Drowning?</span>
+                Decode the <span className="text-primary italic">Distress</span>
               </h2>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed text-balance">
-                Take this brutal, 2-minute reality check to measure your actual burnout level. No judgment, no sugar-coating—just the truth about where you stand right now.
+                Take this 2-minute reality check to find out what is actually driving the distress in your home—and how to stop it.
               </p>
               <button 
                 onClick={() => setCurrentStep(1)}
                 className="inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-lg font-bold text-primary-foreground shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
               >
-                Start The Reality Check <ArrowRight className="w-5 h-5" />
+                Start The Decoder <ArrowRight className="w-5 h-5" />
               </button>
             </div>
             
             <div className="hidden md:flex justify-center items-center">
               <div className="relative w-64 h-64 flex items-center justify-center">
-                <div className="absolute inset-0 rounded-full border-8 border-sky-100 border-b-transparent border-r-transparent transform -rotate-45 opacity-80"></div>
+                <div className="absolute inset-0 rounded-full border-8 border-indigo-100 border-b-transparent border-r-transparent transform -rotate-45 opacity-80"></div>
                 <div className="absolute inset-8 rounded-full border-8 border-primary/20 border-t-transparent border-l-transparent transform rotate-45 opacity-80"></div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <Heart className="w-20 h-20 text-primary opacity-90 drop-shadow-sm" fill="currentColor" />
+                  <Search className="w-20 h-20 text-primary opacity-90 drop-shadow-sm" />
                 </div>
               </div>
             </div>
@@ -205,11 +212,10 @@ function CaregiverRealityCheck() {
           </div>
           
           <div className="relative bg-white rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-primary/5 p-6 md:p-8 overflow-hidden">
-            {/* Subtle background flair */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-sky-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 opacity-60 pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 opacity-60 pointer-events-none"></div>
 
             <div className="relative z-10 text-center mb-8">
-              <h3 className="text-sm font-black text-sky-600 uppercase tracking-widest mb-2">{q.title}</h3>
+              <h3 className="text-sm font-black text-indigo-600 uppercase tracking-widest mb-2">{q.title}</h3>
               <h2 className="text-2xl md:text-3xl font-bold text-slate-800 leading-tight">
                 {q.question}
               </h2>
@@ -227,11 +233,11 @@ function CaregiverRealityCheck() {
                     className={`w-full group relative flex items-center gap-4 p-4 md:p-5 rounded-2xl transition-all duration-300 text-left ${
                       isSelected 
                         ? "bg-primary text-white shadow-lg shadow-primary/20 scale-[1.01] ring-2 ring-primary ring-offset-2" 
-                        : "bg-slate-50 hover:bg-sky-50 border border-slate-200 hover:border-sky-200 hover:shadow-md hover:-translate-y-0.5"
+                        : "bg-slate-50 hover:bg-indigo-50 border border-slate-200 hover:border-indigo-200 hover:shadow-md hover:-translate-y-0.5"
                     }`}
                   >
                     <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-colors ${
-                      isSelected ? "bg-white text-primary" : "bg-white text-slate-400 border border-slate-200 group-hover:border-sky-300 group-hover:text-sky-600 shadow-sm"
+                      isSelected ? "bg-white text-primary" : "bg-white text-slate-400 border border-slate-200 group-hover:border-indigo-300 group-hover:text-indigo-600 shadow-sm"
                     }`}>
                       {letters[idx]}
                     </div>
@@ -254,10 +260,9 @@ function CaregiverRealityCheck() {
             <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle2 className="w-8 h-8 text-emerald-600" />
             </div>
-            <h2 className="text-3xl font-bold text-foreground mb-4">Your Reality Check is Ready.</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-4">Your Trigger Profile is Ready.</h2>
             <p className="text-lg text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
-              We've calculated your burnout threshold. Enter your email below to receive your unvarnished profile, along with a free, immediate action plan to pull yourself back from the edge. <br/><br/>
-              <strong className="text-foreground">You cannot pour from an empty cup.</strong>
+              We’ve analyzed your responses based on our clinical trigger support protocols. Enter your email below to instantly receive your personalized Trigger Profile, plus a free 60-second de-escalation playbook tailored to your specific challenges.
             </p>
             
             <form onSubmit={handleEmailSubmit} className="max-w-md mx-auto space-y-4">
@@ -276,7 +281,7 @@ function CaregiverRealityCheck() {
                 type="submit"
                 className="w-full inline-flex justify-center items-center gap-2 rounded-xl bg-primary px-8 py-4 text-base font-bold text-primary-foreground shadow-md hover:bg-primary/90 transition-colors"
               >
-                <Lock className="w-4 h-4" /> Give Me The Truth
+                <Lock className="w-4 h-4" /> Reveal My Profile
               </button>
             </form>
             <p className="text-xs text-muted-foreground mt-6 flex items-center justify-center gap-1">
@@ -296,81 +301,81 @@ function CaregiverRealityCheck() {
             <div className="inline-flex items-center justify-center rounded-full bg-emerald-100 px-4 py-1.5 text-xs font-bold text-emerald-700 mb-3">
               <CheckCircle2 className="w-4 h-4 mr-2" /> Results unlocked & emailed to {email}
             </div>
-            <h2 className="text-3xl font-bold text-foreground">Your Personal Profile</h2>
+            <h2 className="text-3xl font-bold text-foreground">Your Trigger Profile</h2>
           </div>
 
-          {result === "boiling" && (
+          {result === "physical" && (
             <div className="bg-card rounded-[2rem] overflow-hidden border-2 border-rose-200 shadow-xl">
               <div className="bg-rose-600 p-6 text-center text-white">
-                <AlertTriangle className="w-8 h-8 mx-auto mb-2 opacity-90" />
-                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight">The Boiling Point</h3>
+                <Activity className="w-8 h-8 mx-auto mb-2 opacity-90" />
+                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight">The Sudden Spike</h3>
               </div>
               <div className="p-6 md:p-8 space-y-6">
                 <div>
                   <h4 className="text-xs font-black text-rose-600 uppercase tracking-widest mb-2">The Blunt Truth</h4>
                   <p className="text-base md:text-lg text-foreground/80 leading-relaxed font-medium">
-                    You are drowning. Your nervous system is stuck in "fight or flight," and you are experiencing severe compassion fatigue. You are operating as a single point of failure. If you do not change this dynamic, your body will eventually force you to stop through illness or collapse.
+                    The behaviors you are seeing are highly likely to be driven by a physical issue, not just "the dementia progressing." Sudden spikes in confusion or aggression are classic signs of a hidden infection (like a UTI) or pain.
                   </p>
                 </div>
                 <div className="bg-rose-50 rounded-2xl p-6 border border-rose-100">
                   <h4 className="text-xs font-black text-rose-800 uppercase tracking-widest mb-2">Your Next Step</h4>
                   <p className="text-sm md:text-base text-rose-900 leading-relaxed mb-4">
-                    You need an immediate circuit breaker. Stop trying to manage every behavior on your own. You must begin the conversation about respite care today.
+                    Use our free PINCH ME Protocol right now to scan for physical issues. If you suspect an infection, contact your GP or 111 immediately. Do not try to manage medical delirium with behavioral tricks.
                   </p>
                   <button className="bg-rose-600 text-white font-bold py-2.5 px-5 rounded-xl shadow-md hover:bg-rose-700 transition-colors w-full sm:w-auto text-sm">
-                    Download Crisis De-escalation Playbook
+                    Download PINCH ME Protocol
                   </button>
                 </div>
               </div>
             </div>
           )}
 
-          {result === "fumes" && (
+          {result === "communication" && (
             <div className="bg-card rounded-[2rem] overflow-hidden border-2 border-amber-200 shadow-xl">
               <div className="bg-amber-500 p-6 text-center text-white">
-                <Activity className="w-8 h-8 mx-auto mb-2 opacity-90" />
-                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight">Running on Fumes</h3>
+                <AlertTriangle className="w-8 h-8 mx-auto mb-2 opacity-90" />
+                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight">The Mirror Match</h3>
               </div>
               <div className="p-6 md:p-8 space-y-6">
                 <div>
                   <h4 className="text-xs font-black text-amber-600 uppercase tracking-widest mb-2">The Blunt Truth</h4>
                   <p className="text-base md:text-lg text-foreground/80 leading-relaxed font-medium">
-                    You are surviving, but just barely. You know the rules of dementia care, but sheer exhaustion is making you reactive instead of proactive. The guilt is heavy, and the isolation is growing. You are at the exact stage where a single bad week could push you over the edge.
+                    You are exhausted, and your loved one can feel it. When you try to use logic or correct their reality, it triggers a "fight or flight" panic response. They are mirroring your tension.
                   </p>
                 </div>
                 <div className="bg-amber-50 rounded-2xl p-6 border border-amber-100">
                   <h4 className="text-xs font-black text-amber-800 uppercase tracking-widest mb-2">Your Next Step</h4>
                   <p className="text-sm md:text-base text-amber-900 leading-relaxed mb-4">
-                    You need to automate your responses so you don't have to think so hard during a crisis. Read our guide on The Mirror Match to stop wasting energy arguing with a broken brain.
+                    You must change the script. Read our guide on "Stepping Into Their Reality". You cannot win an argument with a broken brain, but you can instantly lower the temperature by validating their feelings.
                   </p>
                   <button className="bg-amber-500 text-white font-bold py-2.5 px-5 rounded-xl shadow-md hover:bg-amber-600 transition-colors w-full sm:w-auto text-sm">
-                    Read The Mirror Match Guide
+                    Read "Stepping Into Their Reality"
                   </button>
                 </div>
               </div>
             </div>
           )}
 
-          {result === "sustainable" && (
-            <div className="bg-card rounded-[2rem] overflow-hidden border-2 border-emerald-200 shadow-xl">
-              <div className="bg-emerald-600 p-6 text-center text-white">
-                <ShieldAlert className="w-8 h-8 mx-auto mb-2 opacity-90" />
-                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight">The Sustainable Slog</h3>
+          {result === "environmental" && (
+            <div className="bg-card rounded-[2rem] overflow-hidden border-2 border-indigo-200 shadow-xl">
+              <div className="bg-indigo-600 p-6 text-center text-white">
+                <Search className="w-8 h-8 mx-auto mb-2 opacity-90" />
+                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight">The Sensory Overload</h3>
               </div>
               <div className="p-6 md:p-8 space-y-6">
                 <div>
-                  <h4 className="text-xs font-black text-emerald-600 uppercase tracking-widest mb-2">The Blunt Truth</h4>
+                  <h4 className="text-xs font-black text-indigo-600 uppercase tracking-widest mb-2">The Blunt Truth</h4>
                   <p className="text-base md:text-lg text-foreground/80 leading-relaxed font-medium">
-                    You are managing an incredibly difficult situation with remarkable boundaries. You have accepted the reality of the disease and are protecting your own baseline. However, as the disease progresses, the demands will change.
+                    Your loved one's brain is losing the ability to filter out background noise, shadows, and changes in routine. This leads to Sundowning and constant shadowing because they feel unanchored in space and time.
                   </p>
                 </div>
-                <div className="bg-emerald-50 rounded-2xl p-6 border border-emerald-100">
-                  <h4 className="text-xs font-black text-emerald-800 uppercase tracking-widest mb-2">Your Next Step</h4>
-                  <p className="text-sm md:text-base text-emerald-900 leading-relaxed mb-4">
-                    Stay ahead of the curve. Learn how to identify hidden physical triggers before they turn into behavioral crises by reading our PINCH ME framework. Keep your toolkit sharp.
+                <div className="bg-indigo-50 rounded-2xl p-6 border border-indigo-100">
+                  <h4 className="text-xs font-black text-indigo-800 uppercase tracking-widest mb-2">Your Next Step</h4>
+                  <p className="text-sm md:text-base text-indigo-900 leading-relaxed mb-4">
+                    It's time to modify the environment. Use our "Living Room Audit" to identify the hidden sensory triggers in your home, and learn how to use an "Identity Anchor" to give them a sense of safety.
                   </p>
-                  <button className="bg-emerald-600 text-white font-bold py-2.5 px-5 rounded-xl shadow-md hover:bg-emerald-700 transition-colors w-full sm:w-auto text-sm">
-                    Download PINCH ME Framework
+                  <button className="bg-indigo-600 text-white font-bold py-2.5 px-5 rounded-xl shadow-md hover:bg-indigo-700 transition-colors w-full sm:w-auto text-sm">
+                    Download Living Room Audit
                   </button>
                 </div>
               </div>
@@ -383,7 +388,6 @@ function CaregiverRealityCheck() {
 
   return (
     <div className="min-h-screen bg-muted/20 font-sans text-foreground flex flex-col">
-      {/* Nav */}
       <header className="sticky top-0 z-40 w-full bg-background border-b border-border/40 shadow-sm flex-shrink-0">
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-8 py-4">
           <Logo />
@@ -394,7 +398,7 @@ function CaregiverRealityCheck() {
                   key={item.label}
                   to={item.to}
                   className={`flex items-center gap-1 text-[15px] font-medium hover:text-primary [&.active]:text-primary ${
-                    item.label === "Caregiver Reality Check" ? "text-primary" : "text-foreground/90"
+                    item.label === "Dementia Trigger Decoder" ? "text-primary" : "text-foreground/90"
                   }`}
                 >
                   {item.label}
@@ -423,7 +427,6 @@ function CaregiverRealityCheck() {
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="border-t border-border bg-background flex-shrink-0">
         <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-8 py-14 lg:grid-cols-[1.2fr_repeat(5,1fr)]">
           <div>
