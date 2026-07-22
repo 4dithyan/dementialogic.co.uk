@@ -1,4 +1,5 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
+import { motion } from "framer-motion";
 import {
   Heart,
   ChevronDown,
@@ -225,7 +226,13 @@ function Index() {
       </section>
 
       {/* Feature strip overlapping */}
-      <div className="mx-auto max-w-[1400px] px-8">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="mx-auto max-w-[1400px] px-8"
+      >
         <div className="relative z-10 -mt-16 grid grid-cols-1 divide-y divide-border rounded-2xl border border-border bg-card shadow-xl md:grid-cols-2 md:divide-x md:divide-y-0 lg:grid-cols-4">
           {features.map((f, i) => (
             <div key={f.title} className={`flex items-start gap-4 p-8 ${i >= 2 ? "md:border-t lg:border-t-0" : ""}`}>
@@ -239,11 +246,17 @@ function Index() {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Signs */}
       <section className="bg-background py-12">
-        <div className="mx-auto max-w-[1200px] px-8 text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mx-auto max-w-[1200px] px-8 text-center"
+        >
           <h2 className="text-3xl font-bold text-foreground">What you might be noticing</h2>
           <p className="mt-4 text-muted-foreground">
             These changes can be small at first. You're not alone in noticing them.
@@ -266,12 +279,18 @@ function Index() {
           <button className="mt-12 inline-flex items-center gap-2 text-[15px] font-semibold text-primary hover:underline">
             See more signs and understanding <ArrowRight className="h-4 w-4" />
           </button>
-        </div>
+        </motion.div>
       </section>
 
       {/* Learn and feel more confident */}
       <section className="bg-[#f8faff] py-12">
-        <div className="mx-auto max-w-[1400px] px-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mx-auto max-w-[1400px] px-8"
+        >
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[300px_1fr]">
             <div className="flex flex-col justify-center">
               <h2 className="text-4xl font-bold leading-tight text-slate-800">
@@ -353,12 +372,18 @@ function Index() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* How we help */}
       <section className="bg-background py-12">
-        <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-16 px-8 lg:grid-cols-[1.2fr_1fr] lg:gap-24">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-16 px-8 lg:grid-cols-[1.2fr_1fr] lg:gap-24"
+        >
           <div>
             <h2 className="text-4xl font-bold text-foreground">How we help</h2>
             <p className="mt-4 text-lg text-muted-foreground">
@@ -413,12 +438,18 @@ function Index() {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Support for caregivers */}
       <section className="bg-background py-16">
-        <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-12 px-8 lg:grid-cols-[1fr_1.1fr]">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mx-auto grid max-w-[1200px] grid-cols-1 gap-12 px-8 lg:grid-cols-[1fr_1.1fr]"
+        >
           <div className="flex flex-col justify-center">
             <h2 className="text-[32px] font-bold text-slate-800">Support for caregivers</h2>
             <p className="mt-4 max-w-md text-[16px] text-slate-600">
@@ -471,12 +502,18 @@ function Index() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Learn at your pace */}
       <section className="bg-background py-12">
-        <div className="mx-auto max-w-[1200px] px-8 text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mx-auto max-w-[1200px] px-8 text-center"
+        >
           <h2 className="text-3xl font-bold text-foreground">Learn at your pace</h2>
           <p className="mt-3 text-muted-foreground">
             Simple guides and resources to help you understand and feel more in control.
@@ -495,12 +532,18 @@ function Index() {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Talk banner */}
       <section className="bg-background py-12">
-        <div className="mx-auto max-w-[1200px] px-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mx-auto max-w-[1200px] px-8"
+        >
           <div className="relative overflow-hidden rounded-2xl bg-sky-50 p-8">
             <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[auto_1fr_auto]">
               <img
@@ -521,7 +564,7 @@ function Index() {
               <Leaf className="hidden h-24 w-24 text-emerald-300 md:block" />
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Footer */}
