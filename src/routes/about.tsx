@@ -31,10 +31,26 @@ const navItems = [
 ];
 
 const footerCols = [
-  { title: "Home", links: ["Waitlist"] },
-  { title: "About Us", links: ["Founder profiles", "Clinical credentials", "Our Story"] },
-  { title: "Education Hub", links: ["Clinically authored articles"] },
-  { title: "Interactive Tools", links: ["Caregiver Reality Check", "Dementia Trigger Decoder"] },
+  { 
+    title: "Company", 
+    links: [
+      { label: "Home", to: "/" }, 
+      { label: "About Us", to: "/about" },
+    ] 
+  },
+  { 
+    title: "Resources", 
+    links: [
+      { label: "Education Hub", to: "/education-hub" },
+    ] 
+  },
+  { 
+    title: "Interactive Tools", 
+    links: [
+      { label: "Caregiver Reality Check", to: "/caregiver-reality-check" }, 
+      { label: "Dementia Trigger Decoder", to: "/dementia-trigger-decoder" }
+    ] 
+  },
 ];
 
 function Logo() {
@@ -172,26 +188,28 @@ function About() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-background">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-8 py-14 lg:grid-cols-[1.2fr_repeat(5,1fr)]">
+      <footer className="border-t border-border bg-background flex-shrink-0">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-8 py-14 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
             <Logo />
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
               We support individuals living with dementia and the people who care for them.
             </p>
             <div className="mt-4 flex gap-3 text-muted-foreground">
-              <Facebook className="h-5 w-5 hover:text-primary" />
-              <Instagram className="h-5 w-5 hover:text-primary" />
-              <Youtube className="h-5 w-5 hover:text-primary" />
+              <Facebook className="h-5 w-5 hover:text-primary cursor-pointer" />
+              <Instagram className="h-5 w-5 hover:text-primary cursor-pointer" />
+              <Youtube className="h-5 w-5 hover:text-primary cursor-pointer" />
             </div>
           </div>
           {footerCols.map((c) => (
             <div key={c.title}>
               <div className="text-sm font-semibold text-foreground">{c.title}</div>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
                 {c.links.map((l) => (
-                  <li key={l} className="hover:text-primary cursor-pointer">
-                    {l}
+                  <li key={l.label}>
+                    <Link to={l.to} className="hover:text-primary transition-colors cursor-pointer">
+                      {l.label}
+                    </Link>
                   </li>
                 ))}
               </ul>

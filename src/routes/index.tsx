@@ -85,16 +85,16 @@ const steps = [
 ];
 
 const caregiverPoints = [
-  { icon: Heart, title: "You are not alone.", desc: "We're here to listen and support you." },
-  { icon: Users, title: "Take care of yourself.", desc: "Explore tips to manage stress and burnout." },
-  { icon: FileText, title: "Learn and feel confident.", desc: "Practical guidance for everyday challenges." },
+  { icon: Heart, title: "You are not alone.", desc: "We're here to listen and support you.", color: "blue" },
+  { icon: Users, title: "Take care of yourself.", desc: "Explore tips to manage stress and burnout.", color: "purple" },
+  { icon: FileText, title: "Learn and feel confident.", desc: "Practical guidance for everyday challenges.", color: "emerald" },
 ];
 
 const reminders = [
-  { icon: Coffee, label: "Pause" },
-  { icon: Wind, label: "Breathe" },
-  { icon: Leaf, label: "Reset" },
-  { icon: Heart, label: "You matter" },
+  { icon: Coffee, label: "Pause", color: "text-[#3b82f6]" },
+  { icon: Wind, label: "Breathe", color: "text-[#3b82f6]" },
+  { icon: Leaf, label: "Reset", color: "text-[#22c55e]" },
+  { icon: Heart, label: "You matter", color: "text-[#3b82f6]" },
 ];
 
 const learnCards = [
@@ -105,10 +105,26 @@ const learnCards = [
 ];
 
 const footerCols = [
-  { title: "Home", links: ["Waitlist"] },
-  { title: "About Us", links: ["Founder profiles", "Clinical credentials", "Our Story"] },
-  { title: "Education Hub", links: ["Clinically authored articles"] },
-  { title: "Interactive Tools", links: ["Caregiver Reality Check", "Dementia Trigger Decoder"] },
+  { 
+    title: "Company", 
+    links: [
+      { label: "Home", to: "/" }, 
+      { label: "About Us", to: "/about" },
+    ] 
+  },
+  { 
+    title: "Resources", 
+    links: [
+      { label: "Education Hub", to: "/education-hub" },
+    ] 
+  },
+  { 
+    title: "Interactive Tools", 
+    links: [
+      { label: "Caregiver Reality Check", to: "/caregiver-reality-check" }, 
+      { label: "Dementia Trigger Decoder", to: "/dementia-trigger-decoder" }
+    ] 
+  },
 ];
 
 function Logo() {
@@ -226,63 +242,122 @@ function Index() {
       </div>
 
       {/* Signs */}
-      <section className="bg-background py-20">
-        <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-8 lg:grid-cols-[1.4fr_1fr]">
-          <div>
-            <h2 className="text-3xl font-bold text-foreground">What you might be noticing</h2>
-            <div className="mt-2 h-1 w-16 rounded bg-emerald-400" />
-            <p className="mt-4 text-muted-foreground">
-              These changes can be small at first. You're not alone in noticing them.
-            </p>
+      <section className="bg-background py-12">
+        <div className="mx-auto max-w-[1200px] px-8 text-center">
+          <h2 className="text-3xl font-bold text-foreground">What you might be noticing</h2>
+          <p className="mt-4 text-muted-foreground">
+            These changes can be small at first. You're not alone in noticing them.
+          </p>
 
-            <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-              {signs.map((s) => (
-                <div
-                  key={s.label}
-                  className="flex flex-col items-center rounded-xl border border-border bg-card p-5 text-center"
-                >
-                  <div className={`flex h-14 w-14 items-center justify-center rounded-full ${s.tint}`}>
-                    <s.icon className="h-6 w-6" />
-                  </div>
-                  <div className="mt-4 text-sm font-medium text-foreground">{s.label}</div>
+          <div className="mt-12 flex flex-wrap justify-center gap-6">
+            {signs.map((s) => (
+              <div
+                key={s.label}
+                className="flex w-[200px] flex-col items-center justify-start rounded-2xl border border-border/50 bg-card p-6 text-center shadow-sm"
+              >
+                <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full ${s.tint}`}>
+                  <s.icon className="h-6 w-6" />
                 </div>
-              ))}
-            </div>
-
-            <button className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
-              See more signs and understanding <ArrowRight className="h-4 w-4" />
-            </button>
+                <div className="mt-5 text-[14px] font-medium leading-tight text-foreground">{s.label}</div>
+              </div>
+            ))}
           </div>
 
-          <aside className="rounded-2xl bg-sky-50 p-8">
-            <div className="grid grid-cols-1 items-center gap-6 sm:grid-cols-2">
-              <div>
-                <h3 className="text-2xl font-bold leading-tight text-foreground">
-                  Caring for someone is a journey.
-                </h3>
-                <p className="mt-4 text-sm text-foreground/80">
-                  We're here to walk with you through the good days and the hard ones.
-                </p>
-                <button className="mt-6 inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground">
-                  <Users className="h-4 w-4" />
-                  Support for caregivers
-                </button>
-              </div>
-              <img
-                src={caregiverImg}
-                alt="Illustration of a caregiver embracing an older woman"
-                width={1024}
-                height={1024}
-                loading="lazy"
-                className="h-auto w-full"
-              />
+          <button className="mt-12 inline-flex items-center gap-2 text-[15px] font-semibold text-primary hover:underline">
+            See more signs and understanding <ArrowRight className="h-4 w-4" />
+          </button>
+        </div>
+      </section>
+
+      {/* Learn and feel more confident */}
+      <section className="bg-[#f8faff] py-12">
+        <div className="mx-auto max-w-[1400px] px-8">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[300px_1fr]">
+            <div className="flex flex-col justify-center">
+              <h2 className="text-4xl font-bold leading-tight text-slate-800">
+                Learn and feel<br />more confident
+              </h2>
+              <div className="mt-4 h-1 w-12 rounded bg-emerald-400" />
+              <p className="mt-6 text-[17px] leading-relaxed text-slate-600">
+                Understanding dementia can<br />bring clarity and<br />help you feel more prepared.
+              </p>
+              <button className="mt-10 inline-flex w-fit items-center gap-2 rounded-xl border border-[#c1d3f0] bg-transparent px-6 py-3.5 text-[15px] font-semibold text-[#3b82f6] shadow-sm hover:bg-blue-50/50">
+                Explore learning resources <ArrowRight className="h-4 w-4" />
+              </button>
             </div>
-          </aside>
+            
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {/* Card 1 */}
+              <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-white p-5 shadow-sm transition-shadow hover:shadow-md">
+                <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-slate-50">
+                  <img src={caregiverImg} alt="Dementia basics" className="h-full w-full object-cover mix-blend-multiply" />
+                </div>
+                <div className="mt-6 flex flex-col flex-1">
+                  <div className="w-fit rounded-full bg-blue-50 px-3 py-1 text-[13px] font-semibold text-[#3b82f6]">Basics</div>
+                  <h3 className="mt-3 text-[17px] font-bold text-slate-800">What is dementia?</h3>
+                  <p className="mt-2 text-[14px] leading-relaxed text-slate-600 flex-1">
+                    A simple guide to what dementia is and how it affects the brain.
+                  </p>
+                  <button className="mt-6 inline-flex items-center gap-1 text-[14px] font-semibold text-[#3b82f6] hover:underline">
+                    Read more <ArrowRight className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+              </div>
+              {/* Card 2 */}
+              <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-white p-5 shadow-sm transition-shadow hover:shadow-md">
+                <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-slate-50">
+                  <img src={chairImg} alt="Managing daily life" className="h-full w-full object-cover mix-blend-multiply" />
+                </div>
+                <div className="mt-6 flex flex-col flex-1">
+                  <div className="w-fit rounded-full bg-emerald-50 px-3 py-1 text-[13px] font-semibold text-emerald-600">Managing daily life</div>
+                  <h3 className="mt-3 text-[17px] font-bold text-slate-800">Creating calm routines</h3>
+                  <p className="mt-2 text-[14px] leading-relaxed text-slate-600 flex-1">
+                    Small changes at home can reduce confusion and bring comfort.
+                  </p>
+                  <button className="mt-6 inline-flex items-center gap-1 text-[14px] font-semibold text-[#3b82f6] hover:underline">
+                    Read more <ArrowRight className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+              </div>
+              {/* Card 3 */}
+              <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-white p-5 shadow-sm transition-shadow hover:shadow-md">
+                <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-slate-50">
+                  <img src={handshakeImg} alt="Communication" className="h-full w-full object-cover mix-blend-multiply" />
+                </div>
+                <div className="mt-6 flex flex-col flex-1">
+                  <div className="w-fit rounded-full bg-violet-50 px-3 py-1 text-[13px] font-semibold text-violet-600">Communication</div>
+                  <h3 className="mt-3 text-[17px] font-bold text-slate-800">Talking in ways that help</h3>
+                  <p className="mt-2 text-[14px] leading-relaxed text-slate-600 flex-1">
+                    Tips to connect with kindness and reduce frustration.
+                  </p>
+                  <button className="mt-6 inline-flex items-center gap-1 text-[14px] font-semibold text-[#3b82f6] hover:underline">
+                    Read more <ArrowRight className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+              </div>
+              {/* Card 4 */}
+              <div className="flex flex-col overflow-hidden rounded-2xl border border-border bg-white p-5 shadow-sm transition-shadow hover:shadow-md">
+                <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-slate-50">
+                  <img src={heroImg} alt="Emotional wellbeing" className="h-full w-full object-cover mix-blend-multiply" />
+                </div>
+                <div className="mt-6 flex flex-col flex-1">
+                  <div className="w-fit rounded-full bg-slate-100 px-3 py-1 text-[13px] font-semibold text-slate-600">Emotional wellbeing</div>
+                  <h3 className="mt-3 text-[17px] font-bold text-slate-800">Caring for your emotions too</h3>
+                  <p className="mt-2 text-[14px] leading-relaxed text-slate-600 flex-1">
+                    Your well-being matters. You can't pour from an empty cup.
+                  </p>
+                  <button className="mt-6 inline-flex items-center gap-1 text-[14px] font-semibold text-[#3b82f6] hover:underline">
+                    Read more <ArrowRight className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* How we help */}
-      <section className="bg-background pb-20">
+      <section className="bg-background py-12">
         <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-16 px-8 lg:grid-cols-[1.2fr_1fr] lg:gap-24">
           <div>
             <h2 className="text-4xl font-bold text-foreground">How we help</h2>
@@ -342,57 +417,65 @@ function Index() {
       </section>
 
       {/* Support for caregivers */}
-      <section className="bg-sky-50 py-20">
-        <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-8 lg:grid-cols-2">
-          <div>
-            <h2 className="text-3xl font-bold text-foreground">Support for caregivers</h2>
-            <p className="mt-3 max-w-md text-muted-foreground">
+      <section className="bg-background py-16">
+        <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-12 px-8 lg:grid-cols-[1fr_1.1fr]">
+          <div className="flex flex-col justify-center">
+            <h2 className="text-[32px] font-bold text-slate-800">Support for caregivers</h2>
+            <p className="mt-4 max-w-md text-[16px] text-slate-600">
               Caring for someone with dementia can be beautiful and overwhelming.
             </p>
-            <ul className="mt-8 space-y-5">
+            <ul className="mt-10 space-y-7">
               {caregiverPoints.map((c) => (
-                <li key={c.title} className="flex items-start gap-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-background">
-                    <c.icon className="h-5 w-5 text-primary" />
+                <li key={c.title} className="flex items-start gap-5">
+                  <div
+                    className={`flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-full ${
+                      c.color === "blue"
+                        ? "bg-blue-50 text-blue-600"
+                        : c.color === "purple"
+                          ? "bg-purple-50 text-purple-600"
+                          : "bg-emerald-50 text-emerald-600"
+                    }`}
+                  >
+                    <c.icon className="h-[20px] w-[20px]" />
                   </div>
                   <div>
-                    <div className="font-semibold text-foreground">{c.title}</div>
-                    <div className="text-sm text-muted-foreground">{c.desc}</div>
+                    <div className="text-[15px] font-bold text-slate-800">{c.title}</div>
+                    <div className="mt-1 text-[14px] text-slate-600">{c.desc}</div>
                   </div>
                 </li>
               ))}
             </ul>
-            <button className="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">
+            <button className="mt-10 inline-flex w-fit items-center gap-2 rounded-xl bg-[#2563eb] px-6 py-3.5 text-[15px] font-semibold text-white shadow-sm hover:bg-[#1d4ed8]">
               Explore caregiver support <ArrowRight className="h-4 w-4" />
             </button>
           </div>
-          <div className="rounded-2xl border border-border bg-background p-8">
-            <div className="flex items-center justify-between">
-              <div className="font-semibold text-foreground">Caregiver reminder</div>
-              <Heart className="h-5 w-5 text-primary" />
-            </div>
-            <div className="mt-6 border-t border-border pt-6">
-              <p className="text-lg font-medium text-foreground">
-                You can't pour from an empty cup.
-              </p>
-              <p className="mt-1 text-muted-foreground">It's okay to take a break.</p>
-            </div>
-            <div className="mt-8 grid grid-cols-4 gap-4">
-              {reminders.map((r) => (
-                <div key={r.label} className="flex flex-col items-center text-center">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-sky-50">
-                    <r.icon className="h-6 w-6 text-primary" />
+          <div className="flex items-center justify-center lg:justify-end">
+            <div className="w-full max-w-[500px] rounded-[20px] border border-slate-200 bg-white p-8 shadow-sm">
+              <div className="flex items-center justify-between pb-6">
+                <div className="text-[18px] font-bold text-slate-800">Caregiver reminder</div>
+                <Heart className="h-6 w-6 text-blue-600" />
+              </div>
+              <div className="border-t border-slate-100 py-6">
+                <p className="text-[16px] font-medium text-slate-800">
+                  You can't pour from an empty cup.
+                </p>
+                <p className="mt-2 text-[16px] text-slate-600">It's okay to take a break.</p>
+              </div>
+              <div className="grid grid-cols-4 divide-x divide-slate-100 border-t border-slate-100 pt-8">
+                {reminders.map((r) => (
+                  <div key={r.label} className="flex flex-col items-center justify-center text-center">
+                    <r.icon className={`h-8 w-8 stroke-[1.5] ${r.color}`} />
+                    <div className="mt-3 text-[13px] font-medium text-slate-700">{r.label}</div>
                   </div>
-                  <div className="mt-2 text-xs font-medium text-foreground">{r.label}</div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Learn at your pace */}
-      <section className="bg-background py-20">
+      <section className="bg-background py-12">
         <div className="mx-auto max-w-[1200px] px-8 text-center">
           <h2 className="text-3xl font-bold text-foreground">Learn at your pace</h2>
           <p className="mt-3 text-muted-foreground">
@@ -416,7 +499,7 @@ function Index() {
       </section>
 
       {/* Talk banner */}
-      <section className="bg-background pb-20">
+      <section className="bg-background py-12">
         <div className="mx-auto max-w-[1200px] px-8">
           <div className="relative overflow-hidden rounded-2xl bg-sky-50 p-8">
             <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[auto_1fr_auto]">
@@ -443,7 +526,7 @@ function Index() {
 
       {/* Footer */}
       <footer className="border-t border-border bg-background">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-8 py-14 lg:grid-cols-[1.2fr_repeat(5,1fr)]">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-8 py-14 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
             <Logo />
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
@@ -458,10 +541,12 @@ function Index() {
           {footerCols.map((c) => (
             <div key={c.title}>
               <div className="text-sm font-semibold text-foreground">{c.title}</div>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
                 {c.links.map((l) => (
-                  <li key={l} className="hover:text-primary">
-                    {l}
+                  <li key={l.label}>
+                    <Link to={l.to} className="hover:text-primary transition-colors">
+                      {l.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
