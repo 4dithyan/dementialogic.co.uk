@@ -155,39 +155,28 @@ export default function CaregiverRealityCheck() {
   const renderQuizContent = () => {
     if (currentStep === 0) {
       return (
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-sky-50 via-white to-primary/5 px-8 py-10 md:p-12 text-left shadow-sm border border-border w-full">
-          <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-sky-200/40 blur-3xl"></div>
-          <div className="absolute right-0 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-primary/10 blur-3xl"></div>
-          
-          <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2 text-sm font-bold text-primary shadow-sm border border-sky-100">
-                <Activity className="w-4 h-4 mr-2" /> Interactive Tool
-              </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-[1.1]">
-                Are You Caring, or Are You <span className="text-primary italic">Drowning?</span>
-              </h2>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed text-balance">
-                Take this brutal, 2-minute reality check to measure your actual burnout level. No judgment, no sugar-coating—just the truth about where you stand right now.
-              </p>
-              <button 
+        <div className="mb-8 w-full max-w-[1400px] mx-auto px-6 py-12">
+           <div className="text-sm font-medium text-foreground/60 mb-6 flex items-center gap-2">
+             <Link to="/" className="hover:text-primary">Home</Link>
+             <span>/</span>
+             <span className="text-primary">Caregiver Reality Check</span>
+           </div>
+           
+           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] tracking-tight mb-6 max-w-4xl">
+              Are You Caring, or Are You <span className="text-primary/90 italic">Drowning?</span>
+           </h1>
+           <p className="text-lg text-foreground/80 max-w-3xl leading-relaxed">
+              Take this brutal, 2-minute reality check to measure your actual burnout level. No judgment, no sugar-coating—just the truth about where you stand right now.
+           </p>
+
+           <div className="mt-8">
+             <button 
                 onClick={() => setCurrentStep(1)}
-                className="inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-lg font-bold text-primary-foreground shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
-              >
+                className="inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-lg font-bold text-primary-foreground shadow-lg hover:bg-primary/90 transition-all"
+             >
                 Start The Reality Check <ArrowRight className="w-5 h-5" />
-              </button>
-            </div>
-            
-            <div className="hidden md:flex justify-center items-center">
-              <div className="relative w-64 h-64 flex items-center justify-center">
-                <div className="absolute inset-0 rounded-full border-8 border-sky-100 border-b-transparent border-r-transparent transform -rotate-45 opacity-80"></div>
-                <div className="absolute inset-8 rounded-full border-8 border-primary/20 border-t-transparent border-l-transparent transform rotate-45 opacity-80"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Heart className="w-20 h-20 text-primary opacity-90 drop-shadow-sm" fill="currentColor" />
-                </div>
-              </div>
-            </div>
-          </div>
+             </button>
+           </div>
         </div>
       );
     }
@@ -421,8 +410,8 @@ export default function CaregiverRealityCheck() {
         </div>
       </header>
 
-      <main className="flex-grow w-full px-4 md:px-8 py-4 flex flex-col items-center justify-center">
-        <div className="w-full max-w-[1400px] mx-auto">
+      <main className="flex-grow w-full py-4 flex flex-col items-center justify-start">
+        <div className="w-full">
           {renderQuizContent()}
         </div>
       </main>
