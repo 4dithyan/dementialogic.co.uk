@@ -6,31 +6,10 @@ import {
 
 import educationHeroImg from "@/assets/education-hero.png";
 
-const navItems = [
-  { label: "Home", to: "/", hasDropdown: false },
-  { label: "About Us", to: "/about", hasDropdown: false },
-  { label: "Education Hub", to: "/education-hub", hasDropdown: false },
-  { label: "Caregiver Reality Check", to: "/caregiver-reality-check", hasDropdown: false },
-  { label: "Dementia Trigger Decoder", to: "/dementia-trigger-decoder", hasDropdown: false },
-];
 
-const footerCols = [
-  { title: "DementiaLogic", links: [{ label: "Compassion. Clarity. Care", to: "/" }, { label: "About Us", to: "/about" }, { label: "Resources", to: "/education-hub" }, { label: "Events", to: "/" }] },
-  { title: "Explore", links: [{ label: "Talk to an Expert", to: "/" }, { label: "Find Local Help", to: "/" }, { label: "Caregiver Support", to: "/caregiver-reality-check" }] },
-  { title: "Support", links: [{ label: "Help Centre", to: "/" }, { label: "Treatment Options", to: "/education-hub" }, { label: "Research Updates", to: "/" }] },
-  { title: "Medical Info Hub", links: [{ label: "Help Centre", to: "/" }, { label: "Treatment Options", to: "/education-hub" }, { label: "Research Updates", to: "/" }] },
-];
 
-function Logo() {
-  return (
-    <div className="flex items-center gap-2">
-      <Heart className="h-6 w-6 text-primary/80" fill="currentColor" />
-      <div className="text-lg font-bold text-foreground">
-        Dementia<span className="text-primary/80">Logic</span>
-      </div>
-    </div>
-  );
-}
+
+
 
 export default function EducationHub() {
   const scrollTo = (id: string) => {
@@ -38,42 +17,9 @@ export default function EducationHub() {
   };
 
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground">
+    <div className="w-full flex-grow flex flex-col">
       {/* ── Header / Nav ──────────────────────────────────────────── */}
-      <header className="w-full bg-background border-b border-border/40">
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-8 py-5">
-          <Logo />
-          <nav className="hidden items-center gap-8 lg:flex">
-            {navItems.map((item) => (
-              item.to ? (
-                <Link
-                  key={item.label}
-                  to={item.to}
-                  className={`flex items-center gap-1 text-[15px] font-medium hover:text-primary [&.active]:text-primary ${
-                    item.label === "Education Hub" ? "text-primary" : "text-foreground/90"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ) : (
-                <button
-                  key={item.label}
-                  className={`flex items-center gap-1 text-[15px] font-medium hover:text-primary ${
-                    item.label === "Education Hub" ? "text-primary" : "text-foreground/90"
-                  }`}
-                >
-                  {item.label}
-                  {item.hasDropdown && <ChevronDown className="h-4 w-4" />}
-                </button>
-              )
-            ))}
-          </nav>
-          <button className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-sm hover:opacity-95">
-            <Headphones className="h-4 w-4" />
-            Talk to someone
-          </button>
-        </div>
-      </header>
+      
 
       {/* ── Main Layout: 2 Columns ────────────────────────────────── */}
       <main className="mx-auto max-w-[1400px] px-6 py-12">
@@ -385,45 +331,7 @@ export default function EducationHub() {
       </main>
 
       {/* ── Footer ────────────────────────────────────────────────── */}
-      <footer className="border-t border-border bg-background flex-shrink-0">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-8 py-14 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
-          <div>
-            <Logo />
-            <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-              We support individuals living with dementia and the people who care for them.
-            </p>
-            <div className="mt-4 flex gap-3 text-muted-foreground">
-              <Facebook className="h-5 w-5 hover:text-primary cursor-pointer" />
-              <Instagram className="h-5 w-5 hover:text-primary cursor-pointer" />
-              <Youtube className="h-5 w-5 hover:text-primary cursor-pointer" />
-            </div>
-          </div>
-          {footerCols.map((c) => (
-            <div key={c.title}>
-              <div className="text-sm font-semibold text-foreground">{c.title}</div>
-              <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-                {c.links.map((l) => (
-                  <li key={l.label}>
-                    <Link to={l.to} className="hover:text-primary transition-colors cursor-pointer">
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <div className="border-t border-border">
-          <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-4 px-8 py-5 text-xs text-muted-foreground">
-            <div>© 2026 DementiaLogic. All rights reserved.</div>
-            <div className="flex gap-6">
-              <span className="hover:text-primary cursor-pointer">Privacy Policy</span>
-              <span className="hover:text-primary cursor-pointer">Terms of Use</span>
-              <span className="hover:text-primary cursor-pointer">Accessibility</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      
     </div>
   );
 }

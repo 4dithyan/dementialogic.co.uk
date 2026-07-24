@@ -20,36 +20,9 @@ import {
 
 
 // ─── Constants for Navigation ──────────────────────────────
-const navItems = [
-  { label: "Home", to: "/", hasDropdown: false },
-  { label: "About Us", to: "/about", hasDropdown: false },
-  { label: "Education Hub", to: "/education-hub", hasDropdown: false },
-  { label: "Caregiver Reality Check", to: "/caregiver-reality-check", hasDropdown: false },
-  { label: "Dementia Trigger Decoder", to: "/dementia-trigger-decoder", hasDropdown: false },
-];
 
-const footerCols = [
-  { 
-    title: "Company", 
-    links: [
-      { label: "Home", to: "/" }, 
-      { label: "About Us", to: "/about" },
-    ] 
-  },
-  { 
-    title: "Resources", 
-    links: [
-      { label: "Education Hub", to: "/education-hub" },
-    ] 
-  },
-  { 
-    title: "Interactive Tools", 
-    links: [
-      { label: "Caregiver Reality Check", to: "/caregiver-reality-check" }, 
-      { label: "Dementia Trigger Decoder", to: "/dementia-trigger-decoder" }
-    ] 
-  },
-];
+
+
 
 // ─── Quiz Data ─────────────────────────────────────────────
 const QUIZ_QUESTIONS = [
@@ -162,39 +135,28 @@ export default function DementiaTriggerDecoder() {
   const renderQuizContent = () => {
     if (currentStep === 0) {
       return (
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-indigo-50 via-white to-primary/5 px-8 py-10 md:p-12 text-left shadow-sm border border-border w-full">
-          <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-indigo-200/40 blur-3xl"></div>
-          <div className="absolute right-0 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-primary/10 blur-3xl"></div>
-          
-          <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2 text-sm font-bold text-primary shadow-sm border border-indigo-100">
-                <Search className="w-4 h-4 mr-2" /> Interactive Tool
-              </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-[1.1]">
-                Decode the <span className="text-primary italic">Distress</span>
-              </h2>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed text-balance">
-                Take this 2-minute reality check to find out what is actually driving the distress in your home—and how to stop it.
-              </p>
-              <button 
+        <div className="mb-8 w-full max-w-[1400px] mx-auto px-6 py-12">
+           <div className="text-sm font-medium text-foreground/60 mb-6 flex items-center gap-2">
+             <Link to="/" className="hover:text-primary">Home</Link>
+             <span>/</span>
+             <span className="text-primary">Dementia Trigger Decoder</span>
+           </div>
+           
+           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] tracking-tight mb-6 max-w-4xl">
+              Decode the <span className="text-primary/90 italic">Distress</span>
+           </h1>
+           <p className="text-lg text-foreground/80 max-w-3xl leading-relaxed">
+              Take this 2-minute reality check to find out what is actually driving the distress in your home—and how to stop it.
+           </p>
+
+           <div className="mt-8">
+             <button 
                 onClick={() => setCurrentStep(1)}
-                className="inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-lg font-bold text-primary-foreground shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
-              >
+                className="inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-lg font-bold text-primary-foreground shadow-lg hover:bg-primary/90 transition-all"
+             >
                 Start The Decoder <ArrowRight className="w-5 h-5" />
-              </button>
-            </div>
-            
-            <div className="hidden md:flex justify-center items-center">
-              <div className="relative w-64 h-64 flex items-center justify-center">
-                <div className="absolute inset-0 rounded-full border-8 border-indigo-100 border-b-transparent border-r-transparent transform -rotate-45 opacity-80"></div>
-                <div className="absolute inset-8 rounded-full border-8 border-primary/20 border-t-transparent border-l-transparent transform rotate-45 opacity-80"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Search className="w-20 h-20 text-primary opacity-90 drop-shadow-sm" />
-                </div>
-              </div>
-            </div>
-          </div>
+             </button>
+           </div>
         </div>
       );
     }
@@ -391,85 +353,16 @@ export default function DementiaTriggerDecoder() {
   };
 
   return (
-    <div className="min-h-screen bg-muted/20 font-sans text-foreground flex flex-col">
-      <header className="sticky top-0 z-40 w-full bg-background border-b border-border/40 shadow-sm flex-shrink-0">
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-8 py-4">
-          <Logo />
-          <nav className="hidden items-center gap-8 lg:flex">
-            {navItems.map((item) =>
-              item.to ? (
-                <Link
-                  key={item.label}
-                  to={item.to}
-                  className={`flex items-center gap-1 text-[15px] font-medium hover:text-primary [&.active]:text-primary ${
-                    item.label === "Dementia Trigger Decoder" ? "text-primary" : "text-foreground/90"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ) : (
-                <button
-                  key={item.label}
-                  className="flex items-center gap-1 text-[15px] font-medium text-foreground/90 hover:text-primary"
-                >
-                  {item.label}
-                  {item.hasDropdown && <ChevronDown className="h-4 w-4" />}
-                </button>
-              )
-            )}
-          </nav>
-          <button className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-sm hover:opacity-95">
-            <Headphones className="h-4 w-4" />
-            Talk to someone
-          </button>
-        </div>
-      </header>
+    <div className="w-full flex-grow flex flex-col">
+      
 
-      <main className="flex-grow w-full px-4 md:px-8 py-4 flex flex-col items-center justify-center">
-        <div className="w-full max-w-[1400px] mx-auto">
+      <main className="flex-grow w-full py-4 flex flex-col items-center justify-start">
+        <div className="w-full">
           {renderQuizContent()}
         </div>
       </main>
 
-      <footer className="border-t border-border bg-background flex-shrink-0">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 px-8 py-14 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
-          <div>
-            <Logo />
-            <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-              We support individuals living with dementia and the people who care for them.
-            </p>
-            <div className="mt-4 flex gap-3 text-muted-foreground">
-              <Facebook className="h-5 w-5 hover:text-primary cursor-pointer" />
-              <Instagram className="h-5 w-5 hover:text-primary cursor-pointer" />
-              <Youtube className="h-5 w-5 hover:text-primary cursor-pointer" />
-            </div>
-          </div>
-          {footerCols.map((c) => (
-            <div key={c.title}>
-              <div className="text-sm font-semibold text-foreground">{c.title}</div>
-              <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-                {c.links.map((l) => (
-                  <li key={l.label}>
-                    <Link to={l.to} className="hover:text-primary transition-colors cursor-pointer">
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <div className="border-t border-border">
-          <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-4 px-8 py-5 text-xs text-muted-foreground">
-            <div>© 2026 DementiaLogic. All rights reserved.</div>
-            <div className="flex gap-6">
-              <span className="hover:text-primary cursor-pointer">Privacy Policy</span>
-              <span className="hover:text-primary cursor-pointer">Terms of Use</span>
-              <span className="hover:text-primary cursor-pointer">Accessibility</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      
     </div>
   );
 }
