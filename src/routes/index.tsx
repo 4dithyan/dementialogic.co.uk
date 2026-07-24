@@ -222,9 +222,9 @@ export default function Index() {
               <p className="mt-6 text-[17px] leading-relaxed text-slate-600">
                 Understanding dementia can<br />bring clarity and<br />help you feel more prepared.
               </p>
-              <button className="mt-10 inline-flex w-fit items-center gap-2 rounded-xl border border-[#c1d3f0] bg-transparent px-6 py-3.5 text-[15px] font-semibold text-[#3b82f6] shadow-sm hover:bg-blue-50/50">
+              <Link to="/blog" className="mt-10 inline-flex w-fit items-center gap-2 rounded-xl border border-[#c1d3f0] bg-transparent px-6 py-3.5 text-[15px] font-semibold text-[#3b82f6] shadow-sm hover:bg-blue-50/50">
                 Explore learning resources <ArrowRight className="h-4 w-4" />
-              </button>
+              </Link>
             </div>
             
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -239,9 +239,9 @@ export default function Index() {
                   <p className="mt-2 text-[14px] leading-relaxed text-slate-600 flex-1">
                     A simple guide to what dementia is and how it affects the brain.
                   </p>
-                  <button className="mt-6 inline-flex items-center gap-1 text-[14px] font-semibold text-[#3b82f6] hover:underline">
+                  <Link to="/blog/what-is-dementia" className="mt-6 inline-flex items-center gap-1 text-[14px] font-semibold text-[#3b82f6] hover:underline">
                     Read more <ArrowRight className="h-3.5 w-3.5" />
-                  </button>
+                  </Link>
                 </div>
               </div>
               {/* Card 2 */}
@@ -255,9 +255,9 @@ export default function Index() {
                   <p className="mt-2 text-[14px] leading-relaxed text-slate-600 flex-1">
                     Small changes at home can reduce confusion and bring comfort.
                   </p>
-                  <button className="mt-6 inline-flex items-center gap-1 text-[14px] font-semibold text-[#3b82f6] hover:underline">
+                  <Link to="/blog/creating-calm-routines" className="mt-6 inline-flex items-center gap-1 text-[14px] font-semibold text-[#3b82f6] hover:underline">
                     Read more <ArrowRight className="h-3.5 w-3.5" />
-                  </button>
+                  </Link>
                 </div>
               </div>
               {/* Card 3 */}
@@ -271,9 +271,9 @@ export default function Index() {
                   <p className="mt-2 text-[14px] leading-relaxed text-slate-600 flex-1">
                     Tips to connect with kindness and reduce frustration.
                   </p>
-                  <button className="mt-6 inline-flex items-center gap-1 text-[14px] font-semibold text-[#3b82f6] hover:underline">
+                  <Link to="/blog/talking-in-ways-that-help" className="mt-6 inline-flex items-center gap-1 text-[14px] font-semibold text-[#3b82f6] hover:underline">
                     Read more <ArrowRight className="h-3.5 w-3.5" />
-                  </button>
+                  </Link>
                 </div>
               </div>
               {/* Card 4 */}
@@ -287,9 +287,9 @@ export default function Index() {
                   <p className="mt-2 text-[14px] leading-relaxed text-slate-600 flex-1">
                     Your well-being matters. You can't pour from an empty cup.
                   </p>
-                  <button className="mt-6 inline-flex items-center gap-1 text-[14px] font-semibold text-[#3b82f6] hover:underline">
+                  <Link to="/blog/caring-for-your-emotions" className="mt-6 inline-flex items-center gap-1 text-[14px] font-semibold text-[#3b82f6] hover:underline">
                     Read more <ArrowRight className="h-3.5 w-3.5" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
