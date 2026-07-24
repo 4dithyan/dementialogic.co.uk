@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Calendar, Clock, Share2, Bookmark } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, Clock, Share2, Bookmark } from "lucide-react";
 
 import sundowningImg from "@/assets/sundowning_care.png";
 import mirrorMatchImg from "@/assets/mirror_match.png";
@@ -249,55 +249,58 @@ export default function BlogArticle() {
 
   return (
     <div className="w-full bg-[#f8fbff] min-h-screen pb-24">
-      {/* ── STUNNING HERO SECTION ──────────────────────── */}
-      <div className="w-full max-w-[1400px] mx-auto px-6 pt-12 pb-8">
-        <Link to="/blog" className="inline-flex items-center text-sm font-bold text-slate-500 hover:text-primary transition-colors mb-10">
-          <ArrowLeft className="w-4 h-4 mr-2" /> Back to all articles
-        </Link>
+      {/* ── STUNNING HERO SECTION (CINEMATIC) ──────────────────────── */}
+      <div className="relative w-full h-[60vh] min-h-[450px]">
+        {/* Background Image full width */}
+        <div className="absolute inset-0">
+          <img 
+            src={article.image} 
+            alt={article.title} 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-slate-900/30 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#f8fbff] via-transparent to-transparent opacity-90" />
+        </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 items-center">
-          {/* Left: Text Content */}
-          <div className="flex flex-col justify-center order-2 lg:order-1">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="bg-blue-100 text-blue-700 px-3.5 py-1.5 rounded-full uppercase tracking-wider text-xs font-bold">
-                {article.category}
-              </span>
-            </div>
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-[1.1] tracking-tight mb-8">
-              {article.title}
-            </h1>
-            
-            <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-slate-500">
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4.5 h-4.5 text-blue-500" /> {article.date}
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-4.5 h-4.5 text-blue-500" /> {article.readTime}
-              </div>
-            </div>
-          </div>
-          
-          {/* Right: Featured Image with design elements */}
-          <div className="relative order-1 lg:order-2">
-            <div className="absolute inset-0 bg-blue-200/50 blur-3xl transform rounded-full translate-x-10 translate-y-10" />
-            <div className="relative aspect-[4/3] w-full rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white">
-              <img 
-                src={article.image} 
-                alt={article.title} 
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-              />
+        {/* Breadcrumb at the very top, over the dark overlay */}
+        <div className="absolute top-0 left-0 right-0 z-10 pt-10">
+          <div className="w-full max-w-[1400px] mx-auto px-6">
+            <div className="flex items-center flex-wrap gap-2 text-sm font-medium text-white/90 drop-shadow-md">
+              <Link to="/" className="hover:text-white transition-colors">Home</Link>
+              <span className="text-white/60">/</span>
+              <Link to="/blog" className="hover:text-white transition-colors">Blog</Link>
+              <span className="text-white/60">/</span>
+              <span className="text-white font-semibold">{article.title}</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* ── CONTENT & SIDEBAR GRID ──────────────────────── */}
-      <div className="w-full max-w-[1400px] mx-auto px-6 mt-12">
+      <div className="relative z-20 w-full max-w-[1400px] mx-auto px-6 -mt-40">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_350px] gap-12 items-start">
           
           {/* Main Article Content (White Paper style) */}
-          <div className="bg-white rounded-[2.5rem] p-8 md:p-14 shadow-sm border border-slate-200/60 relative">
+          <div className="bg-white rounded-[2.5rem] p-8 md:p-14 shadow-2xl shadow-blue-900/5 border border-slate-200/60 relative">
+            
+            {/* Article Header (inside the card) */}
+            <div className="mb-12 pb-12 border-b border-slate-100">
+              <span className="inline-block bg-blue-50 text-blue-600 px-3.5 py-1.5 rounded-full uppercase tracking-wider text-xs font-bold mb-6">
+                {article.category}
+              </span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-[1.1] tracking-tight mb-8">
+                {article.title}
+              </h1>
+              <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-slate-500">
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-5 h-5 text-blue-500" /> {article.date}
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="w-5 h-5 text-blue-500" /> {article.readTime}
+                </div>
+              </div>
+            </div>
+
             <article className="prose prose-lg md:prose-xl prose-slate max-w-none prose-headings:font-bold prose-headings:text-slate-900 prose-p:text-slate-600 prose-p:leading-relaxed prose-li:text-slate-600">
               {article.content}
             </article>
@@ -306,37 +309,51 @@ export default function BlogArticle() {
           {/* Sticky Sidebar */}
           <div className="sticky top-28 flex flex-col gap-8">
             
-            {/* Newsletter/Support Card */}
-            <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl p-8 shadow-lg text-white relative overflow-hidden">
-              <div className="absolute top-0 right-0 -mr-16 -mt-16 w-48 h-48 bg-white opacity-10 rounded-full blur-2xl" />
-              <h3 className="text-xl font-bold mb-3 relative z-10">Don't face it alone.</h3>
-              <p className="text-blue-100 text-sm leading-relaxed mb-6 relative z-10">
-                Join our community newsletter for weekly clinical insights, coping strategies, and caregiver support directly to your inbox.
-              </p>
-              <div className="flex flex-col gap-3 relative z-10">
-                <input 
-                  type="email" 
-                  placeholder="Your email address" 
-                  className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
-                />
-                <button className="w-full bg-white text-blue-700 font-bold rounded-xl px-4 py-3 text-sm shadow-sm hover:bg-blue-50 transition-colors">
-                  Subscribe
-                </button>
+            {/* Creative Widget: Interactive Tool Promo */}
+            <Link to="/dementia-trigger-decoder" className="group relative bg-white border border-blue-100 rounded-3xl p-8 shadow-sm overflow-hidden block hover:shadow-md transition-shadow">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute -right-6 -top-6 w-32 h-32 bg-blue-100/50 rounded-full blur-2xl group-hover:bg-blue-200/50 transition-colors duration-500" />
+              
+              <div className="relative z-10 flex flex-col gap-4">
+                <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center border border-blue-100 group-hover:scale-110 group-hover:bg-blue-100 transition-all duration-500">
+                  <ArrowRight className="w-6 h-6 text-blue-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-blue-700 transition-colors">Dementia Trigger Decoder</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    Experiencing sudden behavioral changes? Use our interactive tool to decode the distress and find actionable solutions.
+                  </p>
+                </div>
               </div>
-            </div>
+            </Link>
 
-            {/* Talk to someone card */}
-            <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-200/60 flex flex-col items-center text-center">
-              <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-5">
-                <ArrowRight className="w-8 h-8" />
+            {/* Creative Widget: Related Articles */}
+            <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-200/60">
+              <h3 className="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <Bookmark className="w-5 h-5 text-blue-500" /> Keep reading
+              </h3>
+              <div className="flex flex-col gap-6">
+                {Object.entries(BLOG_POSTS)
+                  .filter(([key]) => key !== slug)
+                  .slice(0, 3)
+                  .map(([key, post]) => (
+                    <Link key={key} to={`/blog/${key}`} className="group flex gap-4 items-center">
+                      <div className="w-20 h-20 shrink-0 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200">
+                        <img 
+                          src={post.image} 
+                          alt={post.title} 
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                      </div>
+                      <div className="flex flex-col gap-1.5">
+                        <span className="text-[10px] font-bold text-blue-600 uppercase tracking-wider">{post.category}</span>
+                        <h4 className="text-sm font-bold text-slate-800 leading-snug group-hover:text-blue-600 transition-colors line-clamp-2">
+                          {post.title}
+                        </h4>
+                      </div>
+                    </Link>
+                  ))}
               </div>
-              <h3 className="text-lg font-bold text-slate-800 mb-2">Need immediate guidance?</h3>
-              <p className="text-slate-500 text-sm mb-6">
-                Our support team is ready to listen and help you build a personalized care plan.
-              </p>
-              <button className="w-full bg-blue-600 text-white font-bold rounded-xl px-4 py-3 text-sm shadow-sm hover:bg-blue-700 transition-colors">
-                Book a consultation
-              </button>
             </div>
 
           </div>
