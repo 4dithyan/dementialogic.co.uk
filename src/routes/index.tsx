@@ -218,7 +218,7 @@ export default function Index() {
       </section>
 
       {/* Early Indicators */}
-      <section className="bg-[#f8faff] py-24">
+      <section className="bg-[#f8faff] py-16 lg:py-20">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -234,7 +234,7 @@ export default function Index() {
                 EARLY INDICATORS
               </div>
               
-              <h2 className="text-3xl md:text-4xl lg:text-[40px] font-extrabold leading-tight text-slate-800 mb-6">
+              <h2 className="text-4xl font-bold leading-[1.1] tracking-tight text-slate-800 lg:text-5xl mb-6">
                 Recognising early signs can make a difference
               </h2>
               
@@ -260,7 +260,7 @@ export default function Index() {
       </section>
 
       {/* Learn More */}
-      <section className="bg-white py-24 border-t border-slate-100">
+      <section className="bg-white py-16 lg:py-20 border-t border-slate-100">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -274,7 +274,7 @@ export default function Index() {
               <div className="text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">
                 LEARN MORE
               </div>
-              <h2 className="text-3xl md:text-4xl lg:text-[40px] font-extrabold leading-tight text-slate-800">
+              <h2 className="text-4xl font-bold leading-[1.1] tracking-tight text-slate-800 lg:text-5xl">
                 Understand dementia.<br />Feel more confident.
               </h2>
             </div>
@@ -340,7 +340,7 @@ export default function Index() {
       </section>
 
       {/* Learn We Support You */}
-      <section className="bg-white py-24">
+      <section className="bg-white py-16 lg:py-20">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -353,7 +353,7 @@ export default function Index() {
             <div className="text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">
               LEARN WE SUPPORT YOU
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-[40px] font-extrabold leading-tight text-slate-800 mb-12">
+            <h2 className="text-4xl font-bold leading-[1.1] tracking-tight text-slate-800 lg:text-5xl mb-12">
               Support at every step<br />of your journey
             </h2>
             
@@ -422,105 +422,86 @@ export default function Index() {
       </section>
 
       {/* Caregiver Well-being */}
-      <section className="bg-gradient-to-b from-[#f8faff] to-white py-24 relative overflow-hidden">
-        {/* Subtle background glow */}
-        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[800px] h-[800px] bg-blue-50/50 rounded-full blur-3xl -z-10" />
-
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mx-auto grid max-w-[1400px] grid-cols-1 gap-16 px-8 lg:grid-cols-2 lg:gap-24 items-center"
-        >
-          {/* Left Side */}
-          <div className="flex flex-col justify-center">
-            <div className="inline-flex w-fit items-center gap-2 rounded-full bg-blue-100/60 px-4 py-2 text-xs font-bold uppercase tracking-wider text-blue-700 mb-6 border border-blue-200/50">
-              <Heart className="w-4 h-4 text-blue-600" /> Caregiver Well-being
-            </div>
-            
-            <h2 className="text-3xl md:text-4xl lg:text-[40px] font-extrabold leading-tight text-slate-800 mb-6">
-              Caring for someone else<br />starts with caring for you
-            </h2>
-            <p className="max-w-xl text-[17px] text-slate-600 leading-relaxed mb-8">
-              Caregiving can be profoundly beautiful, but undeniably overwhelming. You don't have to navigate it alone.
-            </p>
-            
-            <div className="flex flex-col gap-4 mb-10">
-              {/* Pro List Item 1 */}
-              <div className="group flex items-start gap-4 p-5 rounded-2xl transition-all duration-300 hover:bg-white hover:shadow-xl hover:shadow-blue-900/5 border border-transparent hover:border-blue-100">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
-                  <CheckCircle2 className="h-6 w-6" />
+      <section className="bg-blue-600 text-white relative overflow-hidden">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+            <div className="px-8 py-12 lg:py-16 flex flex-col justify-center relative z-20 lg:pr-16">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full bg-blue-500/30 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-blue-100 mb-4 border border-blue-400/30">
+                <Heart className="w-3.5 h-3.5 text-white" /> Caregiver Well-being
+              </div>
+              
+              <h2 className="text-3xl font-bold leading-[1.15] tracking-tight text-white lg:text-4xl mb-4">
+                Caring for someone else<br />starts with caring for you
+              </h2>
+              <p className="max-w-xl text-[16px] text-blue-100 leading-relaxed mb-6">
+                Caregiving can be profoundly beautiful, but undeniably overwhelming. You don't have to navigate it alone.
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                {/* Bento Item 1 - Full Width */}
+                <div className="col-span-1 md:col-span-2 group bg-blue-500/20 backdrop-blur-md p-5 rounded-2xl border border-blue-400/20 hover:bg-blue-500/30 hover:border-blue-400/40 transition-all duration-300 flex items-center gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10 text-white shadow-inner">
+                    <CheckCircle2 className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <div className="text-[16px] font-bold text-white mb-1">You are not alone</div>
+                    <div className="text-[14px] text-blue-100">We listen, understand, and provide a safe space to share your concerns.</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-[17px] font-bold text-slate-800 mb-1 group-hover:text-blue-700 transition-colors">You are not alone</div>
-                  <div className="text-[15px] text-slate-600">We listen, understand, and provide a safe space to share your concerns.</div>
+                
+                {/* Bento Item 2 - Half Width */}
+                <div className="col-span-1 group bg-blue-500/20 backdrop-blur-md p-5 rounded-2xl border border-blue-400/20 hover:bg-blue-500/30 hover:border-blue-400/40 transition-all duration-300 flex flex-col">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-white shadow-inner mb-4">
+                    <Heart className="h-5 w-5" />
+                  </div>
+                  <div className="text-[16px] font-bold text-white mb-2">Take care of yourself</div>
+                  <div className="text-[13px] text-blue-100 leading-relaxed">Explore practical tips to manage stress and avoid burnout.</div>
+                </div>
+
+                {/* Bento Item 3 - Half Width */}
+                <div className="col-span-1 group bg-blue-500/20 backdrop-blur-md p-5 rounded-2xl border border-blue-400/20 hover:bg-blue-500/30 hover:border-blue-400/40 transition-all duration-300 flex flex-col">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-white shadow-inner mb-4">
+                    <FileText className="h-5 w-5" />
+                  </div>
+                  <div className="text-[16px] font-bold text-white mb-2">Learn and feel confident</div>
+                  <div className="text-[13px] text-blue-100 leading-relaxed">Gain actionable guidance to handle everyday challenges.</div>
                 </div>
               </div>
               
-              {/* Pro List Item 2 */}
-              <div className="group flex items-start gap-4 p-5 rounded-2xl transition-all duration-300 hover:bg-white hover:shadow-xl hover:shadow-blue-900/5 border border-transparent hover:border-blue-100">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
-                  <CheckCircle2 className="h-6 w-6" />
-                </div>
-                <div>
-                  <div className="text-[17px] font-bold text-slate-800 mb-1 group-hover:text-blue-700 transition-colors">Take care of yourself</div>
-                  <div className="text-[15px] text-slate-600">Explore practical tips and resources to manage stress and avoid burnout.</div>
-                </div>
-              </div>
-
-              {/* Pro List Item 3 */}
-              <div className="group flex items-start gap-4 p-5 rounded-2xl transition-all duration-300 hover:bg-white hover:shadow-xl hover:shadow-blue-900/5 border border-transparent hover:border-blue-100">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
-                  <CheckCircle2 className="h-6 w-6" />
-                </div>
-                <div>
-                  <div className="text-[17px] font-bold text-slate-800 mb-1 group-hover:text-blue-700 transition-colors">Learn and feel confident</div>
-                  <div className="text-[15px] text-slate-600">Gain actionable guidance to handle everyday challenges with clarity.</div>
-                </div>
-              </div>
+              <Link to="/caregiver-reality-check" className="inline-flex w-fit items-center gap-2 rounded-xl bg-white border-2 border-transparent px-6 py-3 text-[15px] font-bold text-blue-700 shadow-lg shadow-black/10 hover:bg-blue-50 hover:shadow-xl transition-all hover:-translate-y-0.5">
+                Explore caregiver support <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
             
-            <Link to="/caregiver-reality-check" className="inline-flex w-fit items-center gap-2 rounded-xl bg-white border-2 border-slate-200 px-8 py-4 text-[15px] font-bold text-slate-700 shadow-sm hover:border-blue-600 hover:text-blue-700 hover:shadow-md transition-all">
-              Explore caregiver support <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-          
-          {/* Right Side: Pro Image Layout */}
-          <div className="relative w-full mt-10 lg:mt-0">
-            {/* Main Image with sophisticated styling */}
-            <div className="relative overflow-hidden rounded-[2.5rem] shadow-2xl shadow-blue-900/10 border-[8px] border-white z-10">
-              <img src={caregiverWellbeingImg} alt="Caregiver providing support" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
-            </div>
-            
-            {/* Premium Floating Badge */}
-            <div className="absolute -bottom-8 -left-8 z-20 hidden md:block">
-              <div className="bg-white/95 backdrop-blur-md p-6 rounded-3xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] border border-white/50 w-[300px]">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-full bg-rose-50 flex items-center justify-center">
-                      <Heart className="h-5 w-5 text-rose-500 fill-rose-500" />
+            <div className="relative w-full h-[600px] lg:h-auto lg:absolute lg:inset-y-0 lg:right-0 lg:w-[50%] z-10">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-transparent w-32 z-10 hidden lg:block" />
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-600 to-transparent h-32 z-10 lg:hidden top-auto bottom-0" />
+              <img src={caregiverWellbeingImg} alt="Caregiver providing support" className="w-full h-full object-cover" />
+              
+              {/* Premium Floating Badge */}
+              <div className="absolute bottom-12 left-1/2 -translate-x-1/2 lg:-left-12 lg:translate-x-0 z-20 w-[90%] max-w-[320px]">
+                <div className="bg-white/95 backdrop-blur-md p-6 rounded-3xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] border border-white/20">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center">
+                      <Heart className="h-5 w-5 text-blue-600 fill-blue-600" />
                     </div>
                     <span className="font-bold text-slate-800 text-[16px]">Gentle Reminder</span>
                   </div>
+                  <p className="text-[15px] font-medium leading-relaxed text-slate-700 mb-2">
+                    You can't pour from an empty cup.
+                  </p>
+                  <p className="text-[14px] text-slate-500">
+                    It's perfectly okay to take a moment to reset and breathe.
+                  </p>
                 </div>
-                <p className="text-[15px] font-medium leading-relaxed text-slate-700 mb-2">
-                  You can't pour from an empty cup.
-                </p>
-                <p className="text-[14px] text-slate-500">
-                  It's perfectly okay to take a moment to reset and breathe.
-                </p>
               </div>
             </div>
-            
-            {/* Background Decorative Dots */}
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px] opacity-40 z-0" />
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Learn at your pace (Clinical Redesign) */}
-      <section className="bg-white py-24">
+      <section className="bg-white py-16 lg:py-20">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -532,7 +513,7 @@ export default function Index() {
             <div className="inline-flex w-fit items-center gap-2 rounded-full bg-blue-50 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-blue-600 mb-6">
               <FileText className="w-4 h-4" /> Educational Resources
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-[40px] font-extrabold leading-tight text-slate-800 mb-6">
+            <h2 className="text-4xl font-bold leading-[1.1] tracking-tight text-slate-800 lg:text-5xl mb-6">
               Learn at your pace
             </h2>
             <p className="mt-3 text-lg text-slate-600 max-w-2xl mx-auto">
@@ -566,14 +547,18 @@ export default function Index() {
       </section>
 
       {/* Education Hub Banner */}
-      <section className="bg-[#f8faff] py-16 lg:py-24 border-y border-slate-100">
+      <section className="bg-[#f8faff] py-12 lg:py-16 border-y border-slate-100">
         <div className="mx-auto max-w-[1400px] px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-white rounded-[3rem] p-8 lg:p-12 shadow-xl shadow-blue-900/5 border border-slate-100">
-            <div className="flex flex-col justify-center lg:pr-8">
+            <div className="relative w-full overflow-hidden rounded-[2rem] shadow-lg border-8 border-slate-50">
+              <img src={educationHubBannerImg} alt="Learning about dementia on a tablet" className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700" />
+            </div>
+
+            <div className="flex flex-col justify-center lg:pl-8">
               <div className="text-[12px] font-bold uppercase tracking-widest text-blue-600 mb-4 flex items-center gap-2">
                 <FileText className="h-4 w-4" /> Education Hub
               </div>
-              <h2 className="text-3xl md:text-4xl lg:text-[40px] font-extrabold leading-tight text-slate-800 mb-6">
+              <h2 className="text-4xl font-bold leading-[1.1] tracking-tight text-slate-800 lg:text-5xl mb-6">
                 Knowledge brings clarity and confidence
               </h2>
               <p className="text-slate-600 mb-10 max-w-md leading-relaxed text-[17px]">
@@ -583,37 +568,10 @@ export default function Index() {
                 Visit Education Hub <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-            
-            <div className="relative w-full overflow-hidden rounded-[2rem] shadow-lg border-8 border-slate-50">
-              <img src={educationHubBannerImg} alt="Learning about dementia on a tablet" className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700" />
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Talk banner */}
-      <section className="bg-[#f8faff] py-24 border-b border-slate-100">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mx-auto max-w-[1400px] px-8 flex flex-col items-center text-center"
-        >
-          <div className="mb-6">
-            <HandHeart className="h-16 w-16 text-blue-600" strokeWidth={1.2} />
-          </div>
-          <h2 className="text-3xl md:text-4xl lg:text-[40px] font-extrabold leading-tight text-slate-800 mb-4">
-            Need to talk now? We're here.
-          </h2>
-          <p className="text-[17px] text-slate-600 mb-8 max-w-md leading-relaxed">
-            Reach out for a caring conversation.
-          </p>
-          <button className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-8 py-3.5 text-[15px] font-bold text-white shadow-lg shadow-blue-600/20 hover:bg-blue-700 transition-colors">
-            <Phone className="h-4 w-4" fill="currentColor" /> Talk to someone
-          </button>
-        </motion.div>
-      </section>
 
       {/* Footer */}
       
