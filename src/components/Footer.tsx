@@ -68,32 +68,7 @@ export default function Footer() {
         </div>
       </footer>
 
-      {/* Sticky bottom bar */}
-      <section className="border-t border-border bg-muted/40">
-        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-6 px-8 py-6">
-          <div className="flex items-center gap-3">
-            <Heart className="h-6 w-6 text-primary" />
-            <div className="text-sm">
-              <span className="font-semibold text-foreground">You don't have to face this alone.</span>{" "}
-              <span className="text-muted-foreground">We're here to listen, guide and support you.</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <Phone className="h-6 w-6 text-primary" />
-            <div className="text-sm">
-              <div>
-                <span className="font-semibold text-foreground">Need to talk now?</span>{" "}
-                <span className="font-semibold text-foreground">We're here.</span>
-              </div>
-              <div className="text-muted-foreground">Reach out for a caring conversation.</div>
-            </div>
-            <button className="inline-flex items-center gap-2 rounded-lg border-2 border-primary bg-background px-5 py-3 text-sm font-semibold text-primary hover:bg-primary/5 transition-colors">
-              <Headphones className="h-4 w-4" />
-              Talk to someone
-            </button>
-          </div>
-        </div>
-      </section>
+
     </>
   );
 }
