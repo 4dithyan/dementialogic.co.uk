@@ -1,14 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
-import { ChevronDown, Headphones } from "lucide-react";
+import { ChevronDown, Phone } from "lucide-react";
 import Logo from "./Logo";
 
 const navItems = [
   { label: "Home", to: "/", hasDropdown: false },
-  { label: "About Us", to: "/about", hasDropdown: false },
+  { label: "Dementia Trigger Decoder", to: "/dementia-trigger-decoder", hasDropdown: false },
+  { label: "Caregiver Reality Check", to: "/caregiver-reality-check", hasDropdown: false },
   { label: "Education Hub", to: "/education-hub", hasDropdown: false },
   { label: "Blog", to: "/blog", hasDropdown: false },
-  { label: "Caregiver Reality Check", to: "/caregiver-reality-check", hasDropdown: false },
-  { label: "Dementia Trigger Decoder", to: "/dementia-trigger-decoder", hasDropdown: false },
+  { label: "About Us", to: "/about", hasDropdown: false },
 ];
 
 export default function Header() {
@@ -42,10 +42,10 @@ export default function Header() {
             );
           })}
         </nav>
-        <button className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-sm hover:opacity-95">
-          <Headphones className="h-4 w-4" />
-          Talk to someone
-        </button>
+        <a href="tel:+448001234567" className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-sm hover:opacity-95 transition-opacity">
+          <Phone className="h-4 w-4 fill-current" />
+          Contact Us: 0800 123 4567
+        </a>
       </div>
     </header>
   );
