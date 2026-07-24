@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Heart,
   ChevronDown,
@@ -27,6 +28,7 @@ import {
   Facebook,
   Instagram,
   Youtube,
+  CheckCircle2,
 } from "lucide-react";
 import heroImg from "@/assets/hero.png";
 import whatIsDementiaImg from "@/assets/what_is_dementia.png";
@@ -35,24 +37,70 @@ import talkingHelpImg from "@/assets/talking_help.png";
 import caringEmotionsImg from "@/assets/caring_emotions.png";
 import chairImg from "@/assets/cozy-chair.jpg";
 import handshakeImg from "@/assets/handshake.jpg";
+import caregiverWellbeingImg from "@/assets/caregiver_wellbeing.png";
+import educationHubBannerImg from "@/assets/education_hub_banner.png";
 
 
 
 
 const features = [
-  { icon: HandHeart, title: "Person-centred care", desc: "Every person is unique. So is our care." },
-  { icon: UsersRound, title: "Support for families", desc: "Because caregivers deserve support too." },
+  { icon: UsersRound, title: "Person-centred care", desc: "Every person is unique. So is our care." },
+  { icon: Heart, title: "Support for families", desc: "Because caregivers deserve support too." },
   { icon: ShieldCheck, title: "Safe & supportive space", desc: "Guidance you can trust, whenever you need it." },
-  { icon: Leaf, title: "Hope and dignity", desc: "Focusing on well-being, not just symptoms." },
 ];
 
-const signs = [
-  { icon: HelpCircle, tint: "bg-sky-100 text-sky-600", label: "Repeating questions or stories" },
-  { icon: MapPin, tint: "bg-emerald-100 text-emerald-600", label: "Getting lost in familiar places" },
-  { icon: CloudSun, tint: "bg-amber-100 text-amber-600", label: "Confusion in the evening or about time and date" },
-  { icon: Puzzle, tint: "bg-violet-100 text-violet-600", label: "Trouble finding the right words" },
-  { icon: UsersRound, tint: "bg-rose-100 text-rose-600", label: "Withdrawal from activities they once enjoyed" },
+const faqs = [
+  { icon: HelpCircle, tint: "bg-blue-50 text-blue-600", q: "Is repeating the same question a sign of dementia?", a: "Occasionally forgetting something is a normal part of ageing. However, repeatedly asking the same question because the answer has been forgotten within a short period may be an early sign of memory changes associated with dementia." },
+  { icon: MapPin, tint: "bg-blue-50 text-blue-600", q: "Why might someone get lost in familiar places?", a: "People living with dementia may have difficulty recognising familiar surroundings or remembering directions. This can make everyday journeys confusing, even in places they have visited many times." },
+  { icon: Puzzle, tint: "bg-blue-50 text-blue-600", q: "Why does dementia affect communication?", a: "Dementia can affect language and communication. A person may pause frequently, substitute incorrect words, or have difficulty following conversations, making communication more challenging over time." },
+  { icon: CloudSun, tint: "bg-blue-50 text-blue-600", q: "When should memory changes become a concern?", a: "If memory or thinking changes become persistent, worsen over time, or begin affecting daily life, it's important to speak with a healthcare professional for an assessment and appropriate guidance." },
+  { icon: ShieldCheck, tint: "bg-blue-50 text-blue-600", q: "Does memory loss always mean dementia?", a: "No. Memory problems can have many causes, including stress, depression, poor sleep, medication side effects, or vitamin deficiencies. A medical assessment is the best way to understand the cause." },
 ];
+
+function FAQAccordion() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  return (
+    <div className="flex flex-col bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+      {faqs.map((faq, i) => {
+        const isOpen = openIndex === i;
+        return (
+          <div key={faq.q} className={`flex flex-col transition-colors ${i !== faqs.length - 1 ? 'border-b border-slate-100' : ''}`}>
+            <button
+              onClick={() => setOpenIndex(isOpen ? null : i)}
+              className="flex items-center gap-5 p-6 w-full text-left hover:bg-slate-50 focus:outline-none transition-colors"
+            >
+              <div className={`flex shrink-0 h-12 w-12 items-center justify-center rounded-full ${faq.tint}`}>
+                <faq.icon className="h-5 w-5" strokeWidth={1.5} />
+              </div>
+              <div className={`flex-1 text-[16px] font-bold transition-colors ${isOpen ? 'text-blue-700' : 'text-slate-800'}`}>
+                {faq.q}
+              </div>
+              <div className={`shrink-0 flex items-center justify-center h-8 w-8 rounded-full transition-transform duration-300 ${isOpen ? 'rotate-180 bg-slate-100' : 'bg-transparent'}`}>
+                <ChevronDown className="h-5 w-5 text-slate-400" />
+              </div>
+            </button>
+            <AnimatePresence initial={false}>
+              {isOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <div className="px-6 pb-6 pt-0 ml-[68px] text-[15px] leading-relaxed text-slate-600">
+                    {faq.a}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 const steps = [
   { n: 1, icon: MessageCircle, title: "Talk to us", desc: "Share your concerns in a safe and caring conversation.", color: "sky" },
@@ -74,10 +122,10 @@ const reminders = [
 ];
 
 const learnCards = [
-  { icon: FileText, tint: "bg-sky-100 text-sky-600", title: "Understanding dementia", desc: "Clear, simple information to help you understand." },
-  { icon: Home, tint: "bg-emerald-100 text-emerald-600", title: "Creating a safe home", desc: "Tips to make daily life safer and calmer." },
-  { icon: MessagesSquare, tint: "bg-violet-100 text-violet-600", title: "Communication that helps", desc: "Ways to connect with kindness and patience." },
-  { icon: Sparkles, tint: "bg-amber-100 text-amber-600", title: "Activities that bring joy", desc: "Ideas for meaningful moments together." },
+  { icon: FileText, tint: "bg-blue-50 text-blue-600", title: "Understanding dementia", desc: "Clear, simple information to help you understand." },
+  { icon: Home, tint: "bg-blue-50 text-blue-600", title: "Creating a safe home", desc: "Tips to make daily life safer and calmer." },
+  { icon: MessagesSquare, tint: "bg-blue-50 text-blue-600", title: "Communication that helps", desc: "Ways to connect with kindness and patience." },
+  { icon: Sparkles, tint: "bg-blue-50 text-blue-600", title: "Activities that bring joy", desc: "Ideas for meaningful moments together." },
 ];
 
 
@@ -150,333 +198,323 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Feature strip overlapping */}
-      <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="mx-auto max-w-[1400px] px-8"
-      >
-        <div className="relative z-10 -mt-16 grid grid-cols-1 divide-y divide-border rounded-2xl border border-border bg-card shadow-xl md:grid-cols-2 md:divide-x md:divide-y-0 lg:grid-cols-4">
-          {features.map((f, i) => (
-            <div key={f.title} className={`flex items-start gap-4 p-8 ${i >= 2 ? "md:border-t lg:border-t-0" : ""}`}>
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-sky-50">
-                <f.icon className="h-6 w-6 text-primary" />
+      {/* Features Strip */}
+      <section className="border-b border-slate-200 bg-white py-12">
+        <div className="mx-auto max-w-[1400px] px-8">
+          <div className="grid grid-cols-1 divide-y divide-slate-200 md:grid-cols-3 md:divide-x md:divide-y-0">
+            {features.map((f, i) => (
+              <div key={f.title} className={`flex items-start gap-5 ${i === 0 ? 'pr-8' : i === 1 ? 'px-8' : 'pl-8'}`}>
+                <div className="shrink-0">
+                  <f.icon className="h-10 w-10 text-blue-600" strokeWidth={1.2} />
+                </div>
+                <div>
+                  <div className="font-bold text-[17px] text-slate-800">{f.title}</div>
+                  <div className="mt-1 text-[15px] leading-relaxed text-slate-600">{f.desc}</div>
+                </div>
               </div>
-              <div>
-                <div className="font-semibold text-foreground">{f.title}</div>
-                <div className="mt-1 text-sm text-muted-foreground">{f.desc}</div>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </motion.div>
-
-      {/* What you might be noticing (Clinical Redesign) */}
-      <section className="bg-white py-24">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mx-auto max-w-[1400px] px-8"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-16 lg:gap-24 items-center">
-            
-            {/* Left Column: Context & CTA */}
-            <div className="flex flex-col items-start text-left">
-              <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-blue-600 mb-6">
-                <ShieldCheck className="w-4 h-4" /> Early Indicators
-              </div>
-              
-              <h2 className="text-4xl font-bold leading-tight text-slate-800 mb-6">
-                What you might be noticing
-              </h2>
-              
-              <p className="text-lg text-slate-600 leading-relaxed mb-10">
-                Cognitive changes often begin subtly. Recognizing these early clinical indicators empowers you to seek the right support and build a proactive care plan. You are not alone in noticing these shifts.
-              </p>
-              
-              <Link 
-                to="/education-hub" 
-                className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-7 py-4 text-[15px] font-bold text-white shadow-lg shadow-blue-600/20 transition-all hover:bg-blue-700 hover:-translate-y-0.5"
-              >
-                Access the Education Hub <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-
-            {/* Right Column: Indicator Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 relative">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-blue-50/50 blur-3xl -z-10 rounded-full" />
-              
-              {signs.map((s, i) => (
-                <div 
-                  key={s.label} 
-                  className={`group flex items-start gap-4 p-6 rounded-[1.25rem] border border-slate-100 bg-white shadow-sm hover:shadow-xl hover:border-blue-100 transition-all duration-300 ${i === 4 ? 'sm:col-span-2' : ''}`}
-                >
-                  <div className={`flex shrink-0 h-14 w-14 items-center justify-center rounded-2xl ${s.tint} transition-transform duration-300 group-hover:scale-110`}>
-                    <s.icon className="h-6 w-6" />
-                  </div>
-                  <div className="flex flex-col justify-center min-h-[56px]">
-                    <div className="text-[16px] font-bold text-slate-800 leading-snug group-hover:text-blue-700 transition-colors">
-                      {s.label}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-          </div>
-        </motion.div>
       </section>
 
-      {/* Learn and feel more confident */}
-      <section className="bg-[#f8faff] py-12">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mx-auto max-w-[1400px] px-8"
-        >
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[300px_1fr]">
-            <div className="flex flex-col justify-center">
-              <h2 className="text-4xl font-bold leading-tight text-slate-800">
-                Learn and feel<br />more confident
-              </h2>
-              <div className="mt-4 h-1 w-12 rounded bg-emerald-400" />
-              <p className="mt-6 text-[17px] leading-relaxed text-slate-600">
-                Understanding dementia can<br />bring clarity and<br />help you feel more prepared.
-              </p>
-              <Link to="/blog" className="mt-10 inline-flex w-fit items-center gap-2 rounded-xl border border-[#c1d3f0] bg-transparent px-6 py-3.5 text-[15px] font-semibold text-[#3b82f6] shadow-sm hover:bg-blue-50/50">
-                Explore learning resources <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-            
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {/* Card 1 */}
-              <Link to="/blog/what-is-dementia" className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-slate-50">
-                  <img src={whatIsDementiaImg} alt="Dementia basics" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                </div>
-                <div className="mt-6 flex flex-col flex-1">
-                  <div className="w-fit rounded-full bg-blue-50 px-3 py-1 text-[13px] font-semibold text-[#3b82f6]">Basics</div>
-                  <h3 className="mt-3 text-[17px] font-bold text-slate-800 group-hover:text-blue-600 transition-colors">What is dementia?</h3>
-                  <p className="mt-2 text-[14px] leading-relaxed text-slate-600 flex-1">
-                    A simple guide to what dementia is and how it affects the brain.
-                  </p>
-                  <div className="mt-6 flex items-center gap-1 text-[14px] font-semibold text-[#3b82f6]">
-                    Read more <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                  </div>
-                </div>
-              </Link>
-              {/* Card 2 */}
-              <Link to="/blog/creating-calm-routines" className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-slate-50">
-                  <img src={calmRoutinesImg} alt="Managing daily life" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                </div>
-                <div className="mt-6 flex flex-col flex-1">
-                  <div className="w-fit rounded-full bg-emerald-50 px-3 py-1 text-[13px] font-semibold text-emerald-600">Managing daily life</div>
-                  <h3 className="mt-3 text-[17px] font-bold text-slate-800 group-hover:text-emerald-600 transition-colors">Creating calm routines</h3>
-                  <p className="mt-2 text-[14px] leading-relaxed text-slate-600 flex-1">
-                    Small changes at home can reduce confusion and bring comfort.
-                  </p>
-                  <div className="mt-6 flex items-center gap-1 text-[14px] font-semibold text-[#3b82f6]">
-                    Read more <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                  </div>
-                </div>
-              </Link>
-              {/* Card 3 */}
-              <Link to="/blog/talking-in-ways-that-help" className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-slate-50">
-                  <img src={talkingHelpImg} alt="Communication" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                </div>
-                <div className="mt-6 flex flex-col flex-1">
-                  <div className="w-fit rounded-full bg-violet-50 px-3 py-1 text-[13px] font-semibold text-violet-600">Communication</div>
-                  <h3 className="mt-3 text-[17px] font-bold text-slate-800 group-hover:text-violet-600 transition-colors">Talking in ways that help</h3>
-                  <p className="mt-2 text-[14px] leading-relaxed text-slate-600 flex-1">
-                    Tips to connect with kindness and reduce frustration.
-                  </p>
-                  <div className="mt-6 flex items-center gap-1 text-[14px] font-semibold text-[#3b82f6]">
-                    Read more <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                  </div>
-                </div>
-              </Link>
-              {/* Card 4 */}
-              <Link to="/blog/caring-for-your-emotions" className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-slate-50">
-                  <img src={caringEmotionsImg} alt="Emotional wellbeing" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                </div>
-                <div className="mt-6 flex flex-col flex-1">
-                  <div className="w-fit rounded-full bg-slate-100 px-3 py-1 text-[13px] font-semibold text-slate-600">Emotional wellbeing</div>
-                  <h3 className="mt-3 text-[17px] font-bold text-slate-800 group-hover:text-slate-600 transition-colors">Caring for your emotions too</h3>
-                  <p className="mt-2 text-[14px] leading-relaxed text-slate-600 flex-1">
-                    Your well-being matters. You can't pour from an empty cup.
-                  </p>
-                  <div className="mt-6 flex items-center gap-1 text-[14px] font-semibold text-[#3b82f6]">
-                    Read more <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                  </div>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* How we help */}
-      <section className="bg-background py-12">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-16 px-8 lg:grid-cols-[1.2fr_1fr] lg:gap-24"
-        >
-          <div>
-            <h2 className="text-4xl font-bold text-foreground">How we help</h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              We walk beside you with a gentle, step-by-step approach.
-            </p>
-            <ol className="mt-10 space-y-8">
-              {steps.map((s) => (
-                <li key={s.n} className="flex items-start gap-5">
-                  <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-base font-bold ${
-                    s.color === 'sky' ? 'bg-[#e2edff] text-[#2563eb]' :
-                    s.color === 'emerald' ? 'bg-[#dcfce7] text-[#16a34a]' :
-                    'bg-[#fef3c7] text-[#d97706]'
-                  }`}>
-                    {s.n}
-                  </div>
-                  <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 bg-background ${
-                    s.color === 'sky' ? 'border-[#e2edff] text-[#3b82f6]' :
-                    s.color === 'emerald' ? 'border-[#dcfce7] text-[#22c55e]' :
-                    'border-[#fef3c7] text-[#f59e0b]'
-                  }`}>
-                    <s.icon className="h-6 w-6" />
-                  </div>
-                  <div className="pt-1">
-                    <div className="text-lg font-semibold text-foreground">{s.title}</div>
-                    <div className="mt-1.5 text-base text-muted-foreground">{s.desc}</div>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <button className="mt-12 inline-flex items-center gap-2 rounded-lg bg-[#2563eb] px-7 py-3.5 text-base font-semibold text-white shadow-sm hover:bg-[#1d4ed8]">
-              Get started <ArrowRight className="h-5 w-5" />
-            </button>
-          </div>
-          <div className="relative flex aspect-square flex-col justify-between overflow-hidden rounded-[2.5rem] bg-[#f8fbff] p-10 shadow-sm lg:p-12">
-            <div>
-              <div className="font-serif text-5xl font-bold leading-none text-[#3b82f6]">“</div>
-              <h3 className="mt-2 text-2xl font-bold leading-snug text-[#0f172a] lg:text-[28px]">
-                It's not just about memory.<br />It's about moments that<br />still matter.
-              </h3>
-              <p className="mt-6 max-w-[280px] text-sm leading-relaxed text-[#475569]">
-                We focus on what brings joy, connection and meaning to each day.
-              </p>
-            </div>
-            <div className="absolute bottom-0 right-0 w-[80%] max-w-[360px]">
-              <img
-                src={chairImg}
-                alt="A cozy blue armchair with a plant"
-                width={1024}
-                height={1024}
-                loading="lazy"
-                className="h-auto w-full object-contain mix-blend-multiply"
-              />
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Support for caregivers (Clinical Redesign) */}
+      {/* Early Indicators */}
       <section className="bg-[#f8faff] py-24">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mx-auto grid max-w-[1400px] grid-cols-1 gap-16 px-8 lg:grid-cols-[1fr_1.1fr] lg:gap-24 items-center"
+          className="mx-auto max-w-[1400px] px-8"
         >
-          <div className="flex flex-col justify-center">
-            <div className="inline-flex w-fit items-center gap-2 rounded-full bg-blue-100/50 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-blue-700 mb-6">
-              <Heart className="w-4 h-4" /> Caregiver Well-being
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+            
+            {/* Left Column */}
+            <div className="flex flex-col items-start text-left lg:sticky lg:top-32">
+              <div className="text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">
+                EARLY INDICATORS
+              </div>
+              
+              <h2 className="text-3xl md:text-4xl lg:text-[40px] font-extrabold leading-tight text-slate-800 mb-6">
+                Recognising early signs can make a difference
+              </h2>
+              
+              <p className="text-[17px] text-slate-600 leading-relaxed mb-10 max-w-md">
+                Dementia changes often begin subtly. Knowing what to look for helps you take the right steps sooner.
+              </p>
+              
+              <Link 
+                to="/education-hub" 
+                className="inline-flex items-center gap-2 rounded-lg border border-blue-200 bg-white px-7 py-3.5 text-[15px] font-bold text-blue-700 hover:bg-blue-50 transition-colors"
+              >
+                Explore the Education Hub <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            {/* Right Column: FAQ Accordion */}
+            <div className="flex flex-col">
+              <FAQAccordion />
             </div>
             
-            <h2 className="text-4xl font-bold leading-tight text-slate-800 mb-6">
-              Support for caregivers
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Learn More */}
+      <section className="bg-white py-24 border-t border-slate-100">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mx-auto max-w-[1400px] px-8"
+        >
+          {/* Header Row */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <div className="text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">
+                LEARN MORE
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-[40px] font-extrabold leading-tight text-slate-800">
+                Understand dementia.<br />Feel more confident.
+              </h2>
+            </div>
+            <Link to="/blog" className="inline-flex items-center gap-2 text-[15px] font-bold text-blue-700 hover:text-blue-800 transition-colors">
+              View all resources <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+            
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {/* Card 1 */}
+            <Link to="/blog/what-is-dementia" className="group flex flex-col overflow-hidden rounded-[1.25rem] bg-[#f8faff] transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+              <div className="aspect-[16/9] w-full overflow-hidden bg-slate-100">
+                <img src={whatIsDementiaImg} alt="Dementia basics" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              </div>
+              <div className="p-8 flex flex-col flex-1">
+                <div className="text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-3">BASICS</div>
+                <h3 className="text-[20px] font-bold text-slate-800 group-hover:text-blue-700 transition-colors mb-3">Understanding dementia</h3>
+                <p className="text-[15px] leading-relaxed text-slate-600 flex-1">
+                  Clear, simple information to help you understand what's happening.
+                </p>
+                <div className="mt-8 flex items-center gap-2 text-[14px] font-bold text-blue-700">
+                  Read guide <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </div>
+              </div>
+            </Link>
+
+            {/* Card 2 */}
+            <Link to="/blog/creating-calm-routines" className="group flex flex-col overflow-hidden rounded-[1.25rem] bg-[#f8faff] transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+              <div className="aspect-[16/9] w-full overflow-hidden bg-slate-100">
+                <img src={calmRoutinesImg} alt="Managing daily life" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              </div>
+              <div className="p-8 flex flex-col flex-1">
+                <div className="text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-3">DAILY LIVING</div>
+                <h3 className="text-[20px] font-bold text-slate-800 group-hover:text-blue-700 transition-colors mb-3">Managing daily life</h3>
+                <p className="text-[15px] leading-relaxed text-slate-600 flex-1">
+                  Practical tips to make everyday routines easier and calmer.
+                </p>
+                <div className="mt-8 flex items-center gap-2 text-[14px] font-bold text-blue-700">
+                  Read guide <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </div>
+              </div>
+            </Link>
+
+            {/* Card 3 */}
+            <Link to="/blog/talking-in-ways-that-help" className="group flex flex-col overflow-hidden rounded-[1.25rem] bg-[#f8faff] transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+              <div className="aspect-[16/9] w-full overflow-hidden bg-slate-100">
+                <img src={talkingHelpImg} alt="Communication" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              </div>
+              <div className="p-8 flex flex-col flex-1">
+                <div className="text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-3">COMMUNICATION</div>
+                <h3 className="text-[20px] font-bold text-slate-800 group-hover:text-blue-700 transition-colors mb-3">Talking in ways that help</h3>
+                <p className="text-[15px] leading-relaxed text-slate-600 flex-1">
+                  Communication tips to connect with kindness and reduce frustration.
+                </p>
+                <div className="mt-8 flex items-center gap-2 text-[14px] font-bold text-blue-700">
+                  Read guide <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </div>
+              </div>
+            </Link>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Learn We Support You */}
+      <section className="bg-white py-24">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-16 px-8 lg:grid-cols-[1fr_1.2fr]"
+        >
+          {/* Left Side */}
+          <div className="flex flex-col">
+            <div className="text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">
+              LEARN WE SUPPORT YOU
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-[40px] font-extrabold leading-tight text-slate-800 mb-12">
+              Support at every step<br />of your journey
             </h2>
-            <p className="max-w-xl text-lg text-slate-600 leading-relaxed mb-10">
-              Caring for someone with dementia can be profoundly beautiful, yet undeniably overwhelming. We're here to support you.
+            
+            <div className="flex flex-col gap-10">
+              {/* Step 1 */}
+              <div className="flex items-start gap-6">
+                <div className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full bg-blue-50 text-[18px] font-bold text-blue-700">
+                  01
+                </div>
+                <div>
+                  <h3 className="text-[18px] font-bold text-slate-800">We listen</h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-slate-600 max-w-sm">
+                    We take the time to understand your concerns in a safe and caring conversation.
+                  </p>
+                </div>
+              </div>
+              
+              {/* Step 2 */}
+              <div className="flex items-start gap-6">
+                <div className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full bg-blue-50 text-[18px] font-bold text-blue-700">
+                  02
+                </div>
+                <div>
+                  <h3 className="text-[18px] font-bold text-slate-800">We assess</h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-slate-600 max-w-sm">
+                    We help identify possible signs and guide you through what's happening.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="flex items-start gap-6">
+                <div className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full bg-blue-50 text-[18px] font-bold text-blue-700">
+                  03
+                </div>
+                <div>
+                  <h3 className="text-[18px] font-bold text-slate-800">We guide</h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-slate-600 max-w-sm">
+                    We support you with practical next steps and ongoing resources.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <button className="mt-12 inline-flex w-fit items-center gap-2 rounded-xl bg-blue-600 px-8 py-4 text-[15px] font-bold text-white shadow-lg shadow-blue-600/20 hover:bg-blue-700 transition-all">
+              Get started <ArrowRight className="h-4 w-4" />
+            </button>
+          </div>
+          
+          {/* Right Side: Image and Quote */}
+          <div className="relative aspect-[4/3] w-full lg:aspect-auto lg:h-[600px] overflow-hidden shadow-sm">
+            <img src={handshakeImg} alt="Supportive hands" className="w-full h-full object-cover rounded-none md:rounded-l-[2rem]" />
+            
+            {/* White Quote Box overlapping the image */}
+            <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 w-[85%] max-w-[400px] rounded-[1.5rem] bg-white/95 backdrop-blur-sm p-10 shadow-2xl">
+              <div className="font-serif text-[60px] font-bold leading-[0.5] text-blue-600 mb-4">“</div>
+              <p className="text-[22px] font-bold leading-snug text-slate-800 mb-5">
+                It's not just about memory.<br />It's about moments<br />that still matter.
+              </p>
+              <p className="text-[15px] leading-relaxed text-slate-600">
+                We focus on what brings joy, connection and meaning to each day.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Caregiver Well-being */}
+      <section className="bg-gradient-to-b from-[#f8faff] to-white py-24 relative overflow-hidden">
+        {/* Subtle background glow */}
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[800px] h-[800px] bg-blue-50/50 rounded-full blur-3xl -z-10" />
+
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mx-auto grid max-w-[1400px] grid-cols-1 gap-16 px-8 lg:grid-cols-2 lg:gap-24 items-center"
+        >
+          {/* Left Side */}
+          <div className="flex flex-col justify-center">
+            <div className="inline-flex w-fit items-center gap-2 rounded-full bg-blue-100/60 px-4 py-2 text-xs font-bold uppercase tracking-wider text-blue-700 mb-6 border border-blue-200/50">
+              <Heart className="w-4 h-4 text-blue-600" /> Caregiver Well-being
+            </div>
+            
+            <h2 className="text-3xl md:text-4xl lg:text-[40px] font-extrabold leading-tight text-slate-800 mb-6">
+              Caring for someone else<br />starts with caring for you
+            </h2>
+            <p className="max-w-xl text-[17px] text-slate-600 leading-relaxed mb-8">
+              Caregiving can be profoundly beautiful, but undeniably overwhelming. You don't have to navigate it alone.
             </p>
             
-            <div className="flex flex-col gap-8 mb-10">
-              {caregiverPoints.map((c) => (
-                <div key={c.title} className="flex items-start gap-5 group">
-                  <div
-                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110 ${
-                      c.color === "blue"
-                        ? "bg-blue-100 text-blue-600"
-                        : c.color === "purple"
-                          ? "bg-purple-100 text-purple-600"
-                          : "bg-emerald-100 text-emerald-600"
-                    }`}
-                  >
-                    <c.icon className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <div className="text-[17px] font-bold text-slate-800 mb-1">{c.title}</div>
-                    <div className="text-[15px] text-slate-600 leading-relaxed">{c.desc}</div>
-                  </div>
+            <div className="flex flex-col gap-4 mb-10">
+              {/* Pro List Item 1 */}
+              <div className="group flex items-start gap-4 p-5 rounded-2xl transition-all duration-300 hover:bg-white hover:shadow-xl hover:shadow-blue-900/5 border border-transparent hover:border-blue-100">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
+                  <CheckCircle2 className="h-6 w-6" />
                 </div>
-              ))}
+                <div>
+                  <div className="text-[17px] font-bold text-slate-800 mb-1 group-hover:text-blue-700 transition-colors">You are not alone</div>
+                  <div className="text-[15px] text-slate-600">We listen, understand, and provide a safe space to share your concerns.</div>
+                </div>
+              </div>
+              
+              {/* Pro List Item 2 */}
+              <div className="group flex items-start gap-4 p-5 rounded-2xl transition-all duration-300 hover:bg-white hover:shadow-xl hover:shadow-blue-900/5 border border-transparent hover:border-blue-100">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
+                  <CheckCircle2 className="h-6 w-6" />
+                </div>
+                <div>
+                  <div className="text-[17px] font-bold text-slate-800 mb-1 group-hover:text-blue-700 transition-colors">Take care of yourself</div>
+                  <div className="text-[15px] text-slate-600">Explore practical tips and resources to manage stress and avoid burnout.</div>
+                </div>
+              </div>
+
+              {/* Pro List Item 3 */}
+              <div className="group flex items-start gap-4 p-5 rounded-2xl transition-all duration-300 hover:bg-white hover:shadow-xl hover:shadow-blue-900/5 border border-transparent hover:border-blue-100">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
+                  <CheckCircle2 className="h-6 w-6" />
+                </div>
+                <div>
+                  <div className="text-[17px] font-bold text-slate-800 mb-1 group-hover:text-blue-700 transition-colors">Learn and feel confident</div>
+                  <div className="text-[15px] text-slate-600">Gain actionable guidance to handle everyday challenges with clarity.</div>
+                </div>
+              </div>
             </div>
             
-            <Link to="/caregiver-reality-check" className="inline-flex w-fit items-center gap-2 rounded-xl bg-white border border-blue-200 px-7 py-4 text-[15px] font-bold text-blue-700 shadow-sm hover:bg-blue-50 transition-colors">
+            <Link to="/caregiver-reality-check" className="inline-flex w-fit items-center gap-2 rounded-xl bg-white border-2 border-slate-200 px-8 py-4 text-[15px] font-bold text-slate-700 shadow-sm hover:border-blue-600 hover:text-blue-700 hover:shadow-md transition-all">
               Explore caregiver support <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
           
-          <div className="flex items-center justify-center lg:justify-end relative">
-            {/* Background blur decorative element */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-[400px] bg-blue-400/20 blur-3xl -z-10 rounded-full" />
+          {/* Right Side: Pro Image Layout */}
+          <div className="relative w-full mt-10 lg:mt-0">
+            {/* Main Image with sophisticated styling */}
+            <div className="relative overflow-hidden rounded-[2.5rem] shadow-2xl shadow-blue-900/10 border-[8px] border-white z-10">
+              <img src={caregiverWellbeingImg} alt="Caregiver providing support" className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" />
+            </div>
             
-            <div className="w-full max-w-[500px] rounded-[2.5rem] bg-white border border-blue-100 p-10 shadow-xl shadow-blue-900/5 relative overflow-hidden group/card">
-              {/* Subtle top gradient line */}
-              <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-400 via-emerald-400 to-purple-400" />
-              
-              <div className="relative z-10">
-                <div className="flex items-center justify-between pb-8">
-                  <div className="text-xl font-extrabold text-slate-800">Caregiver Reminder</div>
-                  <div className="w-12 h-12 bg-rose-50 rounded-full flex items-center justify-center transition-transform duration-500 group-hover/card:scale-110 group-hover/card:bg-rose-100">
-                    <Heart className="h-6 w-6 text-rose-500" fill="currentColor" />
+            {/* Premium Floating Badge */}
+            <div className="absolute -bottom-8 -left-8 z-20 hidden md:block">
+              <div className="bg-white/95 backdrop-blur-md p-6 rounded-3xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] border border-white/50 w-[300px]">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-full bg-rose-50 flex items-center justify-center">
+                      <Heart className="h-5 w-5 text-rose-500 fill-rose-500" />
+                    </div>
+                    <span className="font-bold text-slate-800 text-[16px]">Gentle Reminder</span>
                   </div>
                 </div>
-                
-                <div className="py-8">
-                  <p className="text-2xl font-bold leading-snug text-slate-800 mb-3">
-                    You can't pour from an empty cup.
-                  </p>
-                  <p className="text-lg text-slate-600">It's okay to take a break.</p>
-                </div>
-                
-                <div className="grid grid-cols-4 gap-4 pt-8 border-t border-slate-100">
-                  {reminders.map((r) => (
-                    <div key={r.label} className="flex flex-col items-center justify-center text-center group">
-                      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-110 ${
-                          r.color === 'text-blue-500' ? 'bg-blue-50 text-blue-600 group-hover:bg-blue-100' :
-                          r.color === 'text-sky-500' ? 'bg-sky-50 text-sky-600 group-hover:bg-sky-100' :
-                          r.color === 'text-emerald-500' ? 'bg-emerald-50 text-emerald-600 group-hover:bg-emerald-100' : 'bg-purple-50 text-purple-600 group-hover:bg-purple-100'
-                      }`}>
-                        <r.icon className="h-6 w-6" />
-                      </div>
-                      <div className="text-[12px] font-bold text-slate-500 group-hover:text-slate-800 transition-colors">{r.label}</div>
-                    </div>
-                  ))}
-                </div>
+                <p className="text-[15px] font-medium leading-relaxed text-slate-700 mb-2">
+                  You can't pour from an empty cup.
+                </p>
+                <p className="text-[14px] text-slate-500">
+                  It's perfectly okay to take a moment to reset and breathe.
+                </p>
               </div>
             </div>
+            
+            {/* Background Decorative Dots */}
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:16px_16px] opacity-40 z-0" />
           </div>
         </motion.div>
       </section>
@@ -494,7 +532,7 @@ export default function Index() {
             <div className="inline-flex w-fit items-center gap-2 rounded-full bg-blue-50 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-blue-600 mb-6">
               <FileText className="w-4 h-4" /> Educational Resources
             </div>
-            <h2 className="text-4xl font-bold leading-tight text-slate-800 mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-[40px] font-extrabold leading-tight text-slate-800 mb-6">
               Learn at your pace
             </h2>
             <p className="mt-3 text-lg text-slate-600 max-w-2xl mx-auto">
@@ -527,35 +565,53 @@ export default function Index() {
         </motion.div>
       </section>
 
+      {/* Education Hub Banner */}
+      <section className="bg-[#f8faff] py-16 lg:py-24 border-y border-slate-100">
+        <div className="mx-auto max-w-[1400px] px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-white rounded-[3rem] p-8 lg:p-12 shadow-xl shadow-blue-900/5 border border-slate-100">
+            <div className="flex flex-col justify-center lg:pr-8">
+              <div className="text-[12px] font-bold uppercase tracking-widest text-blue-600 mb-4 flex items-center gap-2">
+                <FileText className="h-4 w-4" /> Education Hub
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-[40px] font-extrabold leading-tight text-slate-800 mb-6">
+                Knowledge brings clarity and confidence
+              </h2>
+              <p className="text-slate-600 mb-10 max-w-md leading-relaxed text-[17px]">
+                Explore our clinically accurate guides, articles, and resources at your own pace to better understand the journey ahead.
+              </p>
+              <Link to="/education-hub" className="inline-flex w-fit items-center gap-2 rounded-xl bg-blue-600 px-8 py-4 text-[15px] font-bold text-white hover:bg-blue-700 shadow-lg shadow-blue-600/20 transition-all hover:-translate-y-0.5">
+                Visit Education Hub <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            
+            <div className="relative w-full overflow-hidden rounded-[2rem] shadow-lg border-8 border-slate-50">
+              <img src={educationHubBannerImg} alt="Learning about dementia on a tablet" className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700" />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Talk banner */}
-      <section className="bg-background py-12">
+      <section className="bg-[#f8faff] py-24 border-b border-slate-100">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mx-auto max-w-[1200px] px-8"
+          className="mx-auto max-w-[1400px] px-8 flex flex-col items-center text-center"
         >
-          <div className="relative overflow-hidden rounded-2xl bg-sky-50 p-8">
-            <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[auto_1fr_auto]">
-              <img
-                src={handshakeImg}
-                alt="Two hands clasped in support"
-                width={1024}
-                height={1024}
-                loading="lazy"
-                className="h-32 w-32 rounded-xl object-cover"
-              />
-              <div>
-                <h3 className="text-2xl font-bold text-foreground">Need to talk now? We're here.</h3>
-                <p className="mt-2 text-muted-foreground">Reach out for a caring conversation.</p>
-                <button className="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground">
-                  <Headphones className="h-4 w-4" /> Talk to someone
-                </button>
-              </div>
-              <Leaf className="hidden h-24 w-24 text-emerald-300 md:block" />
-            </div>
+          <div className="mb-6">
+            <HandHeart className="h-16 w-16 text-blue-600" strokeWidth={1.2} />
           </div>
+          <h2 className="text-3xl md:text-4xl lg:text-[40px] font-extrabold leading-tight text-slate-800 mb-4">
+            Need to talk now? We're here.
+          </h2>
+          <p className="text-[17px] text-slate-600 mb-8 max-w-md leading-relaxed">
+            Reach out for a caring conversation.
+          </p>
+          <button className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-8 py-3.5 text-[15px] font-bold text-white shadow-lg shadow-blue-600/20 hover:bg-blue-700 transition-colors">
+            <Phone className="h-4 w-4" fill="currentColor" /> Talk to someone
+          </button>
         </motion.div>
       </section>
 
