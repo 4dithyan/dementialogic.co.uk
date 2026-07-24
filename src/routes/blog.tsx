@@ -87,7 +87,7 @@ const BLOG_POSTS = [
 
 export default function Blog() {
   return (
-    <div className="w-full max-w-[1400px] mx-auto px-6 py-12">
+    <div className="w-full max-w-[1400px] mx-auto px-6 pt-6 pb-12">
       {/* Breadcrumb / Title Area */}
       <div className="mb-12">
         <div className="text-sm font-medium text-foreground/60 mb-6 flex items-center gap-2">

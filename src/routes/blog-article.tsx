@@ -249,8 +249,22 @@ export default function BlogArticle() {
 
   return (
     <div className="w-full bg-[#f8fbff] min-h-screen pb-24">
+      
+      {/* Universal Breadcrumb Bar */}
+      <div className="w-full bg-background border-b border-slate-100">
+        <div className="w-full max-w-[1400px] mx-auto px-6 pt-6 pb-4">
+          <div className="text-sm font-medium text-slate-500 flex items-center flex-wrap gap-2">
+            <Link to="/" className="hover:text-primary transition-colors">Home</Link>
+            <span className="text-slate-300">/</span>
+            <Link to="/blog" className="hover:text-primary transition-colors">Blog</Link>
+            <span className="text-slate-300">/</span>
+            <span className="text-primary font-semibold">{article.title}</span>
+          </div>
+        </div>
+      </div>
+
       {/* ── STUNNING HERO SECTION (CINEMATIC) ──────────────────────── */}
-      <div className="relative w-full h-[60vh] min-h-[450px]">
+      <div className="relative w-full h-[55vh] min-h-[400px]">
         {/* Background Image full width */}
         <div className="absolute inset-0">
           <img 
@@ -260,19 +274,6 @@ export default function BlogArticle() {
           />
           <div className="absolute inset-0 bg-slate-900/30 mix-blend-multiply" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#f8fbff] via-transparent to-transparent opacity-90" />
-        </div>
-        
-        {/* Breadcrumb at the very top, over the dark overlay */}
-        <div className="absolute top-0 left-0 right-0 z-10 pt-10">
-          <div className="w-full max-w-[1400px] mx-auto px-6">
-            <div className="flex items-center flex-wrap gap-2 text-sm font-medium text-white/90 drop-shadow-md">
-              <Link to="/" className="hover:text-white transition-colors">Home</Link>
-              <span className="text-white/60">/</span>
-              <Link to="/blog" className="hover:text-white transition-colors">Blog</Link>
-              <span className="text-white/60">/</span>
-              <span className="text-white font-semibold">{article.title}</span>
-            </div>
-          </div>
         </div>
       </div>
 
