@@ -43,6 +43,7 @@ import chairImg from "@/assets/cozy-chair.jpg";
 import handshakeImg from "@/assets/handshake.jpg";
 import caregiverWellbeingImg from "@/assets/caregiver_wellbeing.png";
 import educationHubBannerImg from "@/assets/education_hub_banner.png";
+import illustrationImg from "@/assets/illustration.png";
 
 
 
@@ -199,6 +200,57 @@ export default function Index() {
             />
           </div>
 
+        </div>
+      </section>
+
+      {/* Trigger Decoder Banner */}
+      <section className="bg-white py-8 lg:py-12">
+        <div className="mx-auto max-w-[1400px] px-8">
+          <div className="relative overflow-hidden rounded-[2rem] bg-[#f0f7ff] p-8 md:p-12 lg:px-16 lg:py-12 flex flex-col md:flex-row items-center justify-between shadow-sm border border-blue-50/50">
+            {/* Left Content */}
+            <div className="relative z-10 w-full md:w-[45%] flex flex-col items-start text-left mb-10 md:mb-0">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full bg-blue-100/60 px-4 py-1.5 text-[12px] font-bold uppercase tracking-widest text-blue-700 mb-4 border border-blue-200/50">
+                Interactive Tools
+              </div>
+              <h2 className="text-4xl font-bold leading-[1.1] tracking-tight text-slate-800 lg:text-5xl mb-5">
+                Not sure why<br />behaviour changed?
+              </h2>
+              <p className="text-[17px] text-slate-600 leading-relaxed mb-8 max-w-[420px]">
+                Our 2-minute Trigger Decoder helps you uncover what might be causing distress—and what to do next.
+              </p>
+              <Link 
+                to="/dementia-trigger-decoder"
+                className="inline-flex w-fit items-center gap-2 rounded-xl bg-blue-600 px-8 py-4 text-[15px] font-bold text-white shadow-lg shadow-blue-600/20 hover:bg-blue-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
+              >
+                Start Trigger Decoder <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            
+            {/* Right Illustration */}
+            <div className="relative w-full md:w-[55%] flex justify-end items-center">
+              <div className="relative w-full max-w-[550px]">
+                <img 
+                  src={illustrationImg} 
+                  alt="Trigger Decoder Illustration" 
+                  className="w-full h-auto object-contain scale-110 md:scale-125 origin-right"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+                
+                {/* Floating 2 min assessment card */}
+                <div className="absolute top-[10%] -right-[5%] md:right-[5%] bg-white rounded-xl shadow-lg shadow-blue-900/5 p-3.5 flex items-center gap-3 animate-[bounce_3s_ease-in-out_infinite]">
+                  <div className="flex items-center justify-center text-blue-600">
+                    <Clock className="h-5 w-5" strokeWidth={2.5} />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[14px] font-bold text-[#3b82f6] leading-tight">2 min</span>
+                    <span className="text-[13px] font-medium text-blue-600/70 leading-tight">assessment</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
