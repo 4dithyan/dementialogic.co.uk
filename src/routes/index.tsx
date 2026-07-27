@@ -35,6 +35,8 @@ import {
   AlertCircle,
   ChevronLeft,
   ChevronRight,
+  Eye,
+  BrainCircuit,
 } from "lucide-react";
 import heroImg from "@/assets/hero.png";
 import whatIsDementiaImg from "@/assets/what_is_dementia.png";
@@ -391,24 +393,44 @@ export default function Index() {
       {/* Trigger Decoder & Reality Check Carousel */}
       <InteractiveToolsCarousel />
 
-      {/* Features Strip */}
-      <section className="border-b border-slate-200 bg-white py-12">
-        <div className="mx-auto max-w-[1400px] px-8">
-          <div className="grid grid-cols-1 divide-y divide-slate-200 md:grid-cols-3 md:divide-x md:divide-y-0">
-            {features.map((f, i) => (
-              <div key={f.title} className={`flex items-start gap-5 ${i === 0 ? 'pr-8' : i === 1 ? 'px-8' : 'pl-8'}`}>
-                <div className="shrink-0">
-                  <f.icon className="h-10 w-10 text-blue-600" strokeWidth={1.2} />
+      {/* Learning Journey Timeline */}
+      <section className="bg-white py-12 lg:py-16">
+        <div className="mx-auto max-w-[1400px] px-8 text-center flex flex-col items-center">
+          <h2 className="text-4xl font-bold leading-[1.1] tracking-tight text-slate-800 lg:text-5xl mb-5">Understanding dementia</h2>
+          <p className="text-[17px] text-slate-600 leading-relaxed mb-16 max-w-xl">A step-by-step learning journey for everyone.</p>
+
+          <div className="relative flex justify-between items-start w-full">
+            {/* Connecting Line */}
+            <div className="absolute top-8 left-[7%] right-[7%] h-0.5 bg-blue-100 z-0"></div>
+
+            {[
+              { icon: Brain, label: "Understanding\nDementia" },
+              { icon: Users, label: "Different\nTypes" },
+              { icon: Eye, label: "Early\nSigns" },
+              { icon: ClipboardList, label: "Diagnosis &\nAssessment" },
+              { icon: Home, label: "Daily\nLiving" },
+              { icon: BrainCircuit, label: "Behaviour\nChanges" },
+              { icon: Heart, label: "Caregiver\nSupport" },
+            ].map((step, idx) => (
+              <div key={idx} className="relative z-10 flex flex-col items-center flex-1">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white border-2 border-blue-100 text-[#3b82f6] shadow-sm mb-4">
+                  <step.icon className="h-7 w-7" strokeWidth={1.75} />
                 </div>
-                <div>
-                  <div className="font-bold text-[17px] text-slate-800">{f.title}</div>
-                  <div className="mt-1 text-[15px] leading-relaxed text-slate-600">{f.desc}</div>
+                <div className="text-[13px] font-bold text-[#1e293b] leading-snug whitespace-pre-line text-center">
+                  {step.label}
                 </div>
               </div>
             ))}
           </div>
+          
+          <div className="mt-20 flex flex-col items-center">
+            <h3 className="text-4xl font-bold leading-[1.1] tracking-tight text-slate-800 lg:text-5xl mb-5">The different types of dementia</h3>
+            <p className="text-[17px] text-slate-600 leading-relaxed max-w-xl">Four main types. Different causes. Different experiences.</p>
+          </div>
         </div>
       </section>
+
+
 
       {/* Early Indicators */}
       <section className="bg-[#f8faff] py-16 lg:py-24 relative overflow-hidden">
