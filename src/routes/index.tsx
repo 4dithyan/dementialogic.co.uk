@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -33,6 +33,10 @@ import {
   Activity,
   Clock,
   AlertCircle,
+  ChevronLeft,
+  ChevronRight,
+  Eye,
+  BrainCircuit,
 } from "lucide-react";
 import heroImg from "@/assets/hero.png";
 import whatIsDementiaImg from "@/assets/what_is_dementia.png";
@@ -42,7 +46,9 @@ import caringEmotionsImg from "@/assets/caring_emotions.png";
 import chairImg from "@/assets/cozy-chair.jpg";
 import handshakeImg from "@/assets/handshake.jpg";
 import caregiverWellbeingImg from "@/assets/caregiver_wellbeing.png";
+import caregiverBurnoutImg from "@/assets/caregiver_burnout_illustration.png";
 import educationHubBannerImg from "@/assets/education_hub_banner.png";
+import illustrationImg from "@/assets/illustration.png";
 
 
 
@@ -148,6 +154,188 @@ function Logo() {
   );
 }
 
+function InteractiveToolsCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
+  const slides = [
+    {
+      caption: "Interactive Tools",
+      title: (
+        <>
+          Not sure why<br />behaviour changed?
+        </>
+      ),
+      desc: "Our 2-minute Trigger Decoder helps you uncover what might be causing distress—and what to do next.",
+      linkTo: "/dementia-trigger-decoder",
+      linkText: "Start Trigger Decoder",
+      img: caregiverBurnoutImg,
+      floatIcon: Clock,
+      floatText1: "2 min",
+      floatText2: "assessment",
+      bgClass: "bg-[#f0f7ff] border-blue-50/50",
+      captionColor: "text-blue-700",
+      captionBg: "bg-blue-100/60 border-blue-200/50",
+      buttonClass: "bg-blue-600 hover:bg-blue-700 shadow-blue-600/20",
+      floatTextClass: "text-[#3b82f6]",
+      floatText2Class: "text-blue-600/70",
+      shadowClass: "shadow-blue-900/5",
+    },
+    {
+      caption: "Interactive Tools",
+      title: (
+        <>
+          Are you nearing<br />burnout?
+        </>
+      ),
+      desc: "Take our Caregiver Reality Check to understand your stress levels and find the right support for you.",
+      linkTo: "/caregiver-reality-check",
+      linkText: "Start Reality Check",
+      img: illustrationImg,
+      floatIcon: Heart,
+      floatText1: "3 min",
+      floatText2: "check-in",
+      bgClass: "bg-[#f8faff] border-slate-100",
+      captionColor: "text-blue-700",
+      captionBg: "bg-blue-100/60 border-blue-200/50",
+      buttonClass: "bg-blue-600 hover:bg-blue-700 shadow-blue-600/20",
+      floatTextClass: "text-blue-600",
+      floatText2Class: "text-blue-600/70",
+      shadowClass: "shadow-blue-900/5",
+    }
+  ];
+
+  const extendedSlides = [...slides, slides[0]];
+
+  const nextSlide = () => {
+    if (currentIndex >= slides.length) return;
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev + 1);
+  };
+
+  const prevSlide = () => {
+    if (currentIndex <= 0) {
+      setIsTransitioning(false);
+      setCurrentIndex(slides.length);
+      setTimeout(() => {
+        setIsTransitioning(true);
+        setCurrentIndex(slides.length - 1);
+      }, 50);
+      return;
+    }
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev - 1);
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [currentIndex]);
+
+  const handleTransitionEnd = () => {
+    if (currentIndex === slides.length) {
+      setIsTransitioning(false);
+      setCurrentIndex(0);
+    }
+  };
+
+  return (
+    <section className="bg-white py-6 lg:py-8">
+      <div className="mx-auto max-w-[1400px] px-8">
+        <div className="relative overflow-hidden rounded-[2rem] shadow-sm border border-slate-100">
+          <div 
+            className={`flex h-full ${isTransitioning ? 'transition-transform duration-700 ease-in-out' : ''}`}
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            onTransitionEnd={handleTransitionEnd}
+          >
+            {extendedSlides.map((slide, idx) => (
+              <div key={idx} className={`w-full shrink-0 ${slide.bgClass} p-6 md:p-10 lg:px-12 lg:py-10 flex flex-col md:flex-row items-center justify-between`}>
+                {/* Left Content */}
+                <div className="relative z-10 w-full md:w-[45%] flex flex-col items-start text-left mb-8 md:mb-0">
+                  <div className={`inline-flex w-fit items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest mb-4 border ${slide.captionBg} ${slide.captionColor}`}>
+                    {slide.caption}
+                  </div>
+                  <h2 className="text-3xl font-bold leading-[1.1] tracking-tight text-slate-800 lg:text-4xl mb-4">
+                    {slide.title}
+                  </h2>
+                  <p className="text-[16px] text-slate-600 leading-relaxed mb-6 max-w-[420px]">
+                    {slide.desc}
+                  </p>
+                  <Link 
+                    to={slide.linkTo}
+                    className={`inline-flex w-fit items-center gap-2 rounded-xl px-7 py-3.5 text-[15px] font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 ${slide.buttonClass}`}
+                  >
+                    {slide.linkText} <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+                
+                {/* Right Illustration */}
+                <div className="relative w-full md:w-[55%] flex justify-end items-center">
+                  <div className="relative w-full max-w-[420px]">
+                    <img 
+                      src={slide.img} 
+                      alt="Illustration" 
+                      className="w-full h-auto max-h-[260px] object-contain origin-right"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                      }}
+                    />
+                    
+                    {/* Floating card */}
+                    <div className={`absolute top-[10%] -right-[5%] md:right-[2%] bg-white rounded-xl shadow-lg p-3 flex items-center gap-3 animate-[bounce_3s_ease-in-out_infinite] ${slide.shadowClass}`}>
+                      <div className={`flex items-center justify-center ${slide.floatTextClass}`}>
+                        <slide.floatIcon className="h-5 w-5" strokeWidth={2.5} />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className={`text-[13px] font-bold leading-tight ${slide.floatTextClass}`}>{slide.floatText1}</span>
+                        <span className={`text-[12px] font-medium leading-tight ${slide.floatText2Class}`}>{slide.floatText2}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Controls */}
+          {slides.length > 1 && (
+            <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-4 z-20">
+              <button 
+                onClick={prevSlide}
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-md text-slate-600 hover:text-blue-600 hover:scale-110 transition-all focus:outline-none"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <div className="flex items-center gap-2">
+                {slides.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      setIsTransitioning(true);
+                      setCurrentIndex(idx);
+                    }}
+                    className={`h-2 rounded-full transition-all focus:outline-none ${
+                      (currentIndex % slides.length) === idx ? "w-6 bg-slate-800" : "w-2 bg-slate-300 hover:bg-slate-400"
+                    }`}
+                  />
+                ))}
+              </div>
+              <button 
+                onClick={nextSlide}
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-md text-slate-600 hover:text-blue-600 hover:scale-110 transition-all focus:outline-none"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Index() {
   return (
     <div className="w-full flex-grow flex flex-col">
@@ -202,24 +390,128 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Features Strip */}
-      <section className="border-b border-slate-200 bg-white py-12">
-        <div className="mx-auto max-w-[1400px] px-8">
-          <div className="grid grid-cols-1 divide-y divide-slate-200 md:grid-cols-3 md:divide-x md:divide-y-0">
-            {features.map((f, i) => (
-              <div key={f.title} className={`flex items-start gap-5 ${i === 0 ? 'pr-8' : i === 1 ? 'px-8' : 'pl-8'}`}>
-                <div className="shrink-0">
-                  <f.icon className="h-10 w-10 text-blue-600" strokeWidth={1.2} />
+      {/* Trigger Decoder & Reality Check Carousel */}
+      <InteractiveToolsCarousel />
+
+      {/* Learning Journey Timeline */}
+      <section className="bg-white py-12 lg:py-16">
+        <div className="mx-auto max-w-[1400px] px-8 text-center flex flex-col items-center">
+          <h2 className="text-4xl font-bold leading-[1.1] tracking-tight text-slate-800 lg:text-5xl mb-5">Understanding dementia</h2>
+          <p className="text-[17px] text-slate-600 leading-relaxed mb-16 max-w-xl">A step-by-step learning journey for everyone.</p>
+
+          <div className="relative flex justify-between items-start w-full">
+            {/* Connecting Line */}
+            <div className="absolute top-8 left-[7%] right-[7%] h-0.5 bg-blue-100 z-0"></div>
+
+            {[
+              { icon: Brain, label: "Understanding\nDementia" },
+              { icon: Users, label: "Different\nTypes" },
+              { icon: Eye, label: "Early\nSigns" },
+              { icon: ClipboardList, label: "Diagnosis &\nAssessment" },
+              { icon: Home, label: "Daily\nLiving" },
+              { icon: BrainCircuit, label: "Behaviour\nChanges" },
+              { icon: Heart, label: "Caregiver\nSupport" },
+            ].map((step, idx) => (
+              <div key={idx} className="relative z-10 flex flex-col items-center flex-1">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white border-2 border-blue-100 text-[#3b82f6] shadow-sm mb-4">
+                  <step.icon className="h-7 w-7" strokeWidth={1.75} />
                 </div>
-                <div>
-                  <div className="font-bold text-[17px] text-slate-800">{f.title}</div>
-                  <div className="mt-1 text-[15px] leading-relaxed text-slate-600">{f.desc}</div>
+                <div className="text-[13px] font-bold text-[#1e293b] leading-snug whitespace-pre-line text-center">
+                  {step.label}
                 </div>
               </div>
             ))}
           </div>
+          
+          <div className="mt-20 flex flex-col items-center w-full">
+            <h3 className="text-[26px] font-bold text-slate-800 mb-2">The different types of dementia</h3>
+            <p className="text-[15px] text-slate-600 mb-12">Four main types. Different causes. Different experiences.</p>
+
+            <div className="flex flex-col lg:flex-row gap-5 w-full text-left">
+              {/* Left: 4 Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 flex-1">
+                {/* Card 1 */}
+                <div className="flex flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] hover:shadow-md transition-shadow">
+                  <div className="mb-6 text-blue-500">
+                    <Brain className="h-[72px] w-[72px]" strokeWidth={1} />
+                  </div>
+                  <h4 className="text-[17px] font-bold text-slate-800 mb-4 leading-snug">Alzheimer's<br/>Disease</h4>
+                  <p className="text-[13px] text-slate-600 leading-relaxed mb-6 flex-1">
+                    The most common type.<br/>Affects memory first.
+                  </p>
+                  <Link to="/types/alzheimers" className="text-[13px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 mt-auto">
+                    Learn more <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+                
+                {/* Card 2 */}
+                <div className="flex flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] hover:shadow-md transition-shadow">
+                  <div className="mb-6 text-teal-600">
+                    <Brain className="h-[72px] w-[72px]" strokeWidth={1} />
+                  </div>
+                  <h4 className="text-[17px] font-bold text-slate-800 mb-4 leading-snug">Dementia with<br/>Lewy Bodies</h4>
+                  <p className="text-[13px] text-slate-600 leading-relaxed mb-6 flex-1">
+                    Causes fluctuations in thinking and attention.
+                  </p>
+                  <Link to="/types/lewy-bodies" className="text-[13px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 mt-auto">
+                    Learn more <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+                
+                {/* Card 3 */}
+                <div className="flex flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] hover:shadow-md transition-shadow">
+                  <div className="mb-6 text-rose-400">
+                    <Brain className="h-[72px] w-[72px]" strokeWidth={1} />
+                  </div>
+                  <h4 className="text-[17px] font-bold text-slate-800 mb-4 leading-snug">Vascular<br/>Dementia</h4>
+                  <p className="text-[13px] text-slate-600 leading-relaxed mb-6 flex-1">
+                    Caused by reduced blood flow to the brain.
+                  </p>
+                  <Link to="/types/vascular" className="text-[13px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 mt-auto">
+                    Learn more <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+                
+                {/* Card 4 */}
+                <div className="flex flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] hover:shadow-md transition-shadow">
+                  <div className="mb-6 text-purple-500">
+                    <Brain className="h-[72px] w-[72px]" strokeWidth={1} />
+                  </div>
+                  <h4 className="text-[17px] font-bold text-slate-800 mb-4 leading-snug">Frontotemporal<br/>Dementia</h4>
+                  <p className="text-[13px] text-slate-600 leading-relaxed mb-6 flex-1">
+                    Affects personality, behaviour and language.
+                  </p>
+                  <Link to="/types/frontotemporal" className="text-[13px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 mt-auto">
+                    Learn more <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right: Quote Card */}
+              <div className="w-full lg:w-[280px] shrink-0 rounded-2xl bg-[#f4f9ff] p-8 relative overflow-hidden flex flex-col justify-center border border-blue-50/50">
+                <div className="text-[72px] font-serif text-blue-400/50 leading-[0] absolute top-12 left-6">
+                  “
+                </div>
+                <div className="relative z-10 mt-8">
+                  <p className="text-[16px] font-medium text-slate-800 leading-[1.6] mb-8 pr-4">
+                    Accurate understanding leads to better care and better days.
+                  </p>
+                  <Heart className="h-6 w-6 text-blue-600 fill-blue-600" />
+                </div>
+                <Brain className="absolute -bottom-8 -right-8 h-48 w-48 text-blue-200/30" strokeWidth={0.5} />
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <Link to="/types" className="text-[13px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1.5">
+                Explore all types of dementia <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
+
+
 
       {/* Early Indicators */}
       <section className="bg-[#f8faff] py-16 lg:py-24 relative overflow-hidden">
