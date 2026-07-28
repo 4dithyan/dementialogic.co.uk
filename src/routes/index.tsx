@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -171,6 +171,92 @@ export default function Index() {
              </div>
              {/* Bottom Liquid Card */}
              <div className="absolute top-0 left-0 w-full h-full bg-[#8FBDF1]/30 backdrop-blur-xl backdrop-saturate-150 rounded-[16px] z-10 transform translate-y-[-20px] scale-[0.9] shadow-md border border-white/30 transition-transform group-hover:translate-y-[-25px]" />
+          </div>
+          
+          <div className="mt-20 flex flex-col items-center w-full">
+            <h3 className="text-[26px] font-bold text-slate-800 mb-2">The different types of dementia</h3>
+            <p className="text-[15px] text-slate-600 mb-12">Four main types. Different causes. Different experiences.</p>
+
+            <div className="flex flex-col lg:flex-row gap-5 w-full text-left">
+              {/* Left: 4 Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 flex-1">
+                {/* Card 1 */}
+                <div className="flex flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] hover:shadow-md transition-shadow">
+                  <div className="mb-6 text-blue-500">
+                    <Brain className="h-[72px] w-[72px]" strokeWidth={1} />
+                  </div>
+                  <h4 className="text-[17px] font-bold text-slate-800 mb-4 leading-snug">Alzheimer's<br/>Disease</h4>
+                  <p className="text-[13px] text-slate-600 leading-relaxed mb-6 flex-1">
+                    The most common type.<br/>Affects memory first.
+                  </p>
+                  <Link to="/types/alzheimers" className="text-[13px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 mt-auto">
+                    Learn more <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+                
+                {/* Card 2 */}
+                <div className="flex flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] hover:shadow-md transition-shadow">
+                  <div className="mb-6 text-teal-600">
+                    <Brain className="h-[72px] w-[72px]" strokeWidth={1} />
+                  </div>
+                  <h4 className="text-[17px] font-bold text-slate-800 mb-4 leading-snug">Dementia with<br/>Lewy Bodies</h4>
+                  <p className="text-[13px] text-slate-600 leading-relaxed mb-6 flex-1">
+                    Causes fluctuations in thinking and attention.
+                  </p>
+                  <Link to="/types/lewy-bodies" className="text-[13px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 mt-auto">
+                    Learn more <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+                
+                {/* Card 3 */}
+                <div className="flex flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] hover:shadow-md transition-shadow">
+                  <div className="mb-6 text-rose-400">
+                    <Brain className="h-[72px] w-[72px]" strokeWidth={1} />
+                  </div>
+                  <h4 className="text-[17px] font-bold text-slate-800 mb-4 leading-snug">Vascular<br/>Dementia</h4>
+                  <p className="text-[13px] text-slate-600 leading-relaxed mb-6 flex-1">
+                    Caused by reduced blood flow to the brain.
+                  </p>
+                  <Link to="/types/vascular" className="text-[13px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 mt-auto">
+                    Learn more <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+                
+                {/* Card 4 */}
+                <div className="flex flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] hover:shadow-md transition-shadow">
+                  <div className="mb-6 text-purple-500">
+                    <Brain className="h-[72px] w-[72px]" strokeWidth={1} />
+                  </div>
+                  <h4 className="text-[17px] font-bold text-slate-800 mb-4 leading-snug">Frontotemporal<br/>Dementia</h4>
+                  <p className="text-[13px] text-slate-600 leading-relaxed mb-6 flex-1">
+                    Affects personality, behaviour and language.
+                  </p>
+                  <Link to="/types/frontotemporal" className="text-[13px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 mt-auto">
+                    Learn more <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right: Quote Card */}
+              <div className="w-full lg:w-[280px] shrink-0 rounded-2xl bg-[#f4f9ff] p-8 relative overflow-hidden flex flex-col justify-center border border-blue-50/50">
+                <div className="text-[72px] font-serif text-blue-400/50 leading-[0] absolute top-12 left-6">
+                  “
+                </div>
+                <div className="relative z-10 mt-8">
+                  <p className="text-[16px] font-medium text-slate-800 leading-[1.6] mb-8 pr-4">
+                    Accurate understanding leads to better care and better days.
+                  </p>
+                  <Heart className="h-6 w-6 text-blue-600 fill-blue-600" />
+                </div>
+                <Brain className="absolute -bottom-8 -right-8 h-48 w-48 text-blue-200/30" strokeWidth={0.5} />
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <Link to="/types" className="text-[13px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1.5">
+                Explore all types of dementia <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
         </div>
 
