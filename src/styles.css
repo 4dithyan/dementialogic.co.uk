@@ -143,3 +143,33 @@
     color: var(--color-foreground);
   }
 }
+
+@layer utilities {
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  @keyframes float-around {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(150px, -200px) scale(1.2); }
+    66% { transform: translate(-100px, 150px) scale(0.8); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+  .animate-float-around {
+    animation: float-around 25s ease-in-out infinite;
+  }
+
+  @keyframes float-around-reverse {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(-200px, 100px) scale(1.1); }
+    66% { transform: translate(150px, -150px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+  .animate-float-around-reverse {
+    animation: float-around-reverse 30s ease-in-out infinite;
+  }
+}
