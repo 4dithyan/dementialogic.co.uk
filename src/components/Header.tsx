@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Phone } from "lucide-react";
+import { useState, useEffect } from "react";
 import Logo from "./Logo";
 
 const navItems = [
@@ -13,10 +14,31 @@ const navItems = [
 
 export default function Header() {
   const location = useLocation();
+  const [isVisible, setIsVisible] = useState(true);
+  const [isAtTop, setIsAtTop] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        setIsVisible(false); // Scrolling down
+      } else {
+        setIsVisible(true); // Scrolling up
+      }
+      
+      setIsAtTop(currentScrollY < 10);
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background border-b border-border/40 shadow-sm flex-shrink-0">
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-8 py-4">
+    <header className={`fixed top-0 left-0 z-[100] w-full flex-shrink-0 transition-all duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-full'} ${isAtTop ? 'bg-transparent border-transparent' : 'bg-background/95 backdrop-blur-md border-b border-border/40 shadow-sm'}`}>
+      <div className={`mx-auto flex max-w-[1400px] items-center justify-between px-8 transition-all duration-300 ${isAtTop ? 'py-6' : 'py-3'}`}>
         <Logo />
         <nav className="hidden items-center gap-8 lg:flex">
           {navItems.map((item) => {
