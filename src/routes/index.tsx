@@ -99,7 +99,7 @@ export default function Index() {
       <section className="relative pt-24 pb-0 overflow-hidden min-h-[90vh] flex flex-col justify-between" style={{ background: 'linear-gradient(180deg, #D4E5F4 0%, #8FBDF1 100%)' }}>
         
         {/* HUGE Background Text */}
-        <div className="absolute top-[8%] left-0 w-full flex justify-center pointer-events-none select-none z-0">
+        <div className="absolute top-[15%] md:top-[8%] left-0 w-full flex justify-center pointer-events-none select-none z-0">
           <span className="text-[18vw] font-bold text-white opacity-60 tracking-[0.05em] leading-none blur-[4px]">
             CARE
           </span>
@@ -110,7 +110,7 @@ export default function Index() {
         <div className="relative z-10 max-w-[1400px] mx-auto w-full px-4 lg:px-8 flex-grow flex flex-col items-center justify-center pt-2">
           
           {/* Main Central Image - Increased Size */}
-          <div className="absolute -top-[20%] left-1/2 -translate-x-1/2 w-[600px] md:w-[750px] lg:w-[900px] h-[850px] z-40 pointer-events-none">
+          <div className="absolute -top-[5%] md:-top-[20%] left-1/2 -translate-x-1/2 w-[400px] sm:w-[600px] md:w-[750px] lg:w-[900px] h-[600px] md:h-[850px] z-40 pointer-events-none">
             <img 
               src="/images/old_age.png" 
               alt="Hero"
@@ -398,9 +398,16 @@ export default function Index() {
           
           {/* Central Glowing Orb (Nested inside the valley) */}
           <div className="absolute left-1/2 bottom-[50px] md:bottom-[70px] -translate-x-1/2 flex flex-col items-center justify-center pointer-events-auto">
-            <div className="relative flex items-center justify-center w-28 h-28 md:w-44 md:h-44 rounded-full bg-gradient-to-tr from-[#4A85C5] to-[#8FBDF1] shadow-[0_20px_60px_rgba(111,168,232,0.5)] border-8 border-white z-30 overflow-hidden transform hover:scale-105 transition-transform duration-500 cursor-pointer">
+            {/* Rotating Outer Rings */}
+            <div className="absolute inset-[-8px] md:inset-[-12px] rounded-full border border-dashed border-[#6FA8E8]/60 animate-[spin_10s_linear_infinite] z-20 pointer-events-none" />
+            <div className="absolute inset-[-16px] md:inset-[-24px] rounded-full border border-[#6FA8E8]/30 animate-[spin_15s_linear_infinite_reverse] z-10 pointer-events-none">
+              {/* Little orbiting dot */}
+              <div className="absolute top-0 left-1/2 w-2 h-2 bg-[#6FA8E8] rounded-full -translate-x-1/2 -translate-y-1/2 shadow-[0_0_10px_rgba(111,168,232,0.8)]" />
+            </div>
+
+            <div className="relative flex items-center justify-center w-16 h-16 md:w-24 md:h-24 rounded-full bg-gradient-to-tr from-[#4A85C5] to-[#8FBDF1] shadow-[0_10px_30px_rgba(111,168,232,0.5)] border-4 border-white z-30 overflow-hidden transform hover:scale-105 transition-transform duration-500 cursor-pointer">
                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
-               <Brain className="w-12 h-12 md:w-20 md:h-20 text-white drop-shadow-md" />
+               <Brain className="w-8 h-8 md:w-12 md:h-12 text-white drop-shadow-md relative z-10" />
             </div>
           </div>
         </div>
