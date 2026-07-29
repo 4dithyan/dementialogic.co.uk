@@ -43,7 +43,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="flex flex-col gap-8 pr-0 lg:pr-8">
             <Logo />
-            <p className="text-[16px] leading-relaxed text-slate-500 font-medium max-w-sm">
+            <p className="text-[20px] leading-relaxed text-slate-500 font-medium max-w-sm">
               We support individuals living with dementia and the people who care for them, offering clarity, clinical insight, and deep compassion every step of the way.
             </p>
             
@@ -66,14 +66,14 @@ export default function Footer() {
           {/* Links Columns */}
           {footerCols.map((c) => (
             <div key={c.title}>
-              <div className="text-[13px] font-bold text-slate-900 uppercase tracking-widest mb-8 relative inline-block">
+              <div className="text-[16px] font-bold text-slate-900 uppercase tracking-widest mb-8 relative inline-block">
                 {c.title}
                 <div className="absolute -bottom-3 left-0 w-8 h-[3px] bg-[#6FA8E8] rounded-full" />
               </div>
               <ul className="space-y-4">
                 {c.links.map((l) => (
                   <li key={l.label}>
-                    <Link to={l.to} className="text-[15px] font-medium text-slate-500 hover:text-[#6FA8E8] transition-all duration-300 inline-flex items-center gap-2 group">
+                    <Link to={l.to} className="text-[19px] font-medium text-slate-500 hover:text-[#6FA8E8] transition-all duration-300 inline-flex items-center gap-2 group">
                       <ArrowRight className="w-3 h-3 text-slate-300 group-hover:text-[#6FA8E8] group-hover:translate-x-1 transition-all" />
                       {l.label}
                     </Link>
@@ -89,7 +89,7 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="relative z-10 border-t border-slate-200/60 bg-white">
         <div className="mx-auto flex max-w-[1400px] flex-col md:flex-row items-center justify-between gap-6 px-6 lg:px-8 py-6">
-          <div className="text-[14px] text-slate-400 font-medium">
+          <div className="text-[18px] text-slate-400 font-medium">
             © 2026 DementiaLogic. All rights reserved.
           </div>
           
@@ -105,7 +105,7 @@ export default function Footer() {
             </a>
           </div>
 
-          <div className="flex flex-wrap gap-8 text-[13px] font-bold text-slate-400">
+          <div className="flex flex-wrap gap-8 text-[16px] font-bold text-slate-400">
             <span className="hover:text-[#6FA8E8] cursor-pointer transition-colors">Privacy Policy</span>
             <span className="hover:text-[#6FA8E8] cursor-pointer transition-colors">Terms of Use</span>
             <span className="hover:text-[#6FA8E8] cursor-pointer transition-colors">Accessibility</span>

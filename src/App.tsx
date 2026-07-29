@@ -9,6 +9,7 @@ import DementiaTriggerDecoder from './routes/dementia-trigger-decoder';
 import EducationHub from './routes/education-hub';
 import Blog from './routes/blog';
 import BlogArticle from './routes/blog-article';
+import Contact from './routes/contact';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -35,6 +36,7 @@ export default function App() {
             <Route path="/education-hub" element={<EducationHub />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogArticle />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
         <Footer />
