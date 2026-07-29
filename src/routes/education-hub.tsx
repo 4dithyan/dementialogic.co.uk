@@ -21,16 +21,16 @@ export default function EducationHub() {
       <main className="mx-auto max-w-[1400px] px-6 py-4 w-full relative z-10">
         
         {/* Breadcrumb Area */}
-        <div className="mb-6 flex items-center gap-3 text-base font-medium text-slate-500">
-           <Link to="/" className="hover:text-blue-600 flex items-center gap-1 transition-colors"><Heart className="w-4 h-4" /> Home</Link>
-           <ArrowRight className="w-3.5 h-3.5 text-slate-300" />
-           <span className="text-slate-900 font-bold bg-white px-3 py-1 rounded-full shadow-sm border border-slate-100">Education Hub</span>
+        <div className="text-sm font-medium text-slate-500 mb-6 flex items-center gap-2 tracking-wide uppercase mt-4 lg:mt-8">
+           <Link to="/" className="hover:text-blue-600 transition-colors">Home</Link>
+           <span>/</span>
+           <span className="text-blue-600 font-bold">Education Hub</span>
         </div>
 
         {/* Editorial Wide Hero Image */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}
-          className="w-full h-[300px] md:h-[450px] mb-12 rounded-[2.5rem] overflow-hidden relative shadow-2xl"
+          className="w-full h-[300px] md:h-[450px] mb-6 lg:mb-12 rounded-[2.5rem] overflow-hidden relative shadow-2xl"
         >
            <img 
              src="/images/old_age1.jpg" 
@@ -43,12 +43,13 @@ export default function EducationHub() {
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 relative">
           
           {/* ── LEFT COLUMN: MAIN CONTENT ───────────────────────────── */}
-          <div className="lg:w-[70%] space-y-16">
+          {/* ── LEFT COLUMN: MAIN CONTENT ───────────────────────────── */}
+          <div className="lg:w-[70%] space-y-12 lg:space-y-16">
              
             {/* Title Area */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
-              className="mb-12 relative"
+              className="mb-8 lg:mb-12 relative"
             >
                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white shadow-sm border border-slate-200/60 text-blue-600 text-[16px] font-bold tracking-wide uppercase mb-6">
                  <BookOpen className="w-4 h-4" />

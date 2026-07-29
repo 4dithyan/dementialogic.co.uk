@@ -15,10 +15,7 @@ export default function Contact() {
   return (
     <div className="w-full bg-white flex flex-col font-sans relative">
       
-      {/* Floating Action Button */}
-      <div className="fixed top-1/3 right-4 md:right-8 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center cursor-pointer shadow-lg shadow-blue-600/30 hover:bg-blue-700 transition-colors z-50">
-        <ChevronUp className="w-5 h-5 text-white" />
-      </div>
+
 
       {/* Top Banner Section */}
       <div className="relative w-full h-[400px] md:h-[500px] overflow-hidden rounded-b-[40px] md:rounded-b-[80px] z-10 shadow-sm">
@@ -44,32 +41,25 @@ export default function Contact() {
         {/* Main "Contacts" Heading */}
         <div className="absolute top-1/2 left-8 md:left-24 -translate-y-1/2">
           <h1 className="text-6xl md:text-7xl lg:text-[113px] font-medium text-white tracking-tight drop-shadow-sm">
-            Contacts
+            Contact Us
           </h1>
-        </div>
-
-        {/* Breadcrumb Tab */}
-        <div className="absolute bottom-0 right-12 md:right-40 bg-white rounded-t-3xl px-8 py-3.5 flex items-center justify-center">
-          <span className="text-[16px] text-slate-800 font-medium">
-            <Link to="/" className="hover:text-blue-600 transition-colors">Home</Link>
-            <span className="mx-2 text-slate-400">&middot;</span>
-            Contacts
-          </span>
         </div>
       </div>
 
       {/* Main Content Layout */}
-      <div className="max-w-[1300px] mx-auto w-full px-6 lg:px-24 pt-20 md:pt-28 pb-32 relative z-0">
+      <div className="max-w-[1300px] mx-auto w-full px-6 lg:px-24 pt-12 md:pt-16 pb-32 relative z-0">
         
-        {/* No background grid lines */}
+        {/* Breadcrumbs */}
+        <div className="w-full text-sm font-medium text-slate-500 mb-12 flex items-center justify-start gap-2 tracking-wide uppercase">
+           <Link to="/" className="hover:text-blue-600 transition-colors">Home</Link>
+           <span>/</span>
+           <span className="text-blue-600 font-bold">Contact Us</span>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_450px] xl:grid-cols-[1fr_500px] gap-12 lg:gap-16 relative z-10">
           
           {/* Left Column: Text & Info */}
           <div className="w-full flex flex-col">
-            <span className="text-[16px] font-medium text-slate-500 tracking-wider mb-6 italic block">
-              // get in touch //
-            </span>
             <h2 className="text-5xl md:text-[58px] leading-[1.1] font-medium text-[#111827] tracking-tight mb-8">
               We are always ready to help you and answer your questions
             </h2>

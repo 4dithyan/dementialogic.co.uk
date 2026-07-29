@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Sparkles, Circle, CircleDot } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function About() {
   return (
@@ -27,7 +28,12 @@ export default function About() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-[800px] mx-auto px-6 text-center relative z-10 flex flex-col items-center"
         >
-          <div className="mt-4 mx-auto h-1 w-16 rounded bg-blue-600 mb-8" />
+          {/* Breadcrumbs */}
+          <div className="w-full text-sm font-medium text-slate-500 mb-6 flex items-center justify-start gap-2 tracking-wide uppercase mt-4 lg:mt-8">
+             <Link to="/" className="hover:text-blue-600 transition-colors">Home</Link>
+             <span>/</span>
+             <span className="text-blue-600 font-bold">About Us</span>
+          </div>
           
           <h1 className="text-7xl md:text-8xl font-extrabold mb-6 tracking-tighter text-slate-900 pb-2">
             About Us

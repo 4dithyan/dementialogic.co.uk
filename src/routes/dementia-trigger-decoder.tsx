@@ -118,16 +118,23 @@ export default function DementiaTriggerDecoder() {
         <motion.div 
           key="step-0"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.6 }}
-          className="absolute inset-0 w-full h-full flex flex-col lg:flex-row z-50 bg-[#FAFAFA]"
+          className="w-full flex flex-col lg:flex-row bg-[#FAFAFA] min-h-[calc(100vh-100px)]"
         >
            {/* Image Half */}
-           <div className="w-full lg:w-1/2 relative h-[40vh] lg:h-full">
+           <div className="w-full lg:w-1/2 relative h-[40vh] lg:h-auto lg:min-h-full">
               <img src="/images/old_age2.jpg" alt="Compassionate Care" className="absolute inset-0 w-full h-full object-cover" />
            </div>
            
            {/* Text Half */}
-           <div className="w-full lg:w-1/2 h-full flex flex-col justify-center items-start px-8 py-16 lg:px-24 bg-[#FAFAFA]">
-              <h1 className="text-5xl md:text-6xl lg:text-[5.5rem] font-bold text-slate-900 leading-[1.05] tracking-tight mb-6">
+           <div className="w-full lg:w-1/2 flex-1 flex flex-col justify-start lg:justify-center items-start px-8 pt-8 pb-12 lg:py-16 lg:px-24 bg-[#FAFAFA]">
+              {/* Breadcrumbs */}
+              <div className="text-sm font-medium text-slate-500 mb-6 flex items-center gap-2 tracking-wide uppercase mt-0 lg:mt-16">
+                <Link to="/" className="hover:text-[#6FA8E8] transition-colors">Home</Link>
+                <span>/</span>
+                <span className="text-[#6FA8E8] font-bold">Trigger Decoder</span>
+              </div>
+
+              <h1 className="text-5xl md:text-6xl lg:text-[4.5rem] font-bold text-slate-900 leading-[1.05] tracking-tight mb-6">
                  Decode the <br/><span className="text-[#6FA8E8]">Distress Pattern.</span>
               </h1>
               
@@ -362,18 +369,7 @@ export default function DementiaTriggerDecoder() {
          <div className="absolute -top-40 -right-40 w-[800px] h-[800px] bg-slate-100/50 rounded-full blur-[100px]"></div>
       </div>
 
-      {/* Basic Nav for Context */}
-      <nav className="w-full relative z-20 py-4 px-6 md:px-12 flex justify-between items-center border-b border-slate-100 bg-white/80 backdrop-blur-md">
-        <Link to="/" className="text-slate-900 font-extrabold text-lg tracking-tight flex items-center gap-2 group">
-           <div className="w-7 h-7 rounded-lg bg-[#6FA8E8]/10 flex items-center justify-center border border-[#6FA8E8]/20 group-hover:bg-[#6FA8E8]/20 transition-colors">
-              <Brain className="w-4 h-4 text-[#6FA8E8]" />
-           </div>
-           DementiaLogic
-        </Link>
-        <Link to="/education-hub" className="text-slate-500 hover:text-[#6FA8E8] text-sm font-bold tracking-wide transition-colors">
-           Exit Decoder
-        </Link>
-      </nav>
+
 
       {/* Main Content Area */}
       <main className="flex-grow flex items-start justify-center relative z-10 w-full pt-4 pb-8">
