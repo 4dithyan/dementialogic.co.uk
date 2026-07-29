@@ -90,16 +90,16 @@ export default function Blog() {
     <div className="w-full max-w-[1400px] mx-auto px-6 pt-6 pb-12">
       {/* Breadcrumb / Title Area */}
       <div className="mb-12">
-        <div className="text-sm font-medium text-foreground/60 mb-6 flex items-center gap-2">
+        <div className="text-base font-medium text-foreground/60 mb-6 flex items-center gap-2">
           <Link to="/" className="hover:text-primary">Home</Link>
           <span>/</span>
           <span className="text-primary">Blog</span>
         </div>
         
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] tracking-tight mb-6 max-w-4xl">
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1] tracking-tight mb-6 max-w-4xl">
           Clinical Insights & <span className="text-primary/90 italic">Real Talk</span>
         </h1>
-        <p className="text-lg text-foreground/80 max-w-3xl leading-relaxed">
+        <p className="text-xl text-foreground/80 max-w-3xl leading-relaxed">
           No sugar-coating. Just practical strategies, clinical truths, and support for the reality of dementia care.
         </p>
       </div>
@@ -119,7 +119,7 @@ export default function Blog() {
                 alt={post.title} 
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-bold text-primary flex items-center gap-1.5 shadow-sm">
+              <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-bold text-primary flex items-center gap-1.5 shadow-sm">
                 <Tag className="w-3 h-3" />
                 {post.category}
               </div>
@@ -127,7 +127,7 @@ export default function Blog() {
             
             {/* Content */}
             <div className="p-6 flex flex-col flex-grow">
-              <div className="flex items-center gap-4 text-xs font-medium text-muted-foreground mb-4">
+              <div className="flex items-center gap-4 text-sm font-medium text-muted-foreground mb-4">
                 <div className="flex items-center gap-1.5">
                   <Calendar className="w-3.5 h-3.5" /> {post.date}
                 </div>
@@ -136,15 +136,15 @@ export default function Blog() {
                 </div>
               </div>
               
-              <h3 className="text-xl font-bold text-foreground mb-3 leading-snug group-hover:text-primary transition-colors">
+              <h3 className="text-2xl font-bold text-foreground mb-3 leading-snug group-hover:text-primary transition-colors">
                 {post.title}
               </h3>
               
-              <p className="text-foreground/70 text-sm leading-relaxed mb-6 flex-grow">
+              <p className="text-foreground/70 text-base leading-relaxed mb-6 flex-grow">
                 {post.excerpt}
               </p>
               
-              <div className="mt-auto pt-4 border-t border-border flex items-center text-primary font-semibold text-sm">
+              <div className="mt-auto pt-4 border-t border-border flex items-center text-primary font-semibold text-base">
                 Read Article <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
               </div>
             </div>

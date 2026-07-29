@@ -11,13 +11,13 @@ const navItems = [
   { label: "Education Hub", to: "/education-hub", hasDropdown: false },
   { label: "Blog", to: "/blog", hasDropdown: false },
   { label: "About Us", to: "/about", hasDropdown: false },
+  { label: "Contact Us", to: "/contact", hasDropdown: false },
 ];
 
 export default function Header() {
   const location = useLocation();
   const [isVisible, setIsVisible] = useState(true);
   const [isAtTop, setIsAtTop] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Prevent scrolling when mobile menu is open
@@ -30,6 +30,8 @@ export default function Header() {
   }, [isMobileMenuOpen]);
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+    
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
@@ -40,12 +42,12 @@ export default function Header() {
       }
       
       setIsAtTop(currentScrollY < 10);
-      setLastScrollY(currentScrollY);
+      lastScrollY = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   const isHomePage = location.pathname === "/";
 
@@ -61,7 +63,7 @@ export default function Header() {
                 <Link
                   key={item.label}
                   to={item.to}
-                  className={`flex items-center gap-1 text-[15px] font-medium hover:text-primary transition-colors ${
+                  className={`flex items-center gap-1 text-[19px] font-medium hover:text-primary transition-colors ${
                     isActive ? "text-primary font-bold border-b-2 border-primary pb-0.5" : "text-foreground/90"
                   }`}
                 >
@@ -70,7 +72,7 @@ export default function Header() {
               ) : (
                 <button
                   key={item.label}
-                  className="flex items-center gap-1 text-[15px] font-medium text-foreground/90 hover:text-primary transition-colors"
+                  className="flex items-center gap-1 text-[19px] font-medium text-foreground/90 hover:text-primary transition-colors"
                 >
                   {item.label}
                   {item.hasDropdown && <ChevronDown className="h-4 w-4" />}
@@ -79,10 +81,6 @@ export default function Header() {
             })}
           </nav>
           <div className="flex items-center gap-4">
-            <a href="tel:+448001234567" className="hidden lg:inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-sm hover:opacity-95 transition-opacity">
-              <Phone className="h-4 w-4 fill-current" />
-              Contact Us: 0800 123 4567
-            </a>
             <button 
               className="lg:hidden p-2 text-foreground/90 hover:text-primary transition-colors focus:outline-none"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -111,7 +109,7 @@ export default function Header() {
                     key={item.label}
                     to={item.to}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`text-lg font-medium transition-colors ${
+                    className={`text-xl font-medium transition-colors ${
                       isActive ? "text-primary font-bold" : "text-foreground/90 hover:text-primary"
                     }`}
                   >
@@ -120,7 +118,7 @@ export default function Header() {
                 ) : (
                   <button
                     key={item.label}
-                    className="flex items-center gap-2 text-lg font-medium text-foreground/90 hover:text-primary transition-colors text-left"
+                    className="flex items-center gap-2 text-xl font-medium text-foreground/90 hover:text-primary transition-colors text-left"
                   >
                     {item.label}
                     {item.hasDropdown && <ChevronDown className="h-5 w-5" />}
@@ -128,16 +126,6 @@ export default function Header() {
                 );
               })}
             </nav>
-            
-            <div className="mt-12 pt-6 border-t border-border/40">
-              <a 
-                href="tel:+448001234567" 
-                className="flex items-center justify-center gap-2 w-full rounded-xl bg-primary px-6 py-4 text-base font-semibold text-primary-foreground shadow-lg hover:opacity-95 transition-opacity"
-              >
-                <Phone className="h-5 w-5 fill-current" />
-                Contact Us: 0800 123 4567
-              </a>
-            </div>
           </motion.div>
         )}
       </AnimatePresence>

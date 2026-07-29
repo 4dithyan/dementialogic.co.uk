@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -61,7 +61,7 @@ function FAQAccordion() {
                 <div className={`flex shrink-0 h-10 w-10 items-center justify-center rounded-full transition-colors ${isOpen ? 'bg-[#6FA8E8] text-white' : 'bg-[#EFF6FF] text-[#6FA8E8]'}`}>
                   <faq.icon className="h-5 w-5" />
                 </div>
-                <div className={`text-[16px] font-semibold transition-colors ${isOpen ? 'text-[#0F172A]' : 'text-[#334155]'}`}>
+                <div className={`text-[20px] font-semibold transition-colors ${isOpen ? 'text-[#0F172A]' : 'text-[#334155]'}`}>
                   {faq.q}
                 </div>
               </div>
@@ -77,7 +77,7 @@ function FAQAccordion() {
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
-                  <div className="px-6 pb-6 pt-0 ml-[56px] text-[15px] leading-relaxed text-slate-600">
+                  <div className="px-6 pb-6 pt-0 ml-[56px] text-[19px] leading-relaxed text-slate-600">
                     {faq.a}
                   </div>
                 </motion.div>
@@ -138,125 +138,39 @@ export default function Index() {
         {/* Floating Widgets Layer (Absolute Front) */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[1400px] pointer-events-none z-[60]">
           {/* Left Widget (Liquid Glass Card) */}
-          <div className="pointer-events-auto absolute left-[2%] lg:left-[5%] top-[25%] bg-white/20 backdrop-blur-3xl backdrop-saturate-150 border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-[20px] p-4 pb-5 w-[190px] hidden md:block transition-all hover:bg-white/30">
-            <div className="w-full aspect-square rounded-[16px] bg-gradient-to-tr from-[#4A85C5] to-[#8FBDF1] mb-3 flex items-center justify-center shadow-inner relative overflow-hidden">
+          <div className="pointer-events-auto absolute left-[2%] lg:left-[5%] top-[25%] bg-white/20 backdrop-blur-3xl backdrop-saturate-150 border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-[16px] p-3 pb-4 w-[160px] hidden md:block transition-all hover:bg-white/30">
+            <div className="w-full aspect-square rounded-[12px] bg-gradient-to-tr from-[#4A85C5] to-[#8FBDF1] mb-2 flex items-center justify-center shadow-inner relative overflow-hidden">
                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
-               <Heart className="h-10 w-10 text-white drop-shadow-md" />
+               <Heart className="h-8 w-8 text-white drop-shadow-md" />
             </div>
-            <h3 className="text-[13px] font-extrabold text-[#0F172A] leading-tight mb-1.5">Compassionate Care</h3>
+            <h3 className="text-[13px] font-extrabold text-[#0F172A] leading-tight mb-1">Compassionate Care</h3>
             <p className="text-[10px] text-[#0F172A]/70 font-medium leading-relaxed">
               We support individuals living with dementia and their loved ones.
             </p>
           </div>
 
           {/* Right Widget (Stacked Liquid Glass Cards) */}
-          <div className="pointer-events-auto absolute right-[2%] lg:right-[5%] top-[25%] w-[260px] h-[160px] hidden md:block group">
+          <div className="pointer-events-auto absolute right-[2%] lg:right-[5%] top-[25%] w-[200px] h-[120px] hidden md:block group">
              {/* Top Dark Liquid Card */}
-             <div className="absolute top-0 left-0 w-full h-full bg-[#0F172A]/40 backdrop-blur-3xl backdrop-saturate-200 border border-white/20 rounded-[16px] p-5 shadow-[0_8px_32px_rgba(0,0,0,0.3)] relative overflow-hidden flex flex-col justify-between z-30 transform translate-y-0 translate-x-0 transition-transform group-hover:-translate-y-2">
+             <div className="absolute top-0 left-0 w-full h-full bg-[#0F172A]/40 backdrop-blur-3xl backdrop-saturate-200 border border-white/20 rounded-[14px] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.3)] relative overflow-hidden flex flex-col justify-between z-30 transform translate-y-0 translate-x-0 transition-transform group-hover:-translate-y-2">
                 <div className="flex justify-between items-start relative z-10">
-                   <div className="w-8 h-6 bg-white/30 rounded-[4px] backdrop-blur-sm" />
-                   <Sparkles className="h-4 w-4 text-white/70" />
+                   <div className="w-6 h-4 bg-white/30 rounded-[3px] backdrop-blur-sm" />
+                   <Sparkles className="h-3 w-3 text-white/70" />
                 </div>
                 <div className="relative z-10">
-                   <p className="text-white font-medium text-[12px] leading-snug tracking-wide drop-shadow-md">"Guidance you can trust, whenever you need it."</p>
-                   <div className="flex items-center gap-2 mt-3 opacity-80">
-                     <span className="text-white text-[10px] uppercase tracking-widest font-semibold drop-shadow-sm">Sarah H.</span>
+                   <p className="text-white font-medium text-[11px] leading-snug tracking-wide drop-shadow-md">"Guidance you can trust, whenever you need it."</p>
+                   <div className="flex items-center gap-2 mt-2 opacity-80">
+                     <span className="text-white text-[9px] uppercase tracking-widest font-semibold drop-shadow-sm">Sarah H.</span>
                    </div>
                 </div>
              </div>
              {/* Middle Liquid Card */}
-             <div className="absolute top-0 left-0 w-full h-full bg-white/20 backdrop-blur-2xl backdrop-saturate-150 rounded-[16px] z-20 transform translate-y-[-10px] scale-[0.95] shadow-lg border border-white/40 flex items-start justify-between p-3 transition-transform group-hover:translate-y-[-15px]">
-                <div className="w-4 h-3 bg-white/50 backdrop-blur-sm rounded-[2px]" />
-                <Heart className="h-3 w-3 text-[#6FA8E8] drop-shadow-sm" />
+             <div className="absolute top-0 left-0 w-full h-full bg-white/20 backdrop-blur-2xl backdrop-saturate-150 rounded-[14px] z-20 transform translate-y-[-8px] scale-[0.95] shadow-lg border border-white/40 flex items-start justify-between p-2 transition-transform group-hover:translate-y-[-12px]">
+                <div className="w-3 h-2 bg-white/50 backdrop-blur-sm rounded-[2px]" />
+                <Heart className="h-2 w-2 text-[#6FA8E8] drop-shadow-sm" />
              </div>
              {/* Bottom Liquid Card */}
-             <div className="absolute top-0 left-0 w-full h-full bg-[#8FBDF1]/30 backdrop-blur-xl backdrop-saturate-150 rounded-[16px] z-10 transform translate-y-[-20px] scale-[0.9] shadow-md border border-white/30 transition-transform group-hover:translate-y-[-25px]" />
-          </div>
-          
-          <div className="mt-20 flex flex-col items-center w-full">
-            <h3 className="text-[26px] font-bold text-slate-800 mb-2">The different types of dementia</h3>
-            <p className="text-[15px] text-slate-600 mb-12">Four main types. Different causes. Different experiences.</p>
-
-            <div className="flex flex-col lg:flex-row gap-5 w-full text-left">
-              {/* Left: 4 Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 flex-1">
-                {/* Card 1 */}
-                <div className="flex flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] hover:shadow-md transition-shadow">
-                  <div className="mb-6 text-blue-500">
-                    <Brain className="h-[72px] w-[72px]" strokeWidth={1} />
-                  </div>
-                  <h4 className="text-[17px] font-bold text-slate-800 mb-4 leading-snug">Alzheimer's<br/>Disease</h4>
-                  <p className="text-[13px] text-slate-600 leading-relaxed mb-6 flex-1">
-                    The most common type.<br/>Affects memory first.
-                  </p>
-                  <Link to="/types/alzheimers" className="text-[13px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 mt-auto">
-                    Learn more <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
-                </div>
-                
-                {/* Card 2 */}
-                <div className="flex flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] hover:shadow-md transition-shadow">
-                  <div className="mb-6 text-teal-600">
-                    <Brain className="h-[72px] w-[72px]" strokeWidth={1} />
-                  </div>
-                  <h4 className="text-[17px] font-bold text-slate-800 mb-4 leading-snug">Dementia with<br/>Lewy Bodies</h4>
-                  <p className="text-[13px] text-slate-600 leading-relaxed mb-6 flex-1">
-                    Causes fluctuations in thinking and attention.
-                  </p>
-                  <Link to="/types/lewy-bodies" className="text-[13px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 mt-auto">
-                    Learn more <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
-                </div>
-                
-                {/* Card 3 */}
-                <div className="flex flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] hover:shadow-md transition-shadow">
-                  <div className="mb-6 text-rose-400">
-                    <Brain className="h-[72px] w-[72px]" strokeWidth={1} />
-                  </div>
-                  <h4 className="text-[17px] font-bold text-slate-800 mb-4 leading-snug">Vascular<br/>Dementia</h4>
-                  <p className="text-[13px] text-slate-600 leading-relaxed mb-6 flex-1">
-                    Caused by reduced blood flow to the brain.
-                  </p>
-                  <Link to="/types/vascular" className="text-[13px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 mt-auto">
-                    Learn more <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
-                </div>
-                
-                {/* Card 4 */}
-                <div className="flex flex-col rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] hover:shadow-md transition-shadow">
-                  <div className="mb-6 text-purple-500">
-                    <Brain className="h-[72px] w-[72px]" strokeWidth={1} />
-                  </div>
-                  <h4 className="text-[17px] font-bold text-slate-800 mb-4 leading-snug">Frontotemporal<br/>Dementia</h4>
-                  <p className="text-[13px] text-slate-600 leading-relaxed mb-6 flex-1">
-                    Affects personality, behaviour and language.
-                  </p>
-                  <Link to="/types/frontotemporal" className="text-[13px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 mt-auto">
-                    Learn more <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
-                </div>
-              </div>
-
-              {/* Right: Quote Card */}
-              <div className="w-full lg:w-[280px] shrink-0 rounded-2xl bg-[#f4f9ff] p-8 relative overflow-hidden flex flex-col justify-center border border-blue-50/50">
-                <div className="text-[72px] font-serif text-blue-400/50 leading-[0] absolute top-12 left-6">
-                  “
-                </div>
-                <div className="relative z-10 mt-8">
-                  <p className="text-[16px] font-medium text-slate-800 leading-[1.6] mb-8 pr-4">
-                    Accurate understanding leads to better care and better days.
-                  </p>
-                  <Heart className="h-6 w-6 text-blue-600 fill-blue-600" />
-                </div>
-                <Brain className="absolute -bottom-8 -right-8 h-48 w-48 text-blue-200/30" strokeWidth={0.5} />
-              </div>
-            </div>
-
-            <div className="mt-8">
-              <Link to="/types" className="text-[13px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1.5">
-                Explore all types of dementia <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
+             <div className="absolute top-0 left-0 w-full h-full bg-[#8FBDF1]/30 backdrop-blur-xl backdrop-saturate-150 rounded-[14px] z-10 transform translate-y-[-16px] scale-[0.9] shadow-md border border-white/30 transition-transform group-hover:translate-y-[-20px]" />
           </div>
         </div>
 
@@ -277,20 +191,21 @@ export default function Index() {
             {/* Left Content (now resting on the white SVG background) */}
             <div className="w-full md:w-[350px] pb-2 relative z-20">
               <div className="flex gap-2 mb-4">
-                <div className="w-8 h-8 rounded-full bg-[#0F172A] text-white flex items-center justify-center"><Heart className="w-3 h-3" /></div>
-                <div className="w-8 h-8 rounded-full bg-[#6FA8E8] text-white flex items-center justify-center"><Activity className="w-3 h-3" /></div>
+                <div className="w-10 h-10 rounded-full bg-[#0F172A] text-white flex items-center justify-center shadow-lg"><Brain className="w-5 h-5" /></div>
               </div>
-              <p className="text-[13px] text-slate-500 font-medium leading-relaxed max-w-[220px]">
-                Find clarity, expert guidance, and a safe space to share your journey.
+              <p className="text-[20px] text-[#0F172A] font-extrabold mb-1">
+                Why are they suddenly upset?
               </p>
-              <div className="mt-4 text-[10px] font-bold text-[#0F172A] tracking-widest uppercase">Our Services</div>
+              <p className="text-[16px] text-slate-500 font-medium leading-relaxed max-w-[220px]">
+                Decode unexpected anger or confusion in 2 minutes to find the real cause.
+              </p>
+              <Link to="/dementia-trigger-decoder" className="mt-5 inline-flex items-center gap-2 bg-[#0F172A] text-white px-5 py-2.5 rounded-full text-[14px] font-bold tracking-widest uppercase hover:bg-[#6FA8E8] transition-colors shadow-lg hover:-translate-y-0.5">
+                Trigger Decoder <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
 
             {/* Center Content (inside the transparent valley, over blue background) */}
             <div className="flex-1 flex flex-col items-center text-center -mt-32 relative z-20">
-              <Link to="/contact" className="bg-white rounded-full px-6 py-2.5 text-[12px] font-extrabold text-[#0F172A] shadow-[0_8px_30px_rgba(0,0,0,0.1)] flex items-center gap-2 mb-6 hover:scale-105 transition-transform uppercase tracking-wider">
-                Speak to an expert <ArrowRight className="w-3 h-3" />
-              </Link>
               <div className="bg-white/40 backdrop-blur-xl border border-white/60 rounded-[32px] px-8 py-5 shadow-[0_8px_32px_rgba(31,38,135,0.1)] inline-block">
                 <h1 className="text-[28px] md:text-[38px] lg:text-[48px] font-black bg-gradient-to-br from-[#0F172A] to-[#4A85C5] bg-clip-text text-transparent leading-[1.1] tracking-tighter uppercase">
                   When memory fades,<br/>compassion remains.
@@ -300,17 +215,17 @@ export default function Index() {
 
             {/* Right Content (now resting on the white SVG background) */}
             <div className="w-full md:w-[350px] pb-2 relative z-20 flex flex-col items-end text-right">
-              <div className="border border-slate-200 rounded-full px-4 py-1 text-[10px] font-bold text-slate-400 mb-4 uppercase tracking-widest">
-                Expert Resources
+              <div className="flex gap-2 mb-4">
+                <div className="w-10 h-10 rounded-full bg-[#6FA8E8] text-white flex items-center justify-center shadow-lg"><Heart className="w-5 h-5" /></div>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="text-[42px] font-light text-[#6FA8E8] leading-none tracking-tighter">24/7</div>
-                <div className="text-[10px] font-bold text-slate-500 text-left leading-tight uppercase tracking-wider">
-                  Expert<br/>Guidance &<br/>Support
-                </div>
-              </div>
-              <Link to="/education-hub" className="mt-5 bg-[#0F172A] text-white px-5 py-2.5 rounded-full text-[11px] font-bold tracking-widest uppercase flex items-center gap-2 hover:bg-[#6FA8E8] transition-colors shadow-lg hover:-translate-y-0.5">
-                Understand the signs <ArrowRight className="w-3.5 h-3.5" />
+              <p className="text-[20px] text-[#0F172A] font-extrabold mb-1">
+                Is the stress becoming too much?
+              </p>
+              <p className="text-[16px] text-slate-500 font-medium leading-relaxed max-w-[220px]">
+                Take our 3-minute well-being check to see if you need more support right now.
+              </p>
+              <Link to="/caregiver-reality-check" className="mt-5 inline-flex items-center gap-2 bg-[#6FA8E8] text-white px-5 py-2.5 rounded-full text-[14px] font-bold tracking-widest uppercase hover:bg-[#0F172A] transition-colors shadow-lg hover:-translate-y-0.5">
+                Reality Check <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
 
@@ -318,25 +233,43 @@ export default function Index() {
         </div>
         
         {/* Mobile alternative for the bottom section */}
-        <div className="md:hidden bg-[#8FBDF1] mt-12 pt-8 pb-12 px-6 flex flex-col gap-12 text-center rounded-t-[40px] z-30 relative">
-            <div className="flex flex-col items-center">
-              <Link to="/contact" className="bg-white rounded-full px-6 py-2.5 text-[13px] font-bold text-[#0F172A] shadow-sm flex items-center gap-2 mb-6">
-                Speak to an expert <ArrowRight className="w-4 h-4" />
-              </Link>
-              <div className="bg-white/40 backdrop-blur-md border border-white/50 rounded-[24px] px-6 py-4 shadow-sm inline-block">
-                <h1 className="text-[24px] font-black bg-gradient-to-br from-[#0F172A] to-[#4A85C5] bg-clip-text text-transparent leading-[1.1] tracking-tighter uppercase">
-                  When memory fades,<br/>compassion remains.
-                </h1>
-              </div>
+        <div className="md:hidden mt-0 z-30 relative flex flex-col items-center pb-12">
+            
+            {/* Title in a liquid glass box */}
+            <div className="px-4 mb-10 text-center -mt-40 relative z-20">
+                <div className="bg-white/20 backdrop-blur-3xl backdrop-saturate-200 border border-white/50 shadow-[0_8px_32px_rgba(31,38,135,0.15)] rounded-[32px] px-6 py-5 inline-block relative overflow-hidden">
+                   {/* Light reflection effect */}
+                   <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+                   <h1 className="text-[26px] font-black text-[#0F172A] leading-[1.15] tracking-tighter uppercase drop-shadow-sm relative z-10">
+                     When memory fades,<br/>
+                     <span className="text-white drop-shadow-md">compassion remains.</span>
+                   </h1>
+                </div>
             </div>
             
-            <div className="flex justify-between items-center bg-white p-6 rounded-3xl shadow-sm">
-               <div className="text-left">
-                  <div className="text-[32px] font-light text-[#6FA8E8] leading-none mb-1">24/7</div>
-                  <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Expert Guidance</div>
-               </div>
-               <Link to="/education-hub" className="w-10 h-10 rounded-full bg-[#0F172A] text-white flex items-center justify-center">
-                  <ArrowRight className="w-4 h-4" />
+            {/* Action 1: Minimalist floating pill */}
+            <div className="w-full px-6 mb-4">
+               <Link to="/dementia-trigger-decoder" className="flex items-center justify-between bg-white/50 backdrop-blur-md border border-white/60 p-2 pl-6 rounded-full shadow-lg hover:bg-white/60 transition-colors">
+                  <div className="flex flex-col text-left py-1">
+                     <span className="text-[17px] font-black text-[#0F172A]">Why are they suddenly upset?</span>
+                     <span className="text-[13px] font-bold text-slate-600">Trigger Decoder</span>
+                  </div>
+                  <div className="w-12 h-12 rounded-full bg-[#0F172A] text-white flex items-center justify-center shrink-0 shadow-md">
+                     <ArrowRight className="w-5 h-5" />
+                  </div>
+               </Link>
+            </div>
+            
+            {/* Action 2: Minimalist, light, floating pill to create contrast */}
+            <div className="w-full px-6">
+               <Link to="/caregiver-reality-check" className="flex items-center justify-between bg-white/50 backdrop-blur-md border border-white/60 p-2 pl-6 rounded-full shadow-lg hover:bg-white/60 transition-colors">
+                  <div className="flex flex-col text-left py-1">
+                     <span className="text-[17px] font-black text-[#0F172A]">Is the stress too much?</span>
+                     <span className="text-[13px] font-bold text-slate-600">3-min Reality Check</span>
+                  </div>
+                  <div className="w-12 h-12 rounded-full bg-[#6FA8E8] text-white flex items-center justify-center shrink-0 shadow-md">
+                     <ArrowRight className="w-5 h-5" />
+                  </div>
                </Link>
             </div>
         </div>
@@ -358,8 +291,8 @@ export default function Index() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EFF6FF] mb-5 shadow-inner text-[#6FA8E8]">
                   <f.icon className="h-6 w-6" strokeWidth={1.5} />
                 </div>
-                <h3 className="font-bold text-[16px] text-slate-800 mb-2">{f.title}</h3>
-                <p className="text-[13px] leading-relaxed text-slate-600">{f.desc}</p>
+                <h3 className="font-bold text-[20px] text-slate-800 mb-2">{f.title}</h3>
+                <p className="text-[16px] leading-relaxed text-slate-600">{f.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -382,13 +315,13 @@ export default function Index() {
             {/* Left Column - Content & Stats */}
             <div className="flex flex-col gap-8">
               <div>
-                <div className="inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-wider text-[#6FA8E8] mb-4">
+                <div className="inline-flex items-center gap-2 text-[16px] font-bold uppercase tracking-wider text-[#6FA8E8] mb-4">
                   <Activity className="h-4 w-4" /> Early Indicators
                 </div>
-                <h2 className="text-[32px] font-bold leading-[1.2] tracking-tight text-slate-800 lg:text-[44px] mb-6">
+                <h2 className="text-[40px] font-bold leading-[1.2] tracking-tight text-slate-800 lg:text-[55px] mb-6">
                   Recognising early signs makes a difference.
                 </h2>
-                <p className="text-[17px] text-slate-600 leading-relaxed">
+                <p className="text-[21px] text-slate-600 leading-relaxed">
                   Dementia changes often begin subtly. Knowing what to look for helps you take the right steps sooner, offering clarity and peace of mind for everyone involved.
                 </p>
               </div>
@@ -400,8 +333,8 @@ export default function Index() {
                       <Brain className="h-6 w-6 text-[#6FA8E8]" />
                     </div>
                   </div>
-                  <div className="text-[32px] font-extrabold text-slate-800 leading-none mb-2">1 in 14</div>
-                  <div className="text-[14px] font-medium text-slate-500">People over 65 affected</div>
+                  <div className="text-[40px] font-extrabold text-slate-800 leading-none mb-2">1 in 14</div>
+                  <div className="text-[18px] font-medium text-slate-500">People over 65 affected</div>
                 </div>
                 
                 <div className="flex flex-col justify-center rounded-3xl bg-gradient-to-br from-[#6FA8E8] to-[#5A92CF] p-6 shadow-lg shadow-[#6FA8E8]/30 text-white relative overflow-hidden">
@@ -414,8 +347,8 @@ export default function Index() {
                         <Clock className="h-6 w-6 text-white" />
                       </div>
                     </div>
-                    <div className="text-[32px] font-extrabold leading-none mb-2">Early</div>
-                    <div className="text-[14px] font-medium text-white/90">Detection matters most</div>
+                    <div className="text-[40px] font-extrabold leading-none mb-2">Early</div>
+                    <div className="text-[18px] font-medium text-white/90">Detection matters most</div>
                   </div>
                 </div>
               </div>
@@ -424,7 +357,7 @@ export default function Index() {
             {/* Right Column - Beautiful Accordion */}
             <div className="flex flex-col relative">
               <div className="absolute -inset-6 bg-[#EFF6FF]/50 rounded-[40px] -z-10" />
-              <div className="p-2 mb-4 font-bold text-slate-800 text-lg">Frequently Asked Questions</div>
+              <div className="p-2 mb-4 font-bold text-slate-800 text-xl">Frequently Asked Questions</div>
               <FAQAccordion />
             </div>
             
@@ -440,19 +373,19 @@ export default function Index() {
             
             {/* Text Content */}
             <div className="flex flex-col">
-              <div className="inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-wider text-[#6FA8E8] mb-4">
+              <div className="inline-flex items-center gap-2 text-[16px] font-bold uppercase tracking-wider text-[#6FA8E8] mb-4">
                 <CheckCircle2 className="h-4 w-4" /> Trigger Decoder
               </div>
-              <h2 className="text-[32px] font-bold leading-[1.2] tracking-tight text-slate-800 lg:text-[44px] mb-6">
+              <h2 className="text-[40px] font-bold leading-[1.2] tracking-tight text-slate-800 lg:text-[55px] mb-6">
                 Decode the distress.<br />Find the real trigger.
               </h2>
-              <p className="text-[17px] text-slate-600 leading-relaxed mb-10 max-w-lg">
+              <p className="text-[21px] text-slate-600 leading-relaxed mb-10 max-w-lg">
                 Aggression, confusion, and agitation often have a hidden cause. Our clinical Trigger Decoder helps you identify what's really happening in just 2 minutes.
               </p>
               <div>
                 <Link 
                   to="/dementia-trigger-decoder"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0F172A] px-8 py-4 text-[15px] font-bold text-white shadow-xl hover:bg-[#6FA8E8] transition-all hover:-translate-y-1"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0F172A] px-8 py-4 text-[19px] font-bold text-white shadow-xl hover:bg-[#6FA8E8] transition-all hover:-translate-y-1"
                 >
                   Start the Trigger Decoder <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -466,7 +399,7 @@ export default function Index() {
                 <img src={handshakeImg} alt="Supportive hands" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
-                  <h3 className="text-xl font-bold text-white mb-2 leading-tight">
+                  <h3 className="text-2xl font-bold text-white mb-2 leading-tight">
                     "It's not about the behaviour. It's about what's behind it."
                   </h3>
                 </div>
@@ -510,11 +443,11 @@ export default function Index() {
                  { n: "3", title: "Receive an action plan", desc: "Practical next steps and de-escalation guidance." }
                ].map((step) => (
                  <div key={step.n} className="flex flex-col items-center">
-                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-lg text-[24px] font-black text-[#6FA8E8] mb-6">
+                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-lg text-[30px] font-black text-[#6FA8E8] mb-6">
                      {step.n}
                    </div>
-                   <h3 className="text-[20px] font-bold text-[#0F172A] mb-3">{step.title}</h3>
-                   <p className="text-[15px] leading-relaxed text-[#0F172A]/80 max-w-xs">{step.desc}</p>
+                   <h3 className="text-[25px] font-bold text-[#0F172A] mb-3">{step.title}</h3>
+                   <p className="text-[19px] leading-relaxed text-[#0F172A]/80 max-w-xs">{step.desc}</p>
                  </div>
                ))}
              </div>
@@ -525,19 +458,19 @@ export default function Index() {
 
       {/* Marquee Divider */}
       <div className="w-full bg-white py-4 overflow-hidden border-y border-slate-100 flex whitespace-nowrap relative z-30">
-        <div className="flex animate-marquee items-center text-[#0F172A] font-serif italic font-medium text-[16px] lg:text-[20px] w-max">
+        <div className="flex animate-marquee items-center text-[#0F172A] font-serif italic font-medium text-[20px] lg:text-[25px] w-max">
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex items-center shrink-0">
-              <span className="mx-10 lg:mx-16">Compassion</span><span className="text-[#6FA8E8]/40 not-italic text-sm">•</span>
-              <span className="mx-10 lg:mx-16">Understanding</span><span className="text-[#6FA8E8]/40 not-italic text-sm">•</span>
-              <span className="mx-10 lg:mx-16">Support</span><span className="text-[#6FA8E8]/40 not-italic text-sm">•</span>
-              <span className="mx-10 lg:mx-16">Clarity</span><span className="text-[#6FA8E8]/40 not-italic text-sm">•</span>
-              <span className="mx-10 lg:mx-16">Care</span><span className="text-[#6FA8E8]/40 not-italic text-sm">•</span>
-              <span className="mx-10 lg:mx-16">Empathy</span><span className="text-[#6FA8E8]/40 not-italic text-sm">•</span>
-              <span className="mx-10 lg:mx-16">Guidance</span><span className="text-[#6FA8E8]/40 not-italic text-sm">•</span>
-              <span className="mx-10 lg:mx-16">Patience</span><span className="text-[#6FA8E8]/40 not-italic text-sm">•</span>
-              <span className="mx-10 lg:mx-16">Strength</span><span className="text-[#6FA8E8]/40 not-italic text-sm">•</span>
-              <span className="mx-10 lg:mx-16">Connection</span><span className="text-[#6FA8E8]/40 not-italic text-sm">•</span>
+              <span className="mx-10 lg:mx-16">Compassion</span><span className="text-[#6FA8E8]/40 not-italic text-base">•</span>
+              <span className="mx-10 lg:mx-16">Understanding</span><span className="text-[#6FA8E8]/40 not-italic text-base">•</span>
+              <span className="mx-10 lg:mx-16">Support</span><span className="text-[#6FA8E8]/40 not-italic text-base">•</span>
+              <span className="mx-10 lg:mx-16">Clarity</span><span className="text-[#6FA8E8]/40 not-italic text-base">•</span>
+              <span className="mx-10 lg:mx-16">Care</span><span className="text-[#6FA8E8]/40 not-italic text-base">•</span>
+              <span className="mx-10 lg:mx-16">Empathy</span><span className="text-[#6FA8E8]/40 not-italic text-base">•</span>
+              <span className="mx-10 lg:mx-16">Guidance</span><span className="text-[#6FA8E8]/40 not-italic text-base">•</span>
+              <span className="mx-10 lg:mx-16">Patience</span><span className="text-[#6FA8E8]/40 not-italic text-base">•</span>
+              <span className="mx-10 lg:mx-16">Strength</span><span className="text-[#6FA8E8]/40 not-italic text-base">•</span>
+              <span className="mx-10 lg:mx-16">Connection</span><span className="text-[#6FA8E8]/40 not-italic text-base">•</span>
             </div>
           ))}
         </div>
@@ -565,8 +498,8 @@ export default function Index() {
                     <Heart className="h-6 w-6 text-white fill-white" />
                   </div>
                   <div>
-                    <div className="text-[16px] font-bold text-[#0F172A]">Reality Check</div>
-                    <div className="text-[13px] text-[#0F172A]/70">Takes only 3 minutes</div>
+                    <div className="text-[20px] font-bold text-[#0F172A]">Reality Check</div>
+                    <div className="text-[16px] text-[#0F172A]/70">Takes only 3 minutes</div>
                   </div>
                 </div>
                 <div className="h-1.5 w-full bg-[#0F172A]/10 rounded-full overflow-hidden">
@@ -576,13 +509,13 @@ export default function Index() {
             </div>
 
             <div className="flex flex-col order-1 lg:order-2">
-              <div className="inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-wider text-[#0F172A] mb-4">
+              <div className="inline-flex items-center gap-2 text-[16px] font-bold uppercase tracking-wider text-[#0F172A] mb-4">
                 Caregiver Support
               </div>
-              <h2 className="text-[32px] font-bold leading-[1.2] tracking-tight text-white lg:text-[48px] mb-6 drop-shadow-sm">
+              <h2 className="text-[40px] font-bold leading-[1.2] tracking-tight text-white lg:text-[60px] mb-6 drop-shadow-sm">
                 Are you burning out without realising it?
               </h2>
-              <p className="text-[17px] font-medium leading-relaxed text-white/90 mb-10">
+              <p className="text-[21px] font-medium leading-relaxed text-white/90 mb-10">
                 Caregiving is an act of profound love, but it can also be physically and emotionally exhausting. You don't have to navigate it alone. Take a moment to assess your own well-being.
               </p>
               
@@ -596,17 +529,17 @@ export default function Index() {
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white shadow-md">
                       <item.icon className="h-5 w-5 text-[#6FA8E8]" />
                     </div>
-                    <div className="text-[16px] font-bold text-white">{item.title}</div>
+                    <div className="text-[20px] font-bold text-white">{item.title}</div>
                   </div>
                 ))}
               </div>
               
               <div>
-                <Link to="/caregiver-reality-check" className="inline-flex items-center justify-center gap-3 rounded-full bg-[#0F172A] px-10 py-5 text-[16px] font-bold text-white shadow-xl hover:bg-[#1E293B] hover:scale-105 transition-all duration-300 relative overflow-hidden group">
+                <Link to="/caregiver-reality-check" className="inline-flex items-center justify-center gap-3 rounded-full bg-[#0F172A] px-10 py-5 text-[20px] font-bold text-white shadow-xl hover:bg-[#1E293B] hover:scale-105 transition-all duration-300 relative overflow-hidden group">
                   <span className="relative z-10">Take the Reality Check</span>
                   <ArrowRight className="h-5 w-5 relative z-10 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <div className="mt-4 text-[13px] font-medium text-[#0F172A]/70 flex items-center gap-2">
+                <div className="mt-4 text-[16px] font-medium text-[#0F172A]/70 flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-[#0F172A]" /> Free, confidential, and instantly helpful.
                 </div>
               </div>
@@ -621,17 +554,17 @@ export default function Index() {
         <div className="mx-auto max-w-[1400px] px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-wider text-[#6FA8E8] mb-4">
+              <div className="inline-flex items-center gap-2 text-[16px] font-bold uppercase tracking-wider text-[#6FA8E8] mb-4">
                 Educational Resources
               </div>
-              <h2 className="text-[32px] font-bold leading-[1.2] tracking-tight text-slate-800 lg:text-[44px] mb-4">
+              <h2 className="text-[40px] font-bold leading-[1.2] tracking-tight text-slate-800 lg:text-[55px] mb-4">
                 Understand dementia.<br />Feel more confident.
               </h2>
-              <p className="text-[17px] font-medium leading-relaxed text-slate-500">
+              <p className="text-[21px] font-medium leading-relaxed text-slate-500">
                 Simple, clinically accurate guides and resources to help you navigate your journey at your own pace.
               </p>
             </div>
-            <Link to="/education-hub" className="inline-flex items-center gap-2 text-[15px] font-bold text-[#6FA8E8] hover:text-[#5A92CF] transition-colors bg-[#EFF6FF] px-6 py-3 rounded-full">
+            <Link to="/education-hub" className="inline-flex items-center gap-2 text-[19px] font-bold text-[#6FA8E8] hover:text-[#5A92CF] transition-colors bg-[#EFF6FF] px-6 py-3 rounded-full">
               View all resources <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -648,8 +581,8 @@ export default function Index() {
                   <img src={article.img} alt={article.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 </div>
                 <div className="px-4 pb-4">
-                  <div className="text-[12px] font-bold uppercase tracking-wider text-[#6FA8E8] mb-2">{article.tag}</div>
-                  <h3 className="text-[22px] font-bold text-slate-800 group-hover:text-[#6FA8E8] transition-colors">{article.title}</h3>
+                  <div className="text-[15px] font-bold uppercase tracking-wider text-[#6FA8E8] mb-2">{article.tag}</div>
+                  <h3 className="text-[28px] font-bold text-slate-800 group-hover:text-[#6FA8E8] transition-colors">{article.title}</h3>
                 </div>
               </Link>
             ))}
