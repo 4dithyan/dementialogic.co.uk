@@ -93,11 +93,11 @@ function FAQAccordion() {
 export default function Index() {
   return (
     <div className="w-full flex-grow flex flex-col bg-slate-50 overflow-hidden">
-      
+
       {/* Hero Section */}
       {/* Replicated Image Layout Hero Section */}
       <section className="relative pt-24 pb-0 overflow-hidden min-h-[90vh] flex flex-col justify-between" style={{ background: 'linear-gradient(180deg, #D4E5F4 0%, #8FBDF1 100%)' }}>
-        
+
         {/* HUGE Background Text */}
         <div className="absolute top-[15%] md:top-[8%] left-0 w-full flex justify-center pointer-events-none select-none z-0">
           <span className="text-[18vw] font-bold text-white opacity-60 tracking-[0.05em] leading-none blur-[4px]">
@@ -106,13 +106,13 @@ export default function Index() {
         </div>
 
         {/* Central Layout Area */}
-        {/* z-10 so the image tucks behind the white SVG shapes */}
+        {/* z-10 so the image tucks behind the white SVG */}
         <div className="relative z-10 max-w-[1400px] mx-auto w-full px-4 lg:px-8 flex-grow flex flex-col items-center justify-center pt-2">
-          
+
           {/* Main Central Image - Increased Size */}
           <div className="absolute -top-[5%] md:-top-[20%] left-1/2 -translate-x-1/2 w-[400px] sm:w-[600px] md:w-[750px] lg:w-[900px] h-[600px] md:h-[850px] z-40 pointer-events-none">
-            <img 
-              src="/images/old_age.png" 
+            <img
+              src="/images/old_age.png"
               alt="Hero"
               className="w-full h-full object-contain rounded-[100px]"
               style={{
@@ -126,11 +126,11 @@ export default function Index() {
 
           {/* Connected Lines (SVG) */}
           <svg className="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1200px] h-[300px] pointer-events-none z-0 hidden md:block opacity-60" viewBox="0 0 1200 300" fill="none" preserveAspectRatio="none">
-             <path d="M 100 150 L 350 150 Q 370 150 380 170 L 410 220 Q 420 240 440 240 L 580 240 L 760 240 Q 780 240 790 220 L 820 170 Q 830 150 850 150 L 1100 150" stroke="white" strokeWidth="1.5" strokeDasharray="6 6" />
-             {/* Center Target circle */}
-             <circle cx="600" cy="240" r="16" stroke="white" strokeWidth="1.5" fill="transparent" strokeDasharray="none" />
-             <circle cx="600" cy="240" r="10" stroke="white" strokeWidth="1" fill="transparent" strokeDasharray="none" />
-             <circle cx="600" cy="240" r="4" fill="white" />
+            <path d="M 100 150 L 350 150 Q 370 150 380 170 L 410 220 Q 420 240 440 240 L 580 240 L 760 240 Q 780 240 790 220 L 820 170 Q 830 150 850 150 L 1100 150" stroke="white" strokeWidth="1.5" strokeDasharray="6 6" />
+            {/* Center Target circle */}
+            <circle cx="600" cy="240" r="16" stroke="white" strokeWidth="1.5" fill="transparent" strokeDasharray="none" />
+            <circle cx="600" cy="240" r="10" stroke="white" strokeWidth="1" fill="transparent" strokeDasharray="none" />
+            <circle cx="600" cy="240" r="4" fill="white" />
           </svg>
 
         </div>
@@ -140,8 +140,8 @@ export default function Index() {
           {/* Left Widget (Liquid Glass Card) */}
           <div className="pointer-events-auto absolute left-[2%] lg:left-[5%] top-[25%] bg-white/20 backdrop-blur-3xl backdrop-saturate-150 border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-[16px] p-3 pb-4 w-[160px] hidden md:block transition-all hover:bg-white/30">
             <div className="w-full aspect-square rounded-[12px] bg-gradient-to-tr from-[#4A85C5] to-[#8FBDF1] mb-2 flex items-center justify-center shadow-inner relative overflow-hidden">
-               <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
-               <Heart className="h-8 w-8 text-white drop-shadow-md" />
+              <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
+              <Heart className="h-8 w-8 text-white drop-shadow-md" />
             </div>
             <h3 className="text-[13px] font-extrabold text-[#0F172A] leading-tight mb-1">Compassionate Care</h3>
             <p className="text-[10px] text-[#0F172A]/70 font-medium leading-relaxed">
@@ -151,32 +151,32 @@ export default function Index() {
 
           {/* Right Widget (Stacked Liquid Glass Cards) */}
           <div className="pointer-events-auto absolute right-[2%] lg:right-[5%] top-[25%] w-[200px] h-[120px] hidden md:block group">
-             {/* Top Dark Liquid Card */}
-             <div className="absolute top-0 left-0 w-full h-full bg-[#0F172A]/40 backdrop-blur-3xl backdrop-saturate-200 border border-white/20 rounded-[14px] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.3)] relative overflow-hidden flex flex-col justify-between z-30 transform translate-y-0 translate-x-0 transition-transform group-hover:-translate-y-2">
-                <div className="flex justify-between items-start relative z-10">
-                   <div className="w-6 h-4 bg-white/30 rounded-[3px] backdrop-blur-sm" />
-                   <Sparkles className="h-3 w-3 text-white/70" />
+            {/* Top Dark Liquid Card */}
+            <div className="absolute top-0 left-0 w-full h-full bg-[#0F172A]/40 backdrop-blur-3xl backdrop-saturate-200 border border-white/20 rounded-[14px] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.3)] relative overflow-hidden flex flex-col justify-between z-30 transform translate-y-0 translate-x-0 transition-transform group-hover:-translate-y-2">
+              <div className="flex justify-between items-start relative z-10">
+                <div className="w-6 h-4 bg-white/30 rounded-[3px] backdrop-blur-sm" />
+                <Sparkles className="h-3 w-3 text-white/70" />
+              </div>
+              <div className="relative z-10">
+                <p className="text-white font-medium text-[11px] leading-snug tracking-wide drop-shadow-md">"Guidance you can trust, whenever you need it."</p>
+                <div className="flex items-center gap-2 mt-2 opacity-80">
+                  <span className="text-white text-[9px] uppercase tracking-widest font-semibold drop-shadow-sm">Sarah H.</span>
                 </div>
-                <div className="relative z-10">
-                   <p className="text-white font-medium text-[11px] leading-snug tracking-wide drop-shadow-md">"Guidance you can trust, whenever you need it."</p>
-                   <div className="flex items-center gap-2 mt-2 opacity-80">
-                     <span className="text-white text-[9px] uppercase tracking-widest font-semibold drop-shadow-sm">Sarah H.</span>
-                   </div>
-                </div>
-             </div>
-             {/* Middle Liquid Card */}
-             <div className="absolute top-0 left-0 w-full h-full bg-white/20 backdrop-blur-2xl backdrop-saturate-150 rounded-[14px] z-20 transform translate-y-[-8px] scale-[0.95] shadow-lg border border-white/40 flex items-start justify-between p-2 transition-transform group-hover:translate-y-[-12px]">
-                <div className="w-3 h-2 bg-white/50 backdrop-blur-sm rounded-[2px]" />
-                <Heart className="h-2 w-2 text-[#6FA8E8] drop-shadow-sm" />
-             </div>
-             {/* Bottom Liquid Card */}
-             <div className="absolute top-0 left-0 w-full h-full bg-[#8FBDF1]/30 backdrop-blur-xl backdrop-saturate-150 rounded-[14px] z-10 transform translate-y-[-16px] scale-[0.9] shadow-md border border-white/30 transition-transform group-hover:translate-y-[-20px]" />
+              </div>
+            </div>
+            {/* Middle Liquid Card */}
+            <div className="absolute top-0 left-0 w-full h-full bg-white/20 backdrop-blur-2xl backdrop-saturate-150 rounded-[14px] z-20 transform translate-y-[-8px] scale-[0.95] shadow-lg border border-white/40 flex items-start justify-between p-2 transition-transform group-hover:translate-y-[-12px]">
+              <div className="w-3 h-2 bg-white/50 backdrop-blur-sm rounded-[2px]" />
+              <Heart className="h-2 w-2 text-[#6FA8E8] drop-shadow-sm" />
+            </div>
+            {/* Bottom Liquid Card */}
+            <div className="absolute top-0 left-0 w-full h-full bg-[#8FBDF1]/30 backdrop-blur-xl backdrop-saturate-150 rounded-[14px] z-10 transform translate-y-[-16px] scale-[0.9] shadow-md border border-white/30 transition-transform group-hover:translate-y-[-20px]" />
           </div>
         </div>
 
         {/* Bottom Section with White Backgrounds on Sides & Transparent Center */}
         <div className="relative z-30 mt-auto w-full pt-[200px] hidden md:block">
-          
+
           {/* SVG creating the white left and right blocks. The center is transparent. */}
           <div className="absolute top-[0px] left-0 w-full h-[500px] pointer-events-none drop-shadow-[0_-5px_15px_rgba(0,0,0,0.05)] z-0">
             <svg viewBox="0 0 1440 500" preserveAspectRatio="none" className="w-full h-full">
@@ -187,7 +187,7 @@ export default function Index() {
 
           {/* Content inside the bottom area */}
           <div className="relative z-10 max-w-[1400px] mx-auto px-8 pb-10 flex flex-col md:flex-row items-end justify-between h-full">
-            
+
             {/* Left Content (now resting on the white SVG background) */}
             <div className="w-full md:w-[350px] pb-2 relative z-20">
               <div className="flex gap-2 mb-4">
@@ -208,7 +208,7 @@ export default function Index() {
             <div className="flex-1 flex flex-col items-center text-center -mt-32 relative z-20">
               <div className="bg-white/40 backdrop-blur-xl border border-white/60 rounded-[32px] px-8 py-5 shadow-[0_8px_32px_rgba(31,38,135,0.1)] inline-block">
                 <h1 className="text-[28px] md:text-[38px] lg:text-[48px] font-black bg-gradient-to-br from-[#0F172A] to-[#4A85C5] bg-clip-text text-transparent leading-[1.1] tracking-tighter uppercase">
-                  When memory fades,<br/>compassion remains.
+                  When memory fades,<br />compassion remains.
                 </h1>
               </div>
             </div>
@@ -231,47 +231,47 @@ export default function Index() {
 
           </div>
         </div>
-        
+
         {/* Mobile alternative for the bottom section */}
         <div className="md:hidden mt-0 z-30 relative flex flex-col items-center pb-12">
-            
-            {/* Title in a liquid glass box */}
-            <div className="px-4 mb-10 text-center -mt-40 relative z-20">
-                <div className="bg-white/20 backdrop-blur-3xl backdrop-saturate-200 border border-white/50 shadow-[0_8px_32px_rgba(31,38,135,0.15)] rounded-[32px] px-6 py-5 inline-block relative overflow-hidden">
-                   {/* Light reflection effect */}
-                   <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent" />
-                   <h1 className="text-[26px] font-black text-[#0F172A] leading-[1.15] tracking-tighter uppercase drop-shadow-sm relative z-10">
-                     When memory fades,<br/>
-                     <span className="text-white drop-shadow-md">compassion remains.</span>
-                   </h1>
-                </div>
+
+          {/* Title in a liquid glass box */}
+          <div className="px-4 mb-10 text-center -mt-40 relative z-20">
+            <div className="bg-white/20 backdrop-blur-3xl backdrop-saturate-200 border border-white/50 shadow-[0_8px_32px_rgba(31,38,135,0.15)] rounded-[32px] px-6 py-5 inline-block relative overflow-hidden">
+              {/* Light reflection effect */}
+              <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+              <h1 className="text-[26px] font-black text-[#0F172A] leading-[1.15] tracking-tighter uppercase drop-shadow-sm relative z-10">
+                When memory fades,<br />
+                <span className="text-white drop-shadow-md">compassion remains.</span>
+              </h1>
             </div>
-            
-            {/* Action 1: Minimalist floating pill */}
-            <div className="w-full px-6 mb-4">
-               <Link to="/dementia-trigger-decoder" className="flex items-center justify-between bg-white/50 backdrop-blur-md border border-white/60 p-2 pl-6 rounded-full shadow-lg hover:bg-white/60 transition-colors">
-                  <div className="flex flex-col text-left py-1">
-                     <span className="text-[17px] font-black text-[#0F172A]">Why are they suddenly upset?</span>
-                     <span className="text-[13px] font-bold text-slate-600">Trigger Decoder</span>
-                  </div>
-                  <div className="w-12 h-12 rounded-full bg-[#0F172A] text-white flex items-center justify-center shrink-0 shadow-md">
-                     <ArrowRight className="w-5 h-5" />
-                  </div>
-               </Link>
-            </div>
-            
-            {/* Action 2: Minimalist, light, floating pill to create contrast */}
-            <div className="w-full px-6">
-               <Link to="/caregiver-reality-check" className="flex items-center justify-between bg-white/50 backdrop-blur-md border border-white/60 p-2 pl-6 rounded-full shadow-lg hover:bg-white/60 transition-colors">
-                  <div className="flex flex-col text-left py-1">
-                     <span className="text-[17px] font-black text-[#0F172A]">Is the stress too much?</span>
-                     <span className="text-[13px] font-bold text-slate-600">3-min Reality Check</span>
-                  </div>
-                  <div className="w-12 h-12 rounded-full bg-[#6FA8E8] text-white flex items-center justify-center shrink-0 shadow-md">
-                     <ArrowRight className="w-5 h-5" />
-                  </div>
-               </Link>
-            </div>
+          </div>
+
+          {/* Action 1: Minimalist floating pill */}
+          <div className="w-full px-6 mb-4">
+            <Link to="/dementia-trigger-decoder" className="flex items-center justify-between bg-white/50 backdrop-blur-md border border-white/60 p-2 pl-6 rounded-full shadow-lg hover:bg-white/60 transition-colors">
+              <div className="flex flex-col text-left py-1">
+                <span className="text-[17px] font-black text-[#0F172A]">Why are they suddenly upset?</span>
+                <span className="text-[13px] font-bold text-slate-600">Trigger Decoder</span>
+              </div>
+              <div className="w-12 h-12 rounded-full bg-[#0F172A] text-white flex items-center justify-center shrink-0 shadow-md">
+                <ArrowRight className="w-5 h-5" />
+              </div>
+            </Link>
+          </div>
+
+          {/* Action 2: Minimalist, light, floating pill to create contrast */}
+          <div className="w-full px-6">
+            <Link to="/caregiver-reality-check" className="flex items-center justify-between bg-white/50 backdrop-blur-md border border-white/60 p-2 pl-6 rounded-full shadow-lg hover:bg-white/60 transition-colors">
+              <div className="flex flex-col text-left py-1">
+                <span className="text-[17px] font-black text-[#0F172A]">Is the stress too much?</span>
+                <span className="text-[13px] font-bold text-slate-600">3-min Reality Check</span>
+              </div>
+              <div className="w-12 h-12 rounded-full bg-[#6FA8E8] text-white flex items-center justify-center shrink-0 shadow-md">
+                <ArrowRight className="w-5 h-5" />
+              </div>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -280,12 +280,12 @@ export default function Index() {
         <div className="mx-auto max-w-[1400px] px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {features.map((f, i) => (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                key={f.title} 
+                key={f.title}
                 className="flex flex-col items-center text-center p-6 rounded-3xl bg-white shadow-xl shadow-slate-200/40 border border-slate-100 hover:-translate-y-2 transition-transform duration-300"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EFF6FF] mb-5 shadow-inner text-[#6FA8E8]">
@@ -308,10 +308,10 @@ export default function Index() {
         <div className="absolute bottom-10 right-10 w-[600px] h-[600px] pointer-events-none animate-float-around-reverse">
           <div className="w-full h-full bg-[#6FA8E8]/30 blur-[120px] animate-[spin_20s_linear_infinite_reverse]" style={{ borderRadius: '60% 40% 30% 70% / 50% 60% 40% 50%' }} />
         </div>
-        
+
         <div className="mx-auto max-w-[1400px] px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            
+
             {/* Left Column - Content & Stats */}
             <div className="flex flex-col gap-8">
               <div>
@@ -336,7 +336,7 @@ export default function Index() {
                   <div className="text-[40px] font-extrabold text-slate-800 leading-none mb-2">1 in 14</div>
                   <div className="text-[18px] font-medium text-slate-500">People over 65 affected</div>
                 </div>
-                
+
                 <div className="flex flex-col justify-center rounded-3xl bg-gradient-to-br from-[#6FA8E8] to-[#5A92CF] p-6 shadow-lg shadow-[#6FA8E8]/30 text-white relative overflow-hidden">
                   <div className="absolute right-0 top-0 opacity-10 translate-x-1/4 -translate-y-1/4">
                     <Clock className="w-32 h-32" />
@@ -360,7 +360,7 @@ export default function Index() {
               <div className="p-2 mb-4 font-bold text-slate-800 text-xl">Frequently Asked Questions</div>
               <FAQAccordion />
             </div>
-            
+
           </div>
         </div>
       </section>
@@ -370,7 +370,7 @@ export default function Index() {
         {/* Top White Section */}
         <div className="mx-auto max-w-[1400px] px-6 lg:px-8 pb-40">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            
+
             {/* Text Content */}
             <div className="flex flex-col">
               <div className="inline-flex items-center gap-2 text-[16px] font-bold uppercase tracking-wider text-[#6FA8E8] mb-4">
@@ -383,7 +383,7 @@ export default function Index() {
                 Aggression, confusion, and agitation often have a hidden cause. Our clinical Trigger Decoder helps you identify what's really happening in just 2 minutes.
               </p>
               <div>
-                <Link 
+                <Link
                   to="/dementia-trigger-decoder"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0F172A] px-8 py-4 text-[19px] font-bold text-white shadow-xl hover:bg-[#6FA8E8] transition-all hover:-translate-y-1"
                 >
@@ -391,7 +391,7 @@ export default function Index() {
                 </Link>
               </div>
             </div>
-            
+
             {/* Top Right Image */}
             <div className="relative">
               <div className="absolute inset-0 bg-[#6FA8E8] rounded-[40px] transform rotate-3 scale-[1.02] opacity-10" />
@@ -414,7 +414,7 @@ export default function Index() {
           <svg className="absolute bottom-0 w-full h-full text-[#6FA8E8]" viewBox="0 0 1440 320" preserveAspectRatio="none">
             <path fill="currentColor" d="M0,160 L450,160 C550,160 600,320 720,320 C840,320 890,160 990,160 L1440,160 L1440,320 L0,320 Z" />
           </svg>
-          
+
           {/* Central Glowing Orb (Nested inside the valley) */}
           <div className="absolute left-1/2 bottom-[50px] md:bottom-[70px] -translate-x-1/2 flex flex-col items-center justify-center pointer-events-auto">
             {/* Rotating Outer Rings */}
@@ -425,8 +425,8 @@ export default function Index() {
             </div>
 
             <div className="relative flex items-center justify-center w-16 h-16 md:w-24 md:h-24 rounded-full bg-gradient-to-tr from-[#4A85C5] to-[#8FBDF1] shadow-[0_10px_30px_rgba(111,168,232,0.5)] border-4 border-white z-30 overflow-hidden transform hover:scale-105 transition-transform duration-500 cursor-pointer">
-               <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
-               <Brain className="w-8 h-8 md:w-12 md:h-12 text-white drop-shadow-md relative z-10" />
+              <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
+              <Brain className="w-8 h-8 md:w-12 md:h-12 text-white drop-shadow-md relative z-10" />
             </div>
           </div>
         </div>
@@ -434,23 +434,23 @@ export default function Index() {
         {/* Bottom Light Blue Section */}
         <div className="w-full bg-[#6FA8E8] relative z-10 -mt-2 pb-24 pt-8 md:pt-16 px-6 lg:px-8">
           <div className="mx-auto max-w-[1400px]">
-             
-             {/* 3 Steps Grid */}
-             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center mt-8 relative z-20">
-               {[
-                 { n: "1", title: "Answer 5 quick questions", desc: "About timing and behaviour patterns during difficult episodes." },
-                 { n: "2", title: "Get your Trigger Profile", desc: "We analyse your answers using clinical trigger protocols." },
-                 { n: "3", title: "Receive an action plan", desc: "Practical next steps and de-escalation guidance." }
-               ].map((step) => (
-                 <div key={step.n} className="flex flex-col items-center">
-                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-lg text-[30px] font-black text-[#6FA8E8] mb-6">
-                     {step.n}
-                   </div>
-                   <h3 className="text-[25px] font-bold text-[#0F172A] mb-3">{step.title}</h3>
-                   <p className="text-[19px] leading-relaxed text-[#0F172A]/80 max-w-xs">{step.desc}</p>
-                 </div>
-               ))}
-             </div>
+
+            {/* 3 Steps Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center mt-8 relative z-20">
+              {[
+                { n: "1", title: "Answer 5 quick questions", desc: "About timing and behaviour patterns during difficult episodes." },
+                { n: "2", title: "Get your Trigger Profile", desc: "We analyse your answers using clinical trigger protocols." },
+                { n: "3", title: "Receive an action plan", desc: "Practical next steps and de-escalation guidance." }
+              ].map((step) => (
+                <div key={step.n} className="flex flex-col items-center">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-lg text-[30px] font-black text-[#6FA8E8] mb-6">
+                    {step.n}
+                  </div>
+                  <h3 className="text-[25px] font-bold text-[#0F172A] mb-3">{step.title}</h3>
+                  <p className="text-[19px] leading-relaxed text-[#0F172A]/80 max-w-xs">{step.desc}</p>
+                </div>
+              ))}
+            </div>
 
           </div>
         </div>
@@ -481,16 +481,16 @@ export default function Index() {
         {/* Soft Background Orbs */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/10 rounded-full blur-[120px] translate-x-1/3 -translate-y-1/3 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-white/5 rounded-full blur-[100px] -translate-x-1/3 translate-y-1/3 pointer-events-none" />
-        
+
         <div className="mx-auto max-w-[1400px] px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            
+
             <div className="relative order-2 lg:order-1">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[32px] shadow-2xl shadow-black/20 border border-white/40">
                 <img src={caregiverWellbeingImg} alt="Caregiver providing support" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#6FA8E8] via-[#6FA8E8]/40 to-transparent" />
               </div>
-              
+
               {/* Floating Reality Check Badge */}
               <div className="absolute bottom-10 left-10 lg:-left-10 bg-white/80 backdrop-blur-xl p-6 rounded-[24px] shadow-2xl border border-white max-w-[280px]">
                 <div className="flex items-center gap-4 mb-3">
@@ -518,7 +518,7 @@ export default function Index() {
               <p className="text-[21px] font-medium leading-relaxed text-white/90 mb-10">
                 Caregiving is an act of profound love, but it can also be physically and emotionally exhausting. You don't have to navigate it alone. Take a moment to assess your own well-being.
               </p>
-              
+
               <div className="flex flex-col gap-6 mb-12">
                 {[
                   { icon: Coffee, title: "Recognise the signs of burnout early" },
@@ -533,7 +533,7 @@ export default function Index() {
                   </div>
                 ))}
               </div>
-              
+
               <div>
                 <Link to="/caregiver-reality-check" className="inline-flex items-center justify-center gap-3 rounded-full bg-[#0F172A] px-10 py-5 text-[20px] font-bold text-white shadow-xl hover:bg-[#1E293B] hover:scale-105 transition-all duration-300 relative overflow-hidden group">
                   <span className="relative z-10">Take the Reality Check</span>
@@ -544,7 +544,7 @@ export default function Index() {
                 </div>
               </div>
             </div>
-            
+
           </div>
         </div>
       </section>
