@@ -137,40 +137,20 @@ export default function Index() {
 
         {/* Floating Widgets Layer (Absolute Front) */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[1400px] pointer-events-none z-[60]">
-          {/* Left Widget (Liquid Glass Card) */}
-          <div className="pointer-events-auto absolute left-[2%] lg:left-[5%] top-[25%] bg-white/20 backdrop-blur-3xl backdrop-saturate-150 border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-[16px] p-3 pb-4 w-[160px] hidden md:block transition-all hover:bg-white/30">
-            <div className="w-full aspect-square rounded-[12px] bg-gradient-to-tr from-[#4A85C5] to-[#8FBDF1] mb-2 flex items-center justify-center shadow-inner relative overflow-hidden">
-              <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
-              <Heart className="h-8 w-8 text-white drop-shadow-md" />
+          {/* Left Widget (Liquid Glass Heart Icon) */}
+          <div className="pointer-events-auto absolute left-[5%] lg:left-[10%] top-[calc(15%+30px)] bg-white/20 backdrop-blur-3xl backdrop-saturate-150 border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-[20px] p-4 hidden md:flex items-center justify-center transition-transform hover:scale-110">
+            <div className="w-12 h-12 rounded-[12px] bg-gradient-to-tr from-[#4A85C5] to-[#8FBDF1] flex items-center justify-center shadow-inner relative overflow-hidden">
+               <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
+               <Heart className="h-6 w-6 text-white drop-shadow-md" />
             </div>
-            <h3 className="text-[13px] font-extrabold text-[#0F172A] leading-tight mb-1">Compassionate Care</h3>
-            <p className="text-[10px] text-[#0F172A]/70 font-medium leading-relaxed">
-              We support individuals living with dementia and their loved ones.
-            </p>
           </div>
 
-          {/* Right Widget (Stacked Liquid Glass Cards) */}
-          <div className="pointer-events-auto absolute right-[2%] lg:right-[5%] top-[25%] w-[200px] h-[120px] hidden md:block group">
-            {/* Top Dark Liquid Card */}
-            <div className="absolute top-0 left-0 w-full h-full bg-[#0F172A]/40 backdrop-blur-3xl backdrop-saturate-200 border border-white/20 rounded-[14px] p-4 shadow-[0_8px_32px_rgba(0,0,0,0.3)] relative overflow-hidden flex flex-col justify-between z-30 transform translate-y-0 translate-x-0 transition-transform group-hover:-translate-y-2">
-              <div className="flex justify-between items-start relative z-10">
-                <div className="w-6 h-4 bg-white/30 rounded-[3px] backdrop-blur-sm" />
-                <Sparkles className="h-3 w-3 text-white/70" />
-              </div>
-              <div className="relative z-10">
-                <p className="text-white font-medium text-[11px] leading-snug tracking-wide drop-shadow-md">"Guidance you can trust, whenever you need it."</p>
-                <div className="flex items-center gap-2 mt-2 opacity-80">
-                  <span className="text-white text-[9px] uppercase tracking-widest font-semibold drop-shadow-sm">Sarah H.</span>
-                </div>
-              </div>
+          {/* Right Widget (Liquid Glass Brain Icon) */}
+          <div className="pointer-events-auto absolute right-[5%] lg:right-[10%] top-[calc(10%+30px)] bg-white/20 backdrop-blur-3xl backdrop-saturate-150 border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-[20px] p-4 hidden md:flex items-center justify-center transition-transform hover:scale-110">
+            <div className="w-12 h-12 rounded-[12px] bg-gradient-to-tr from-[#4A85C5] to-[#8FBDF1] flex items-center justify-center shadow-inner relative overflow-hidden">
+               <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
+               <Brain className="h-6 w-6 text-white drop-shadow-md" />
             </div>
-            {/* Middle Liquid Card */}
-            <div className="absolute top-0 left-0 w-full h-full bg-white/20 backdrop-blur-2xl backdrop-saturate-150 rounded-[14px] z-20 transform translate-y-[-8px] scale-[0.95] shadow-lg border border-white/40 flex items-start justify-between p-2 transition-transform group-hover:translate-y-[-12px]">
-              <div className="w-3 h-2 bg-white/50 backdrop-blur-sm rounded-[2px]" />
-              <Heart className="h-2 w-2 text-[#6FA8E8] drop-shadow-sm" />
-            </div>
-            {/* Bottom Liquid Card */}
-            <div className="absolute top-0 left-0 w-full h-full bg-[#8FBDF1]/30 backdrop-blur-xl backdrop-saturate-150 rounded-[14px] z-10 transform translate-y-[-16px] scale-[0.9] shadow-md border border-white/30 transition-transform group-hover:translate-y-[-20px]" />
           </div>
         </div>
 
@@ -199,9 +179,24 @@ export default function Index() {
               <p className="text-[16px] text-slate-500 font-medium leading-relaxed max-w-[220px]">
                 Decode unexpected anger or confusion in 2 minutes to find the real cause.
               </p>
-              <Link to="/dementia-trigger-decoder" className="mt-5 inline-flex items-center gap-2 bg-[#0F172A] text-white px-5 py-2.5 rounded-full text-[14px] font-bold tracking-widest uppercase hover:bg-[#6FA8E8] transition-colors shadow-lg hover:-translate-y-0.5">
-                Trigger Decoder <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+              <motion.div 
+                className="mt-5 inline-block rounded-full"
+                animate={{ boxShadow: ["0px 0px 0px 0px rgba(15,23,42,0.4)", "0px 0px 0px 15px rgba(15,23,42,0)"] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+              >
+                <Link to="/dementia-trigger-decoder" className="flex items-center gap-2 bg-[#0F172A] text-white px-5 py-2.5 rounded-full text-[14px] font-bold tracking-widest uppercase hover:bg-[#6FA8E8] transition-colors group relative z-10 overflow-hidden">
+                  {/* Shimmer Line */}
+                  <motion.div 
+                    className="absolute top-0 left-[-100%] w-[50%] h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-20deg] pointer-events-none"
+                    animate={{ left: ["-100%", "200%"] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  <span className="relative z-10">Trigger Decoder</span> 
+                  <motion.span className="relative z-10" animate={{ x: [0, 6, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
+                    <ArrowRight className="w-4 h-4" />
+                  </motion.span>
+                </Link>
+              </motion.div>
             </div>
 
             {/* Center Content (inside the transparent valley, over blue background) */}
@@ -224,9 +219,24 @@ export default function Index() {
               <p className="text-[16px] text-slate-500 font-medium leading-relaxed max-w-[220px]">
                 Take our 3-minute well-being check to see if you need more support right now.
               </p>
-              <Link to="/caregiver-reality-check" className="mt-5 inline-flex items-center gap-2 bg-[#6FA8E8] text-white px-5 py-2.5 rounded-full text-[14px] font-bold tracking-widest uppercase hover:bg-[#0F172A] transition-colors shadow-lg hover:-translate-y-0.5">
-                Reality Check <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+              <motion.div 
+                className="mt-5 inline-block rounded-full"
+                animate={{ boxShadow: ["0px 0px 0px 0px rgba(111,168,232,0.6)", "0px 0px 0px 15px rgba(111,168,232,0)"] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeOut", delay: 1 }}
+              >
+                <Link to="/caregiver-reality-check" className="flex items-center gap-2 bg-[#6FA8E8] text-white px-5 py-2.5 rounded-full text-[14px] font-bold tracking-widest uppercase hover:bg-[#0F172A] transition-colors group relative z-10 overflow-hidden">
+                  {/* Shimmer Line */}
+                  <motion.div 
+                    className="absolute top-0 left-[-100%] w-[50%] h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-20deg] pointer-events-none"
+                    animate={{ left: ["-100%", "200%"] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                  />
+                  <span className="relative z-10">Reality Check</span> 
+                  <motion.span className="relative z-10" animate={{ x: [0, 6, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }}>
+                    <ArrowRight className="w-4 h-4" />
+                  </motion.span>
+                </Link>
+              </motion.div>
             </div>
 
           </div>
@@ -254,9 +264,23 @@ export default function Index() {
                 <span className="text-[17px] font-black text-[#0F172A]">Why are they suddenly upset?</span>
                 <span className="text-[13px] font-bold text-slate-600">Trigger Decoder</span>
               </div>
-              <div className="w-12 h-12 rounded-full bg-[#0F172A] text-white flex items-center justify-center shrink-0 shadow-md">
-                <ArrowRight className="w-5 h-5" />
-              </div>
+              <motion.div 
+                className="w-12 h-12 rounded-full shrink-0 relative z-10"
+                animate={{ boxShadow: ["0px 0px 0px 0px rgba(15,23,42,0.4)", "0px 0px 0px 12px rgba(15,23,42,0)"] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+              >
+                <div className="w-full h-full rounded-full bg-[#0F172A] text-white flex items-center justify-center relative overflow-hidden">
+                  {/* Shimmer Line */}
+                  <motion.div 
+                    className="absolute top-0 left-[-100%] w-[50%] h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-20deg] pointer-events-none"
+                    animate={{ left: ["-100%", "200%"] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  <motion.span className="relative z-10" animate={{ x: [0, 6, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
+                    <ArrowRight className="w-6 h-6" />
+                  </motion.span>
+                </div>
+              </motion.div>
             </Link>
           </div>
 
@@ -267,9 +291,23 @@ export default function Index() {
                 <span className="text-[17px] font-black text-[#0F172A]">Is the stress too much?</span>
                 <span className="text-[13px] font-bold text-slate-600">3-min Reality Check</span>
               </div>
-              <div className="w-12 h-12 rounded-full bg-[#6FA8E8] text-white flex items-center justify-center shrink-0 shadow-md">
-                <ArrowRight className="w-5 h-5" />
-              </div>
+              <motion.div 
+                className="w-12 h-12 rounded-full shrink-0 relative z-10"
+                animate={{ boxShadow: ["0px 0px 0px 0px rgba(111,168,232,0.6)", "0px 0px 0px 12px rgba(111,168,232,0)"] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeOut", delay: 1 }}
+              >
+                <div className="w-full h-full rounded-full bg-[#6FA8E8] text-white flex items-center justify-center relative overflow-hidden">
+                  {/* Shimmer Line */}
+                  <motion.div 
+                    className="absolute top-0 left-[-100%] w-[50%] h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-20deg] pointer-events-none"
+                    animate={{ left: ["-100%", "200%"] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                  />
+                  <motion.span className="relative z-10" animate={{ x: [0, 6, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }}>
+                    <ArrowRight className="w-6 h-6" />
+                  </motion.span>
+                </div>
+              </motion.div>
             </Link>
           </div>
         </div>

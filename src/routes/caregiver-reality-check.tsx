@@ -132,16 +132,16 @@ export default function CaregiverRealityCheck() {
         <motion.div 
           key="step-0"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.6 }}
-          className="absolute inset-0 w-full h-full flex flex-col lg:flex-row z-50 bg-[#FAFAFA]"
+          className="w-full flex flex-col lg:flex-row bg-[#FAFAFA] min-h-[calc(100vh-100px)]"
         >
            {/* Image Half */}
-           <div className="w-full lg:w-1/2 relative h-[40vh] lg:h-full">
+           <div className="w-full lg:w-1/2 relative h-[40vh] lg:h-auto lg:min-h-full">
               <img src="/images/old_age3.jpg" alt="Caregiver Burnout" className="absolute inset-0 w-full h-full object-cover" />
            </div>
            
            {/* Text Half */}
-           <div className="w-full lg:w-1/2 h-full flex flex-col justify-center items-start px-8 py-16 lg:px-24 bg-[#FAFAFA]">
-              <div className="text-sm font-medium text-slate-500 mb-6 flex items-center gap-2 tracking-wide uppercase mt-8 lg:mt-16">
+           <div className="w-full lg:w-1/2 flex-1 flex flex-col justify-start lg:justify-center items-start px-8 pt-8 pb-12 lg:py-16 lg:px-24 bg-[#FAFAFA]">
+              <div className="text-sm font-medium text-slate-500 mb-6 flex items-center gap-2 tracking-wide uppercase mt-0 lg:mt-16">
                 <Link to="/" className="hover:text-[#6FA8E8] transition-colors">Home</Link>
                 <span>/</span>
                 <span className="text-[#6FA8E8] font-bold">Reality Check</span>

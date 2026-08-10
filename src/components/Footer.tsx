@@ -84,31 +84,16 @@ export default function Footer() {
           ))}
           
         </div>
-      </div>
-      
-      {/* Bottom Bar */}
-      <div className="relative z-10 border-t border-slate-200/60 bg-white">
-        <div className="mx-auto flex max-w-[1400px] flex-col md:flex-row items-center justify-between gap-6 px-6 lg:px-8 py-6">
+
+        {/* Unified Bottom Area */}
+        <div className="mt-20 pt-8 border-t border-slate-200/60 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-[18px] text-slate-400 font-medium">
             © 2026 DementiaLogic. All rights reserved.
           </div>
-          
-          <div className="flex gap-3">
-            <a href="#" className="flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 text-slate-400 hover:bg-[#6FA8E8] hover:text-white transition-all">
-              <Facebook className="w-4 h-4" />
-            </a>
-            <a href="#" className="flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 text-slate-400 hover:bg-[#6FA8E8] hover:text-white transition-all">
-              <Instagram className="w-4 h-4" />
-            </a>
-            <a href="#" className="flex items-center justify-center w-10 h-10 rounded-full bg-slate-50 text-slate-400 hover:bg-[#6FA8E8] hover:text-white transition-all">
-              <Youtube className="w-4 h-4" />
-            </a>
-          </div>
-
           <div className="flex flex-wrap gap-8 text-[16px] font-bold text-slate-400">
-            <span className="hover:text-[#6FA8E8] cursor-pointer transition-colors">Privacy Policy</span>
-            <span className="hover:text-[#6FA8E8] cursor-pointer transition-colors">Terms of Use</span>
-            <span className="hover:text-[#6FA8E8] cursor-pointer transition-colors">Accessibility</span>
+            <span className="hover:text-blue-600 cursor-pointer transition-colors">Privacy Policy</span>
+            <span className="hover:text-blue-600 cursor-pointer transition-colors">Terms of Use</span>
+            <span className="hover:text-blue-600 cursor-pointer transition-colors">Accessibility</span>
           </div>
         </div>
       </div>
